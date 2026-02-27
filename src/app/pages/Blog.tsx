@@ -265,7 +265,7 @@ export function BlogPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to="#2563EB" variant="slant-left" />
+      <AngularDivider from="#ffffff" to="#1E3A5F" variant="slant-left" />
     </div>
   );
 }

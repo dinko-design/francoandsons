@@ -431,7 +431,7 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider: CTA to footer */}
-      <AngularDivider from="#EFF6FF" to="#2563EB" variant="slant-left" />
+      <AngularDivider from="#EFF6FF" to="#1E3A5F" variant="slant-left" />
 
       {/* CTA */}
       <section className="py-20 lg:py-24 bg-secondary">
@@ -446,7 +446,7 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider: CTA to footer */}
-      <AngularDivider from="#EFF6FF" to="#2563EB" variant="slant-left" />
+      <AngularDivider from="#EFF6FF" to="#1E3A5F" variant="slant-left" />
     </div>
   );
 }

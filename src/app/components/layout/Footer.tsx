@@ -3,37 +3,14 @@ import { Phone, MapPin, Clock, Facebook, Instagram } from "lucide-react";
 import { COMPANY, SERVICES, LOCATIONS } from "../../data/siteData";
 import { AngularDivider } from "../shared/AngularDivider";
 import { Logo } from "../shared/Logo";
-
-// Placeholder: replace with your preferred "made by" logo
-const dinkoLogo = "https://placehold.co/32x32/e2e8f0/64748b?text=DD";
+import { CookieFooterRow } from "../shared/CookieConsent";
+import dinkoLogo from "@/assets/dinko-design-logo.png";
 
 export function Footer() {
   return (
     <footer className="text-white">
-      {/* CTA Banner */}
-      <div className="bg-[#1E3A5F] relative overflow-hidden pt-20 pb-16">
-        {/* Subtle roofline decoration at top */}
-        <div className="absolute top-0 left-0 right-0 h-20 overflow-hidden">
-          <svg className="absolute top-0 left-0 w-full h-full opacity-10" viewBox="0 0 1440 80" preserveAspectRatio="none">
-            <path d="M0,80 L360,10 L720,80 L1080,10 L1440,80 L1440,80 L0,80 Z" fill="white" />
-          </svg>
-        </div>
-
-        {/* Angular geometric pattern */}
-        <div className="absolute inset-0 pointer-events-none">
-          <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 1440 200" preserveAspectRatio="none">
-            <line x1="0" y1="200" x2="400" y2="0" stroke="white" strokeWidth="1.5" />
-            <line x1="200" y1="200" x2="600" y2="0" stroke="white" strokeWidth="0.5" />
-            <line x1="700" y1="200" x2="1100" y2="0" stroke="white" strokeWidth="1.5" />
-            <line x1="1000" y1="200" x2="1440" y2="20" stroke="white" strokeWidth="0.5" />
-          </svg>
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] opacity-10"
-            style={{
-              background: "linear-gradient(225deg, white 0%, transparent 60%)",
-              clipPath: "polygon(100% 0, 40% 0, 100% 60%)",
-            }}
-          />
-        </div>
+      {/* CTA Banner - solid navy, no pattern; overlaps divider above so the angle continues */}
+      <div className="bg-[#1E3A5F] relative -mt-12 pt-20 pb-16">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-[1.75rem] md:text-[2.25rem] text-white mb-4 font-bold">
             Ready to Start Your Project?
@@ -212,6 +189,7 @@ export function Footer() {
             <a href="#" className="text-gray-500 hover:text-gray-400 text-[0.8rem]">Terms of Service</a>
           </div>
         </div>
+        <CookieFooterRow />
       </div>
 
       {/* Dinko Design credit */}

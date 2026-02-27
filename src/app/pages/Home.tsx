@@ -47,25 +47,14 @@ const iconMap: Record<string, React.ReactNode> = {
 export function HomePage() {
   return (
     <div>
-      {/* Hero Section - Enhanced with Roofline Pattern */}
-      <section className="relative min-h-[650px] lg:min-h-[750px] flex items-center pb-[100px]">
+      {/* Hero Section - image fades to white at bottom; no divider, no pattern */}
+      <section className="relative min-h-[650px] lg:min-h-[750px] flex items-center">
         <div className="absolute inset-0">
-          <img src={IMAGES.kitchenOpenConcept} alt="Beautiful kitchen remodel by Franco & Sons Construction LLC" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0A1628]/95 via-[#1E3A5F]/75 to-[#0A1628]/50" />
-          <div className="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-[#0A1628]/90 to-transparent" />
-          {/* Architectural roofline pattern overlay */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-            <svg className="absolute bottom-0 left-0 w-full h-48" viewBox="0 0 1440 180" preserveAspectRatio="none">
-              {/* Multiple roofline peaks */}
-              <path d="M0,180 L200,80 L400,180" stroke="#C77D3A" strokeWidth="2" fill="none" />
-              <path d="M350,180 L550,90 L750,180" stroke="#C77D3A" strokeWidth="3" fill="none" />
-              <path d="M700,180 L900,70 L1100,180" stroke="#C77D3A" strokeWidth="2" fill="none" />
-              <path d="M1050,180 L1250,85 L1440,180" stroke="#C77D3A" strokeWidth="2" fill="none" />
-              {/* Accent lines */}
-              <line x1="0" y1="140" x2="1440" y2="100" stroke="#1E3A5F" strokeWidth="1" opacity="0.5" />
-              <line x1="0" y1="100" x2="1440" y2="140" stroke="#1E3A5F" strokeWidth="1" opacity="0.5" />
-            </svg>
-          </div>
+          <img src={IMAGES.kitchenOpenConcept} alt="Beautiful kitchen remodel by Franco & Sons Construction LLC" className="w-full h-full object-cover object-center" />
+          {/* Dark overlay for text readability - leaves bottom to fade */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A1628]/90 via-[#0A1628]/70 to-transparent" />
+          {/* Fade image to white at the very bottom - no hard cutoff */}
+          <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-white via-white/80 to-transparent" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="max-w-2xl">
@@ -100,8 +89,6 @@ export function HomePage() {
           </div>
         </div>
       </section>
-
-      <AngularDivider from="#0A1628" to="#ffffff" variant="roof-valley" />
 
       {/* Trust Bar - Blends with Background */}
       <section className="bg-white py-10">
@@ -510,7 +497,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <AngularDivider from="#0F172A" to="#2563EB" variant="slant-right" />
+      <AngularDivider from="#0F172A" to="#1E3A5F" variant="slant-right" />
     </div>
   );
 }

@@ -259,7 +259,7 @@ export function LocationPage() {
       </section>
 
       {/* Angular divider: to footer */}
-      <AngularDivider from="#F8FAFC" to="#2563EB" variant="slant-left" />
+      <AngularDivider from="#F8FAFC" to="#1E3A5F" variant="slant-left" />
     </div>
   );
 }

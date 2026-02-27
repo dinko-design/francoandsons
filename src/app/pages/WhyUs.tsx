@@ -514,7 +514,7 @@ export function WhyUsPage() {
         </div>
       </section>
 
-      <AngularDivider from="#0F172A" to="#2563EB" variant="slant-right" />
+      <AngularDivider from="#0F172A" to="#1E3A5F" variant="slant-right" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* FINAL CTA */}
@@ -560,7 +560,7 @@ export function WhyUsPage() {
         </div>
       </section>
 
-      <AngularDivider from="#0F172A" to="#2563EB" variant="slant-right" />
+      <AngularDivider from="#0F172A" to="#1E3A5F" variant="slant-right" />
     </div>
   );
 }

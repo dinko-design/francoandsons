@@ -2,7 +2,6 @@ import { Outlet, useLocation, useParams } from "react-router";
 import { useEffect } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { CookieConsent, CookieSettingsButton } from "../shared/CookieConsent";
 import { DocumentHead } from "../shared/DocumentHead";
 import { JsonLd } from "../shared/JsonLd";
 import { getMetaForPath } from "../../data/metaData";
@@ -31,8 +30,6 @@ export function Layout() {
         <Outlet />
       </main>
       <Footer />
-      <CookieConsent />
-      <CookieSettingsButton />
     </div>
   );
 }

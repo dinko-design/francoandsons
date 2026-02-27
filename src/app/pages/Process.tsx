@@ -146,7 +146,7 @@ export function ProcessPage() {
       </section>
 
       {/* Angular divider: to footer */}
-      <AngularDivider from="#EFF6FF" to="#2563EB" variant="slant-right" />
+      <AngularDivider from="#EFF6FF" to="#1E3A5F" variant="slant-right" />
     </div>
   );
 }
