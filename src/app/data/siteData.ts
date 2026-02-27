@@ -13,11 +13,21 @@ import tileImage from '@/assets/64c12f3def3ced43d7309e1c235a6c907d89d362.png';
 import constructionImage from '@/assets/849dc29ab6df9f85a755c25a1dcb88d34b0022f8.png';
 import teamImage from '@/assets/9d281622c5c22a85b9e85ebec579088d9eacbcf5.png';
 
-// Real project photos (from local assets)
+// Organized imported images (analyzed, renamed: before-after/ and gallery/)
+import beforeAfterKitchen1Img from '@/assets/before-after/kitchen/kitchen-before-after-dark-cabinets.jpg';
+import beforeAfterBath1Img from '@/assets/before-after/bathroom/bathroom-before-after-tub-to-walkin.jpg';
+import beforeAfterBath2Img from '@/assets/before-after/bathroom/bathroom-before-after-double-vanity.jpg';
+import beforeAfterBath3Img from '@/assets/before-after/bathroom/bathroom-before-after-ada-walkin.jpg';
+import rosevilleKitchenHero from '@/assets/gallery/kitchen/roseville/roseville-kitchen-01.jpg';
+import newcastleKitchenHero from '@/assets/gallery/kitchen/newcastle/newcastle-kitchen-01.jpg';
+import joanneAdaHero from '@/assets/gallery/bathroom/joanne-ada/joanne-ada-bathroom-02.jpg';
+import rosevilleBathHero from '@/assets/gallery/bathroom/roseville/roseville-bathroom-01.jpg';
+
+// Real project photos (from local assets + organized gallery)
 const realKitchenIsland = kitchenImage1;
 const realKitchenCabinets = kitchenImage2;
 const realKitchenCooktop = kitchenImage3;
-const realKitchenOpenConcept = kitchenImage1;
+const realKitchenOpenConcept = rosevilleKitchenHero;
 const realKitchenIslandClose = kitchenImage2;
 const realBathroomShower = bathroomImage1;
 const realBathroomVanity = bathroomImage2;
@@ -31,11 +41,11 @@ const teamCarlosInKitchen = teamImage;
 const teamCristianBlueprints = teamImage;
 const teamBrandedTrucks = teamImage;
 
-// Before & After project photos (from local assets)
-const baBeforeAfterBath1 = bathroomImage1;
-const baBeforeAfterBath2 = bathroomImage2;
-const baBeforeAfterBath3 = bathroomImage3;
-const baBeforeAfterKitchen1 = kitchenImage1;
+// Before & After project photos (real composites from imported images)
+const baBeforeAfterBath1 = beforeAfterBath1Img;
+const baBeforeAfterBath2 = beforeAfterBath2Img;
+const baBeforeAfterBath3 = beforeAfterBath3Img;
+const baBeforeAfterKitchen1 = beforeAfterKitchen1Img;
 
 export const COMPANY = {
   name: "Franco & Sons Construction LLC",
@@ -84,9 +94,9 @@ export const IMAGES = {
   lincoln: houseImage1,
   folsom: houseImage2,
   elDoradoHills: houseImage3,
-  newcastle: houseImage1,
-  // Additional images
-  kitchenBeforeAfter: kitchenImage1,
+  newcastle: newcastleKitchenHero,
+  // Additional images (organized gallery)
+  kitchenBeforeAfter: beforeAfterKitchen1Img,
   happyHomeowner: teamImage,
   livingRoom: houseImage1,
   // Before & After composite photos
@@ -94,6 +104,9 @@ export const IMAGES = {
   beforeAfterBath2: baBeforeAfterBath2,
   beforeAfterBath3: baBeforeAfterBath3,
   beforeAfterKitchen1: baBeforeAfterKitchen1,
+  galleryRosevilleBath: rosevilleBathHero,
+  galleryJoanneAda: joanneAdaHero,
+  galleryNewcastleKitchen: newcastleKitchenHero,
 };
 
 export interface ServiceData {
