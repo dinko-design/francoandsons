@@ -45,7 +45,7 @@ const STEPS: StepConfig[] = [
       { label: "Bathroom Remodel", value: "bathroom-remodeling", icon: <Bath className="w-6 h-6" />, description: "Showers, vanities, tile work" },
       { label: "ADA / Accessible", value: "ada-accessible-remodeling", icon: <Accessibility className="w-6 h-6" />, description: "Safety & accessibility upgrades" },
       { label: "Home Addition", value: "home-additions", icon: <Home className="w-6 h-6" />, description: "Extra rooms, ADUs, expansions" },
-      { label: "Commercial Work", value: "commercial", icon: <Building2 className="w-6 h-6" />, description: "Build-outs, renovations, TI" },
+      { label: "Commercial Work", value: "commercial-remodeling", icon: <Building2 className="w-6 h-6" />, description: "Build-outs, renovations, TI" },
       { label: "Something Else", value: "other", icon: <HelpCircle className="w-6 h-6" />, description: "Flooring, painting, electrical" },
     ],
   },

@@ -206,6 +206,40 @@ export const SERVICES: ServiceData[] = [
     ],
   },
   {
+    slug: "commercial-remodeling",
+    title: "Commercial Remodeling",
+    shortTitle: "Commercial",
+    description:
+      "Tenant improvements, office build-outs, and retail renovations. We deliver commercial construction and remodeling with minimal downtime and clear communication so your business stays on track.",
+    heroDescription:
+      "From tenant improvements to office and retail build-outs, Franco & Sons Construction LLC brings the same quality and reliability we're known for in residential work to your commercial project. We work with business owners, property managers, and tenants to complete build-outs and renovations on schedule and within budget. Licensed, insured, and experienced in commercial permitting and code requirements.",
+    image: IMAGES.homeAddition,
+    features: [
+      "Tenant improvements (TI) & build-outs",
+      "Office renovations & interior build-outs",
+      "Retail space construction",
+      "Restaurant & hospitality build-outs",
+      "Commercial permitting & code compliance",
+      "Scheduling around your business hours",
+      "Clear communication & project management",
+      "Finish carpentry & interior fit-out",
+    ],
+    benefits: [
+      "Minimize downtime — we work around your operations",
+      "Licensed & insured for commercial work",
+      "Transparent estimates and timelines",
+      "Experience with Placer County commercial permits",
+    ],
+    icon: "Building2",
+    tier: "primary",
+    seoContent: [
+      {
+        heading: "Why Choose Franco & Sons for Commercial Remodeling?",
+        body: "Franco & Sons Construction LLC offers commercial build-outs, tenant improvements, and office or retail renovations throughout Lincoln and Placer County. We bring the same family-owned reliability and quality craftsmanship to commercial projects — with clear communication, on-schedule delivery, and full compliance with commercial building codes. Whether you're opening a new location, refreshing an existing space, or need tenant improvements, we'll work with you to minimize downtime and maximize results.",
+      },
+    ],
+  },
+  {
     slug: "ada-accessible-remodeling",
     title: "ADA / Accessible Bathroom Remodeling",
     shortTitle: "ADA Bathrooms",

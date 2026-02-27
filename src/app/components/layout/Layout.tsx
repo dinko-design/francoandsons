@@ -24,7 +24,7 @@ export function Layout() {
         image={meta.image}
         noindex={meta.noindex}
       />
-      <JsonLd />
+      <JsonLd pathname={pathname} params={params} />
       <Header />
       <main className="flex-1 bg-background">
         <Outlet />

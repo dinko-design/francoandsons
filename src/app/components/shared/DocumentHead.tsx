@@ -1,11 +1,20 @@
 import { Helmet } from "react-helmet-async";
 import type { PageMeta } from "../../data/metaData";
+import { SITE_URL } from "../../data/metaData";
 
 interface DocumentHeadProps extends PageMeta {
   /** Optional article publish date for blog (ISO string) */
   articlePublishedTime?: string;
   /** Optional article modified date (ISO string) */
   articleModifiedTime?: string;
+}
+
+/** Ensure image URL is absolute for OG/Twitter (crawlers require full URL). */
+function toAbsoluteImageUrl(image: string | undefined): string | undefined {
+  if (!image) return undefined;
+  if (image.startsWith("http://") || image.startsWith("https://")) return image;
+  const path = image.startsWith("/") ? image : `/${image}`;
+  return `${SITE_URL.replace(/\/$/, "")}${path}`;
 }
 
 export function DocumentHead({
@@ -17,7 +26,7 @@ export function DocumentHead({
   articlePublishedTime,
   articleModifiedTime,
 }: DocumentHeadProps) {
-  const ogImage = image || undefined;
+  const ogImage = toAbsoluteImageUrl(image);
   const canonicalUrl = canonical || undefined;
 
   return (

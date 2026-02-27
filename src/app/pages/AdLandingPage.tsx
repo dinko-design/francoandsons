@@ -36,9 +36,9 @@ export function AdLandingPage() {
     }
   }
 
-  // Handle commercial
+  // Handle commercial (offer slug is "commercial-remodeling"; service slug matches)
   if (slug?.startsWith("commercial")) {
-    serviceSlug = "commercial";
+    serviceSlug = "commercial-remodeling";
   }
 
   const service = SERVICES.find((s) => s.slug === serviceSlug);

@@ -194,14 +194,47 @@ export function getMetaForPath(
     }
   }
 
-  // Ad landing /offers/:slug
+  // Ad landing /offers/:slug — dynamic by service/location for local SEO
   if (pathname.startsWith("/offers/")) {
+    const offerSlug = params.slug ?? pathname.match(/^\/offers\/([^/]+)/)?.[1];
+    let offerTitle = `Special Offer | ${COMPANY.name} | Lincoln, CA`;
+    let offerDesc = `Limited-time offer from ${COMPANY.name}. Kitchen and bathroom remodeling in Lincoln, Rocklin, Roseville & Placer County. Get your free estimate.`;
+
+    if (offerSlug) {
+      const allServiceSlugs = SERVICES.map((s) => s.slug);
+      const allLocationSlugs = LOCATIONS.map((l) => l.slug);
+      let serviceSlug = "";
+      let locationSlug = "";
+
+      for (const sSlug of allServiceSlugs) {
+        if (offerSlug.startsWith(sSlug + "-")) {
+          serviceSlug = sSlug;
+          const remainder = offerSlug.slice(sSlug.length + 1);
+          if (allLocationSlugs.includes(remainder)) locationSlug = remainder;
+          break;
+        }
+        if (offerSlug === sSlug) {
+          serviceSlug = sSlug;
+          break;
+        }
+      }
+      if (offerSlug.startsWith("commercial")) serviceSlug = "commercial-remodeling";
+
+      const service = SERVICES.find((s) => s.slug === serviceSlug);
+      const location = LOCATIONS.find((l) => l.slug === locationSlug);
+      const serviceName = service?.title ?? "Remodeling";
+      const locationName = location ? `${location.city}, CA` : "Lincoln & Placer County";
+
+      offerTitle = `${serviceName} in ${locationName} | ${COMPANY.name} | Free Estimate`;
+      offerDesc = truncateDescription(
+        `${COMPANY.positioning} ${serviceName} in ${locationName}. Free estimate. Call ${COMPANY.phone}.`
+      );
+    }
+
     return {
       ...base,
-      title: `Special Offer | ${COMPANY.name} | Lincoln, CA`,
-      description: truncateDescription(
-        `Limited-time offer from ${COMPANY.name}. Kitchen and bathroom remodeling in Lincoln, Rocklin, Roseville & Placer County. Get your free estimate.`
-      ),
+      title: offerTitle,
+      description: offerDesc,
       image: DEFAULT_IMAGE,
     };
   }

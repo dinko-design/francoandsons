@@ -16,14 +16,14 @@ export function Footer() {
             Ready to Start Your Project?
           </h2>
           <p className="text-white/85 text-[1.05rem] mb-7 max-w-2xl mx-auto leading-relaxed">
-            Get a free, no-obligation estimate from Lincoln's most trusted contractor. We'll visit your home and provide a detailed quote within 48 hours.
+            Get a free, no-obligation estimate. We'll discuss your project and provide a detailed quote within 48 hours.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/get-started"
               className="bg-white text-[#1E3A5F] px-8 py-3.5 rounded-md text-[1rem] font-semibold hover:bg-gray-50 transition-colors inline-flex items-center justify-center gap-2 shadow-lg"
             >
-              Request Free Estimate
+              Get Free Estimate
             </Link>
             <a
               href={`tel:${COMPANY.phone}`}
@@ -121,7 +121,7 @@ export function Footer() {
                 {[
                   { to: "/about", label: "About Us" },
                   { to: "/portfolio", label: "Portfolio" },
-                  { to: "/why-us", label: "Why Franco & Sons Construction LLC" },
+                  { to: "/why-us", label: "Why Us" },
                   { to: "/blog", label: "Blog & Resources" },
                   { to: "/packages", label: "Service Packages" },
                   { to: "/process", label: "Our Process" },

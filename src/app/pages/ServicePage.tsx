@@ -6,6 +6,7 @@ import {
   Star,
   ChefHat,
   Bath,
+  Building2,
   Home,
   Grid3X3,
   Accessibility,
@@ -36,6 +37,7 @@ import { SERVICE_SEO_CONTENT } from "../data/seoData";
 const iconMap: Record<string, React.ReactNode> = {
   ChefHat: <ChefHat className="w-7 h-7" />,
   Bath: <Bath className="w-7 h-7" />,
+  Building2: <Building2 className="w-7 h-7" />,
   Home: <Home className="w-7 h-7" />,
   Grid3X3: <Grid3X3 className="w-7 h-7" />,
   Accessibility: <Accessibility className="w-7 h-7" />,

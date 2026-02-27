@@ -74,6 +74,28 @@ export const SERVICE_SEO_CONTENT: Record<string, SEOSection[]> = {
     },
   ],
 
+  "commercial-remodeling": [
+    {
+      heading: "Commercial Remodeling & Build-Outs in Lincoln & Placer County",
+      body: "Franco & Sons Construction LLC provides commercial remodeling, tenant improvements, and build-out services for businesses in Lincoln, Rocklin, Roseville, and throughout Placer County. From office renovations and retail build-outs to restaurant and hospitality spaces, we deliver the same quality and reliability we're known for in residential work — with clear communication, on-schedule completion, and full compliance with commercial building codes. We work with business owners, property managers, and tenants to minimize downtime and keep your project on track.",
+      bullets: [
+        "Tenant improvements (TI) and commercial interior build-outs",
+        "Office renovations and workspace reconfigurations",
+        "Retail space construction and finish-out",
+        "Restaurant and hospitality build-outs",
+        "Commercial permitting and code compliance",
+        "Scheduling around business hours to reduce disruption",
+        "Transparent estimates and project timelines",
+        "Licensed and insured for commercial work",
+      ],
+      links: [
+        { text: "Our Process", to: "/process" },
+        { text: "Portfolio", to: "/portfolio" },
+        { text: "Get a Free Commercial Estimate", to: "/get-started" },
+      ],
+    },
+  ],
+
   "ada-accessible-remodeling": [
     {
       heading: "ADA-Compliant Bathroom Remodeling in Lincoln & Placer County",

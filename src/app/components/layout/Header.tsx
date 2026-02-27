@@ -150,9 +150,9 @@ export function Header() {
 
               {/* Commercial bucket */}
               <Link
-                to="/offers/commercial-remodeling"
+                to="/services/commercial-remodeling"
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[0.9rem] transition-all ${
-                  location.pathname === "/offers/commercial-remodeling"
+                  location.pathname === "/services/commercial-remodeling"
                     ? "bg-primary/10 text-primary"
                     : "text-foreground hover:bg-primary/5 hover:text-primary"
                 }`}
@@ -303,7 +303,7 @@ export function Header() {
                   <span className="text-[0.95rem]" style={{ fontWeight: 600 }}>Baths</span>
                 </Link>
                 <Link
-                  to="/offers/commercial-remodeling"
+                  to="/services/commercial-remodeling"
                   className="flex items-center gap-3 py-3 px-2 rounded-lg hover:bg-primary/5"
                   onClick={() => setMobileOpen(false)}
                 >
