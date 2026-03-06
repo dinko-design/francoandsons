@@ -19,6 +19,7 @@ export default defineConfig({
             quality: '80',
             w: '1440',
             withoutEnlargement: '',
+            rotate: '',
           })
         }
         return new URLSearchParams()
