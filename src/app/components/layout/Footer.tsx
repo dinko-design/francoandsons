@@ -186,8 +186,9 @@ export function Footer() {
             &copy; {new Date().getFullYear()} {COMPANY.fullName}. All rights reserved. {COMPANY.license}
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-gray-500 hover:text-gray-400 text-[0.8rem]">Privacy Policy</a>
-            <a href="#" className="text-gray-500 hover:text-gray-400 text-[0.8rem]">Terms of Service</a>
+            <Link to="/privacy-policy" className="text-gray-500 hover:text-gray-400 text-[0.8rem]">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="text-gray-500 hover:text-gray-400 text-[0.8rem]">Terms of Service</Link>
+            <Link to="/sitemap" className="text-gray-500 hover:text-gray-400 text-[0.8rem]">Sitemap</Link>
           </div>
         </div>
         <CookieFooterRow />

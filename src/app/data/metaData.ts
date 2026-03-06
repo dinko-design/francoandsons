@@ -15,7 +15,20 @@ export interface PageMeta {
   noindex?: boolean;
 }
 
-const DEFAULT_IMAGE = `${SITE_URL}/og-default.png`;
+/**
+ * Generate a dynamic OG image URL via the /api/og edge function.
+ * Falls back to a default branded image if no params provided.
+ */
+function ogImageUrl(params: { title?: string; subtitle?: string; type?: string } = {}): string {
+  const searchParams = new URLSearchParams();
+  if (params.title) searchParams.set("title", params.title);
+  if (params.subtitle) searchParams.set("subtitle", params.subtitle);
+  if (params.type) searchParams.set("type", params.type);
+  const qs = searchParams.toString();
+  return `${SITE_URL}/api/og${qs ? `?${qs}` : ""}`;
+}
+
+const DEFAULT_IMAGE = ogImageUrl({ title: COMPANY.name, subtitle: "Kitchen & Bathroom Remodeling | Lincoln, CA", type: "home" });
 
 function truncateDescription(text: string, maxLen = 160): string {
   const cleaned = text.replace(/\s+/g, " ").trim();
@@ -53,7 +66,7 @@ export function getMetaForPath(
       description: truncateDescription(
         `Meet Carlos and Cristian Franco. Family-owned general contractor with over ${COMPANY.yearsExperience} years of construction experience serving Lincoln and Placer County.`
       ),
-      image: DEFAULT_IMAGE,
+      image: ogImageUrl({ title: "Meet the Family Behind the Craft", subtitle: "About Us", type: "default" }),
     },
     contact: {
       ...base,
@@ -61,7 +74,7 @@ export function getMetaForPath(
       description: truncateDescription(
         `Get a free estimate from ${COMPANY.name}. Call ${COMPANY.phone} or request a consultation. Serving Lincoln, Rocklin, Roseville & Placer County.`
       ),
-      image: DEFAULT_IMAGE,
+      image: ogImageUrl({ title: "Get in Touch", subtitle: "Free Estimate & Consultation", type: "default" }),
     },
     portfolio: {
       ...base,
@@ -69,7 +82,7 @@ export function getMetaForPath(
       description: truncateDescription(
         `See before & after photos of kitchen remodels, bathroom renovations, and home additions by ${COMPANY.name} in Lincoln, Rocklin, Roseville & Placer County.`
       ),
-      image: DEFAULT_IMAGE,
+      image: ogImageUrl({ title: "Our Work Speaks for Itself", subtitle: "Portfolio & Before/After Photos", type: "default" }),
     },
     process: {
       ...base,
@@ -77,7 +90,7 @@ export function getMetaForPath(
       description: truncateDescription(
         `How ${COMPANY.name} runs your remodel: free consultation, detailed estimate, design & planning, construction, and final walkthrough. No surprises.`
       ),
-      image: DEFAULT_IMAGE,
+      image: ogImageUrl({ title: "From Consultation to Completion", subtitle: "Our Process", type: "default" }),
     },
     reviews: {
       ...base,
@@ -85,7 +98,7 @@ export function getMetaForPath(
       description: truncateDescription(
         `Read what Lincoln and Placer County homeowners say about ${COMPANY.name}. Kitchen remodeling, bathroom renovations, and home addition reviews.`
       ),
-      image: DEFAULT_IMAGE,
+      image: ogImageUrl({ title: "What Our Clients Say", subtitle: "Reviews & Testimonials", type: "default" }),
     },
     faq: {
       ...base,
@@ -93,7 +106,7 @@ export function getMetaForPath(
       description: truncateDescription(
         `Frequently asked questions about kitchen remodeling, bathroom remodels, estimates, permits, and working with ${COMPANY.name} in Lincoln, CA.`
       ),
-      image: DEFAULT_IMAGE,
+      image: ogImageUrl({ title: "Frequently Asked Questions", subtitle: "Remodeling FAQ", type: "default" }),
     },
     "get-started": {
       ...base,
@@ -101,7 +114,7 @@ export function getMetaForPath(
       description: truncateDescription(
         `Request a free, no-obligation estimate from ${COMPANY.name}. In-home consultation, detailed written estimate. Serving Lincoln, Rocklin, Roseville & Placer County.`
       ),
-      image: DEFAULT_IMAGE,
+      image: ogImageUrl({ title: "Get Your Free Estimate", subtitle: "No Obligation · Detailed Written Quote", type: "default" }),
     },
     "why-us": {
       ...base,
@@ -109,7 +122,7 @@ export function getMetaForPath(
       description: truncateDescription(
         `Father and son on every job. Detailed estimates, no hidden fees. Why homeowners in Lincoln and Placer County choose ${COMPANY.name} for remodeling.`
       ),
-      image: DEFAULT_IMAGE,
+      image: ogImageUrl({ title: "Why Homeowners Choose Us", subtitle: "Father & Son On Every Job", type: "default" }),
     },
     packages: {
       ...base,
@@ -117,7 +130,7 @@ export function getMetaForPath(
       description: truncateDescription(
         `Explore remodeling packages and options from ${COMPANY.name}. Kitchen, bathroom, and home addition services in Lincoln & Placer County.`
       ),
-      image: DEFAULT_IMAGE,
+      image: ogImageUrl({ title: "Remodeling Packages", subtitle: "Kitchen · Bathroom · Home Additions", type: "default" }),
     },
     blog: {
       ...base,
@@ -125,7 +138,38 @@ export function getMetaForPath(
       description: truncateDescription(
         `Kitchen remodel costs, bathroom timelines, contractor advice, and before & after stories from ${COMPANY.name}. Lincoln & Placer County remodeling blog.`
       ),
+      image: ogImageUrl({ title: "Remodeling Tips & Advice", subtitle: "Blog", type: "blog" }),
+    },
+    "design-system": {
+      ...base,
+      title: `Design System | ${COMPANY.name}`,
+      description: `Internal design system reference for ${COMPANY.name}. Colors, typography, components, and brand elements.`,
+      noindex: true,
       image: DEFAULT_IMAGE,
+    },
+    "privacy-policy": {
+      ...base,
+      title: `Privacy Policy | ${COMPANY.name}`,
+      description: truncateDescription(
+        `Privacy Policy for ${COMPANY.name}. Learn how we collect, use, and protect your personal information.`
+      ),
+      image: ogImageUrl({ title: "Privacy Policy", type: "legal" }),
+    },
+    "terms-of-service": {
+      ...base,
+      title: `Terms of Service | ${COMPANY.name}`,
+      description: truncateDescription(
+        `Terms of Service for the ${COMPANY.name} website. Review the terms and conditions that govern your use of our site.`
+      ),
+      image: ogImageUrl({ title: "Terms of Service", type: "legal" }),
+    },
+    sitemap: {
+      ...base,
+      title: `Sitemap | ${COMPANY.name}`,
+      description: truncateDescription(
+        `Browse all pages on the ${COMPANY.name} website. Find services, locations, blog posts, and resources.`
+      ),
+      image: ogImageUrl({ title: "Site Map", type: "default" }),
     },
   };
 
@@ -145,7 +189,7 @@ export function getMetaForPath(
         description: truncateDescription(
           `${service.heroDescription || service.description} Serving Lincoln, Rocklin, Roseville & Placer County. Free estimate.`
         ),
-        image: typeof service.image === "string" && service.image.startsWith("http") ? service.image : DEFAULT_IMAGE,
+        image: ogImageUrl({ title: service.title, subtitle: "Lincoln, Rocklin, Roseville & Placer County", type: "service" }),
       };
     }
   }
@@ -161,7 +205,7 @@ export function getMetaForPath(
         description: truncateDescription(
           `${location.description} Kitchen remodeling, bathroom renovations, home additions in ${location.city}. Free estimate.`
         ),
-        image: DEFAULT_IMAGE,
+        image: ogImageUrl({ title: `Remodeling in ${location.city}, ${location.state}`, subtitle: "Kitchen · Bathroom · Home Additions", type: "location" }),
       };
     }
   }
@@ -175,7 +219,7 @@ export function getMetaForPath(
         ...base,
         title: `${post.title} | ${COMPANY.name} Blog`,
         description: truncateDescription(post.excerpt),
-        image: typeof post.image === "string" && post.image.startsWith("http") ? post.image : DEFAULT_IMAGE,
+        image: ogImageUrl({ title: post.title, subtitle: "Blog", type: "blog" }),
       };
     }
   }

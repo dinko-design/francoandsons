@@ -19,6 +19,10 @@ import { BlogPostPage } from "./pages/BlogPost";
 import { LeadMagnetPage } from "./pages/LeadMagnetPage";
 import { AdLandingPage } from "./pages/AdLandingPage";
 import { NotFoundPage } from "./pages/NotFound";
+import { PrivacyPolicyPage } from "./pages/PrivacyPolicy";
+import { DesignSystemPage } from "./pages/DesignSystem";
+import { TermsOfServicePage } from "./pages/TermsOfService";
+import { SitemapPage } from "./pages/SitemapPage";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +50,11 @@ export const router = createBrowserRouter([
       { path: "free/:slug", Component: LeadMagnetPage },
       // Ad landing pages (service-only or service-location combos)
       { path: "offers/:slug", Component: AdLandingPage },
+      // Legal & utility pages
+      { path: "design-system", Component: DesignSystemPage },
+      { path: "privacy-policy", Component: PrivacyPolicyPage },
+      { path: "terms-of-service", Component: TermsOfServicePage },
+      { path: "sitemap", Component: SitemapPage },
       // Catch-all
       { path: "*", Component: NotFoundPage },
     ],
