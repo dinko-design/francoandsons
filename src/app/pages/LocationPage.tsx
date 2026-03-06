@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle, MapPin, Phone, Tag, Download, Shield, Star } f
 import { LOCATIONS, SERVICES, COMPANY, IMAGES } from "../data/siteData";
 import { LeadCaptureForm } from "../components/shared/LeadCaptureForm";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { AngularDivider, BlueprintLines, GeometricBackground } from "../components/shared/AngularDivider";
+import { GeometricBackground } from "../components/shared/AngularDivider";
 import { PromoBar, GuaranteeStrip } from "../components/shared/PromotionBanner";
 import { LEAD_MAGNETS } from "../data/promotionsData";
 import { SEOContentBlock } from "../components/shared/SEOContentBlock";
@@ -119,7 +119,6 @@ export function LocationPage() {
       </section>
 
       {/* Angular divider */}
-      <AngularDivider from="#ffffff" to="#F8FAFC" variant="slant-right" />
 
       {/* ═══════════════════════════════════════ */}
       {/* SEO RICH CONTENT BLOCK                  */}
@@ -146,7 +145,7 @@ export function LocationPage() {
                 Our Services in {location.city}
               </h2>
               <p className="text-muted-foreground text-[1rem]">
-                Franco & Sons Construction LLC provides the full range of construction and remodeling services to {location.city} homeowners and businesses.
+                Franco and Sons Construction LLC provides the full range of construction and remodeling services to {location.city} homeowners and businesses.
               </p>
             </div>
 
@@ -174,7 +173,6 @@ export function LocationPage() {
       </GeometricBackground>
 
       {/* Angular divider */}
-      <AngularDivider from="#F8FAFC" to="#ffffff" variant="double" />
 
       {/* Guarantees */}
       <section className="py-12 bg-white">
@@ -188,11 +186,9 @@ export function LocationPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to="#F8FAFC" variant="slant-left" />
 
       {/* Contact Section */}
       <section className="py-20 lg:py-24 relative overflow-hidden">
-        <BlueprintLines />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
@@ -200,7 +196,7 @@ export function LocationPage() {
                 Ready to Start Your {location.city} Project?
               </h2>
               <p className="text-muted-foreground text-[1rem] mb-8 leading-relaxed">
-                Whether you're planning a kitchen remodel, bathroom renovation, or any other construction project in {location.city}, Franco & Sons Construction LLC is here to help. Contact us today for a free, no-obligation estimate.
+                Whether you're planning a kitchen remodel, bathroom renovation, or any other construction project in {location.city}, Franco and Sons Construction LLC is here to help. Contact us today for a free, no-obligation estimate.
               </p>
 
               <div className="space-y-4 mb-8">
@@ -260,7 +256,6 @@ export function LocationPage() {
       </section>
 
       {/* Angular divider: to footer */}
-      <AngularDivider from="#F8FAFC" to={BRAND.colors.primary} variant="slant-left" />
     </div>
   );
 }

@@ -17,6 +17,7 @@ import {
   Zap,
   Paintbrush,
   TreePine,
+  Building2,
   BookOpen,
   Download,
 } from "lucide-react";
@@ -24,7 +25,7 @@ import { COMPANY, SERVICES, LOCATIONS, TESTIMONIALS, IMAGES } from "../data/site
 import { BRAND } from "../data/brandConfig";
 import { LeadCaptureForm } from "../components/shared/LeadCaptureForm";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { AngularDivider, BlueprintLines, GeometricBackground } from "../components/shared/AngularDivider";
+import { GeometricBackground } from "../components/shared/AngularDivider";
 import { CornerBrackets, DotGrid, FBadge, SectionEyebrow, QuoteMarks, DashedCard, CrosshatchGrid } from "../components/shared/BrandElements";
 import { Logo } from "../components/shared/Logo";
 import { BLOG_POSTS } from "../data/blogData";
@@ -49,6 +50,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Zap: <Zap className="w-6 h-6" />,
   Paintbrush: <Paintbrush className="w-6 h-6" />,
   TreePine: <TreePine className="w-6 h-6" />,
+  Building2: <Building2 className="w-6 h-6" />,
 };
 
 export function HomePage() {
@@ -60,7 +62,7 @@ export function HomePage() {
         <DotGrid opacity={0.2} spacing={28} dotSize={0.8} lineOpacity={0.06} />
         {/* Photo overlay */}
         <div className="absolute inset-0">
-          <img src={IMAGES.kitchenOpenConcept} alt="Beautiful kitchen remodel by Franco & Sons Construction LLC" className="w-full h-full object-cover object-center opacity-15" />
+          <img src={IMAGES.kitchenOpenConcept} alt="Beautiful kitchen remodel by Franco and Sons Construction LLC" className="w-full h-full object-cover object-center opacity-15" />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${heroBg}f5, ${primary}99, ${heroBg}80)` }} />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${heroBg}, transparent, ${heroBg}66)` }} />
         </div>
@@ -72,14 +74,14 @@ export function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <SectionEyebrow className="mb-6">Southwest Florida · Est. 2004</SectionEyebrow>
+              <SectionEyebrow className="mb-6">Lincoln, California · Est. 2004</SectionEyebrow>
               <h1 className="text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] text-white mb-6 leading-[0.9]" style={{ fontFamily: BRAND.fonts.display, fontWeight: 700, letterSpacing: "0.02em" }}>
                 BUILDING<br />
-                <span style={{ color: accent }}>FLORIDA'S</span><br />
+                <span style={{ color: accent }}>CALIFORNIA'S</span><br />
                 FUTURE
               </h1>
               <p className="text-white/45 text-[1.05rem] mb-9 leading-relaxed max-w-md" style={{ fontFamily: BRAND.fonts.body }}>
-                Residential & commercial construction across the Gulf Coast. Licensed, insured, and built on trust.
+                Residential & commercial construction across Placer County. Licensed, insured, and built on trust.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/get-started" className="px-8 py-3.5 rounded text-[0.95rem] transition-all inline-flex items-center justify-center gap-2 group" style={{ fontFamily: BRAND.fonts.secondary, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" as const, background: accent, color: primary, boxShadow: `0 10px 25px ${accent}33` }}>
@@ -141,13 +143,12 @@ export function HomePage() {
         </div>
       </section>
 
-      <AngularDivider from={primaryDark} to={BRAND.colors.foreground} variant="roof-steep" />
 
       {/* Branded Fleet */}
       <section className="relative min-h-[550px] lg:min-h-[600px] overflow-hidden" style={{ background: BRAND.colors.foreground }}>
         <DotGrid opacity={0.15} spacing={28} dotSize={0.8} lineOpacity={0.05} />
         <div className="absolute inset-0">
-          <ImageWithFallback src={IMAGES.brandedTrucks} alt="Franco & Sons Construction LLC branded fleet" className="w-full h-full object-cover opacity-25" />
+          <ImageWithFallback src={IMAGES.brandedTrucks} alt="Franco and Sons Construction LLC branded fleet" className="w-full h-full object-cover opacity-25" />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${BRAND.colors.foreground}f5, ${primary}cc, ${BRAND.colors.foreground}80)` }} />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${BRAND.colors.foreground}f2, transparent, ${BRAND.colors.foreground}80)` }} />
         </div>
@@ -177,7 +178,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <AngularDivider from={BRAND.colors.foreground} to={primaryDark} variant="roof-asymmetric" />
 
       {/* Services Section — dark cards matching brand guide */}
       <section className="py-24 lg:py-28 relative overflow-hidden" style={{ background: primaryDark }}>
@@ -187,7 +187,7 @@ export function HomePage() {
           <div className="text-center max-w-2xl mx-auto mb-16">
             <SectionEyebrow className="justify-center mb-3">Our Services</SectionEyebrow>
             <h2 className="text-[2.25rem] md:text-[2.75rem] mt-3 mb-5 leading-[1] text-white" style={{ fontFamily: BRAND.fonts.display, fontWeight: 700, letterSpacing: "0.02em" }}>EXPERT CONSTRUCTION & REMODELING</h2>
-            <p className="text-[1.05rem] leading-relaxed text-white/40">From kitchen remodels to home additions, Franco & Sons Construction LLC delivers precision craftsmanship on every project.</p>
+            <p className="text-[1.05rem] leading-relaxed text-white/40">From kitchen remodels to home additions, Franco and Sons Construction LLC delivers precision craftsmanship on every project.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {SERVICES.map((service) => (
@@ -213,9 +213,8 @@ export function HomePage() {
         </div>
       </section>
 
-      <AngularDivider from={primaryDark} to={BRAND.colors.foreground} variant="roof-shallow" />
 
-      {/* Why Franco & Sons — dark version */}
+      {/* Why Franco and Sons Construction LLC — dark version */}
       <section className="py-24 lg:py-28 relative overflow-hidden" style={{ background: BRAND.colors.foreground }}>
         <DotGrid opacity={0.12} spacing={28} dotSize={0.8} lineOpacity={0.04} />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -224,7 +223,7 @@ export function HomePage() {
               <SectionEyebrow className="mb-3">Why Choose Us</SectionEyebrow>
               <h2 className="text-[2.25rem] md:text-[2.75rem] mt-3 mb-6 leading-[1] text-white" style={{ fontFamily: BRAND.fonts.display, fontWeight: 700, letterSpacing: "0.02em" }}>A FAMILY BUSINESS BUILT ON TRUST</h2>
               <p className="text-[1.05rem] mb-9 leading-relaxed text-white/50">
-                When you hire Franco & Sons Construction LLC, you're not getting a faceless corporation. Carlos and Cristian Franco work on every project personally — from your initial consultation to the final walkthrough.
+                When you hire Franco and Sons Construction LLC, you're not getting a faceless corporation. Carlos and Cristian Franco work on every project personally — from your initial consultation to the final walkthrough.
               </p>
               <div className="space-y-4 mb-9">
                 {[
@@ -263,8 +262,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <AngularDivider from={BRAND.colors.foreground} to={BRAND.colors.foreground} variant="roof-multi" />
-
       {/* Featured Projects — dark with corner brackets on each */}
       <section className="py-20 lg:py-24 relative" style={{ background: BRAND.colors.foreground }}>
         <DotGrid opacity={0.12} spacing={28} dotSize={0.8} lineOpacity={0.04} />
@@ -272,7 +269,7 @@ export function HomePage() {
           <div className="text-center max-w-2xl mx-auto mb-14">
             <SectionEyebrow className="justify-center mb-3">Our Work</SectionEyebrow>
             <h2 className="text-[2.25rem] md:text-[2.75rem] mt-3 mb-5 leading-[1] text-white" style={{ fontFamily: BRAND.fonts.display, fontWeight: 700, letterSpacing: "0.02em" }}>FEATURED PROJECTS</h2>
-            <p className="text-white/40 text-[1rem]">See the quality and craftsmanship that has made Franco & Sons Construction LLC the go-to contractor in Lincoln, California.</p>
+            <p className="text-white/40 text-[1rem]">See the quality and craftsmanship that has made Franco and Sons Construction LLC the go-to contractor in Lincoln, California.</p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {[
@@ -303,7 +300,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <AngularDivider from={BRAND.colors.foreground} to={BRAND.colors.foreground} variant="zigzag" />
 
       {/* Before & After Teaser — dark */}
       <section className="py-20 lg:py-24 relative overflow-hidden" style={{ background: primaryDark }}>
@@ -315,14 +311,13 @@ export function HomePage() {
               BEFORE & AFTER
             </h2>
             <p className="text-white/40 text-[1rem]">
-              See the transformations for yourself. Real projects, real results, all by Franco & Sons Construction LLC.
+              See the transformations for yourself. Real projects, real results, all by Franco and Sons Construction LLC.
             </p>
           </div>
           <BeforeAfterShowcase variant="teaser" limit={2} />
         </div>
       </section>
 
-      <AngularDivider from={primaryDark} to={BRAND.colors.foreground} variant="slant-right" />
 
       {/* Testimonials — dark section matching brand guide */}
       <section className="py-20 lg:py-24 relative overflow-hidden" style={{ background: BRAND.colors.foreground }}>
@@ -363,7 +358,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <AngularDivider from={BRAND.colors.foreground} to={primaryDark} variant="slant-right" />
 
       {/* Service Areas — dark */}
       <section className="py-20 lg:py-24 relative" style={{ background: primaryDark }}>
@@ -394,7 +388,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <AngularDivider from={primaryDark} to={BRAND.colors.foreground} variant="slant-left" />
 
       {/* Blog & Resources — dark */}
       <section className="py-16 lg:py-20 relative" style={{ background: BRAND.colors.foreground }}>
@@ -450,7 +443,7 @@ export function HomePage() {
       <section className="py-12 relative" style={{ background: primaryDark }}>
         <DotGrid opacity={0.08} spacing={28} dotSize={0.8} lineOpacity={0.03} />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <GuaranteeStrip variant="icons-only" />
+          <GuaranteeStrip variant="icons-only" dark />
         </div>
       </section>
 
@@ -466,7 +459,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <AngularDivider from={BRAND.colors.foreground} to={heroBg} variant="roof-valley" />
 
       {/* Lead Capture Section */}
       <section className="py-20 lg:py-24 text-white relative overflow-hidden" style={{ background: heroBg }}>
@@ -508,7 +500,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <AngularDivider from={heroBg} to={primary} variant="slant-right" />
     </div>
   );
 }

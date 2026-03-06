@@ -25,11 +25,7 @@ import {
 import { COMPANY, IMAGES, TESTIMONIALS } from "../data/siteData";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { LeadCaptureForm } from "../components/shared/LeadCaptureForm";
-import {
-  AngularDivider,
-  BlueprintLines,
-  GeometricBackground,
-} from "../components/shared/AngularDivider";
+import { GeometricBackground } from "../components/shared/AngularDivider";
 import { MultiStepForm } from "../components/shared/MultiStepForm";
 import { StackedPromos, GuaranteeStrip } from "../components/shared/PromotionBanner";
 import { VideoPlaceholder } from "../components/shared/VideoPlaceholder";
@@ -83,7 +79,7 @@ export function GetStartedPage() {
         <div className="absolute inset-0">
           <ImageWithFallback
             src={IMAGES.kitchen}
-            alt="Kitchen remodel by Franco & Sons Construction LLC"
+            alt="Kitchen remodel by Franco and Sons Construction LLC"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${BRAND.colors.primaryDark}f2, ${BRAND.colors.primaryDark}cc, ${BRAND.colors.primaryDark}80)` }} />
@@ -238,7 +234,6 @@ export function GetStartedPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to="#F8FAFC" variant="slant-right" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* PROBLEM AGITATION */}
@@ -324,13 +319,11 @@ export function GetStartedPage() {
         </section>
       </GeometricBackground>
 
-      <AngularDivider from="#F8FAFC" to="#ffffff" variant="arrow-down" />
 
       {/* ═══════════════════════════════════════════ */}
-      {/* SOLUTION — The Franco & Sons Construction LLC Process */}
+      {/* SOLUTION — The Franco and Sons Construction LLC Process */}
       {/* ═══════════════════════════════════════════ */}
       <section className="py-16 lg:py-20 bg-white relative overflow-hidden">
-        <BlueprintLines />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
@@ -402,28 +395,16 @@ export function GetStartedPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to={BRAND.colors.primaryDark} variant="slant-left" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* WHAT MAKES US DIFFERENT */}
       {/* ═══════════════════════════════════════════ */}
       <section className="py-16 lg:py-20 bg-accent relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="offergrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#offergrid)" />
-          </svg>
-        </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
-                The Franco & Sons Construction LLC Difference
+                The Franco and Sons Construction LLC Difference
               </span>
               <h2
                 className="text-[1.75rem] md:text-[2.25rem] text-white mt-2 mb-6"
@@ -494,7 +475,6 @@ export function GetStartedPage() {
         </div>
       </section>
 
-      <AngularDivider from={BRAND.colors.primaryDark} to="#F8FAFC" variant="slant-right" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* DELIVERABLES — What You Get */}
@@ -511,7 +491,7 @@ export function GetStartedPage() {
               </h2>
               <p className="text-muted-foreground text-[1rem]">
                 No nickel-and-diming. No surprise add-ons. Here's what comes standard
-                with every Franco & Sons Construction LLC project.
+                with every Franco and Sons Construction LLC project.
               </p>
             </div>
 
@@ -543,13 +523,11 @@ export function GetStartedPage() {
         </section>
       </GeometricBackground>
 
-      <AngularDivider from="#F8FAFC" to="#ffffff" variant="zigzag" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* PROOF — Results + Testimonials */}
       {/* ═══════════════════════════════════════════ */}
       <section className="py-16 lg:py-20 bg-white relative overflow-hidden">
-        <BlueprintLines />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
@@ -559,7 +537,7 @@ export function GetStartedPage() {
               Don't Take Our Word for It
             </h2>
             <p className="text-muted-foreground text-[1rem]">
-              Here's what homeowners in your area say after working with Franco & Sons Construction LLC.
+              Here's what homeowners in your area say after working with Franco and Sons Construction LLC.
             </p>
           </div>
 
@@ -592,7 +570,7 @@ export function GetStartedPage() {
                   ))}
                 </div>
                 <p className="text-[1rem] leading-relaxed mb-5 italic text-muted-foreground">
-                  "Franco & Sons Construction LLC completely transformed our cramped kitchen into a
+                  "Franco and Sons Construction LLC completely transformed our cramped kitchen into a
                   bright, spacious, and functional space we absolutely love. They
                   removed the false ceiling, moved walls, and opened up the entire
                   layout. The craftsmanship and attention to detail exceeded our
@@ -664,7 +642,6 @@ export function GetStartedPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to="#EFF6FF" variant="slant-right" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* PRICING FRAMING */}
@@ -818,7 +795,6 @@ export function GetStartedPage() {
         </div>
       </section>
 
-      <AngularDivider from="#EFF6FF" to="#ffffff" variant="sharp" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* GUARANTEE / RISK REVERSAL */}
@@ -880,7 +856,6 @@ export function GetStartedPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to="#F8FAFC" variant="slant-left" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* FAQ — Objection Removal */}
@@ -933,23 +908,11 @@ export function GetStartedPage() {
         </section>
       </GeometricBackground>
 
-      <AngularDivider from="#F8FAFC" to={BRAND.colors.primaryDark} variant="arrow-down" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* FINAL CTA — Form */}
       {/* ═══════════════════════════════════════════ */}
       <section id="free-estimate" className="py-16 lg:py-20 bg-accent relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="ctaOffergrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#ctaOffergrid)" />
-          </svg>
-        </div>
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div>
@@ -1018,7 +981,6 @@ export function GetStartedPage() {
       </section>
 
       {/* Angular divider: to footer */}
-      <AngularDivider from={BRAND.colors.primaryDark} to={BRAND.colors.primary} variant="slant-right" />
     </div>
   );
 }

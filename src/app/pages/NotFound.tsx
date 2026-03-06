@@ -5,18 +5,6 @@ import { BRAND } from "../data/brandConfig";
 export function NotFoundPage() {
   return (
     <div className="min-h-[60vh] flex items-center justify-center relative overflow-hidden">
-      {/* Blueprint lines background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="notfoundgrid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-              <line x1="0" y1="0" x2="60" y2="60" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
-              <line x1="60" y1="0" x2="0" y2="60" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#notfoundgrid)" />
-        </svg>
-      </div>
       <div className="relative z-10 text-center max-w-md mx-auto px-4">
         <div className="text-[5rem] text-primary mb-4" style={{ fontWeight: 700 }}>404</div>
         <h1 className="text-[1.5rem] mb-3" style={{ fontWeight: 700 }}>Page Not Found</h1>

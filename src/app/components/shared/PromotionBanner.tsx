@@ -115,7 +115,7 @@ interface GuaranteeStripProps {
   maxItems?: number;
 }
 
-export function GuaranteeStrip({ variant = "full", maxItems }: GuaranteeStripProps) {
+export function GuaranteeStrip({ variant = "full", maxItems, dark = false }: GuaranteeStripProps & { dark?: boolean }) {
   const items = maxItems ? GUARANTEES.slice(0, maxItems) : GUARANTEES;
 
   if (variant === "icons-only") {
@@ -126,7 +126,7 @@ export function GuaranteeStrip({ variant = "full", maxItems }: GuaranteeStripPro
             <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: `${BRAND.colors.accent}15`, color: BRAND.colors.accent }}>
               {guaranteeIcons[g.icon]}
             </div>
-            <span className="text-white/70" style={{ fontWeight: 600 }}>{g.title}</span>
+            <span className={dark ? "text-white/70" : "text-foreground/70"} style={{ fontWeight: 600 }}>{g.title}</span>
           </div>
         ))}
       </div>

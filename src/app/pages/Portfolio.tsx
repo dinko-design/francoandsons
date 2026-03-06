@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { ArrowRight, MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { IMAGES } from "../data/siteData";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { AngularDivider, BlueprintLines, GeometricBackground } from "../components/shared/AngularDivider";
+import { GeometricBackground } from "../components/shared/AngularDivider";
 import { SEOContentBlock } from "../components/shared/SEOContentBlock";
 import { PAGE_SEO_CONTENT } from "../data/seoData";
 import { BeforeAfterShowcase } from "../components/shared/BeforeAfterShowcase";
@@ -49,27 +49,16 @@ export function PortfolioPage() {
     <div>
       {/* Hero */}
       <section className="relative py-20 lg:py-28 pb-[100px] lg:pb-[120px] bg-accent overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="portfoliogrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#portfoliogrid)" />
-          </svg>
-        </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
+            <span className="text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600, color: BRAND.colors.accent }}>
               Portfolio
             </span>
             <h1 className="text-[2rem] md:text-[2.75rem] text-white mt-2 mb-5" style={{ fontWeight: 700, lineHeight: 1.15 }}>
               Our Work Speaks for Itself
             </h1>
             <p className="text-gray-300 text-[1.1rem] leading-relaxed">
-              Browse our portfolio of completed projects throughout Lincoln, Rocklin, Roseville, and the greater Placer County area. Every project showcases the quality and craftsmanship that Franco & Sons Construction LLC is known for.
+              Browse our portfolio of completed projects throughout Lincoln, Rocklin, Roseville, and the greater Placer County area. Every project showcases the quality and craftsmanship that Franco and Sons Construction LLC is known for.
             </p>
           </div>
         </div>
@@ -90,7 +79,6 @@ export function PortfolioPage() {
 
       {/* Featured Project */}
       <section className="py-20 lg:py-24 bg-white relative overflow-hidden">
-        <BlueprintLines />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
@@ -100,7 +88,7 @@ export function PortfolioPage() {
               Kitchen Remodel — Roseville, CA
             </h2>
             <p className="text-muted-foreground text-[1rem] leading-relaxed">
-              A complete kitchen transformation showcasing the quality craftsmanship and attention to detail that defines every Franco & Sons Construction LLC project.
+              A complete kitchen transformation showcasing the quality craftsmanship and attention to detail that defines every Franco and Sons Construction LLC project.
             </p>
           </div>
 
@@ -217,7 +205,7 @@ export function PortfolioPage() {
                   ))}
                 </div>
                 <p className="text-[0.85rem] text-muted-foreground italic">
-                  "Franco & Sons Construction LLC completely transformed our cramped kitchen into a bright, spacious, and functional space we absolutely love."
+                  "Franco and Sons Construction LLC completely transformed our cramped kitchen into a bright, spacious, and functional space we absolutely love."
                 </p>
               </div>
               <div className="mt-2 text-right">
@@ -229,7 +217,6 @@ export function PortfolioPage() {
       </section>
 
       {/* Angular divider: featured to before/after */}
-      <AngularDivider from="#ffffff" to="#F8FAFC" variant="slant-left" />
 
       {/* Before & After Showcase */}
       <GeometricBackground>
@@ -243,7 +230,7 @@ export function PortfolioPage() {
                 Before & After
               </h2>
               <p className="text-muted-foreground text-[1rem] leading-relaxed">
-                Nothing tells the story like side-by-side results. Browse real transformations completed by Franco & Sons Construction LLC throughout Placer County.
+                Nothing tells the story like side-by-side results. Browse real transformations completed by Franco and Sons Construction LLC throughout Placer County.
               </p>
             </div>
             <BeforeAfterShowcase variant="full" />
@@ -252,11 +239,9 @@ export function PortfolioPage() {
       </GeometricBackground>
 
       {/* Angular divider: before/after to gallery */}
-      <AngularDivider from="#F8FAFC" to="#ffffff" variant="arrow-down" />
 
       {/* Gallery */}
       <section className="py-20 lg:py-24 bg-white relative overflow-hidden">
-        <BlueprintLines />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
@@ -325,7 +310,6 @@ export function PortfolioPage() {
       </section>
 
       {/* Angular divider */}
-      <AngularDivider from="#ffffff" to="#EFF6FF" variant="sharp" />
 
       {/* SEO Content Block */}
       <section className="py-16 lg:py-20">
@@ -339,7 +323,6 @@ export function PortfolioPage() {
       </section>
 
       {/* Angular divider: to footer */}
-      <AngularDivider from="#EFF6FF" to={BRAND.colors.primary} variant="slant-right" />
     </div>
   );
 }

@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import { Star, ArrowRight, Quote } from "lucide-react";
 import { TESTIMONIALS, COMPANY } from "../data/siteData";
 import { LeadCaptureForm } from "../components/shared/LeadCaptureForm";
-import { AngularDivider, BlueprintLines } from "../components/shared/AngularDivider";
 import { BRAND } from "../data/brandConfig";
 
 export function ReviewsPage() {
@@ -10,27 +9,16 @@ export function ReviewsPage() {
     <div>
       {/* Hero */}
       <section className="relative py-20 lg:py-28 pb-[120px] lg:pb-[140px] bg-accent overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="reviewgrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#reviewgrid)" />
-          </svg>
-        </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
+            <span className="text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600, color: BRAND.colors.accent }}>
               Reviews & Testimonials
             </span>
             <h1 className="text-[2rem] md:text-[2.75rem] text-white mt-2 mb-5" style={{ fontWeight: 700, lineHeight: 1.15 }}>
               What Our Clients Say About Working With Us
             </h1>
             <p className="text-gray-300 text-[1.1rem] leading-relaxed">
-              Our reputation is our most valuable asset. Read what homeowners throughout Placer County have to say about their experience with Franco & Sons Construction LLC.
+              Our reputation is our most valuable asset. Read what homeowners throughout Placer County have to say about their experience with Franco and Sons Construction LLC.
             </p>
           </div>
         </div>
@@ -82,11 +70,9 @@ export function ReviewsPage() {
       </section>
 
       {/* Angular divider */}
-      <AngularDivider from="#ffffff" to="#F8FAFC" variant="slant-left" />
 
       {/* Reviews */}
       <section className="py-20 lg:py-24 relative overflow-hidden">
-        <BlueprintLines />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-8">
             {TESTIMONIALS.map((t, index) => (
@@ -122,7 +108,7 @@ export function ReviewsPage() {
               Video Testimonials Coming Soon
             </h2>
             <p className="text-muted-foreground text-[0.95rem] max-w-xl mx-auto mb-6">
-              We're collecting video reviews from our happy clients. Check back soon to see and hear directly from homeowners who have worked with Franco & Sons Construction LLC.
+              We're collecting video reviews from our happy clients. Check back soon to see and hear directly from homeowners who have worked with Franco and Sons Construction LLC.
             </p>
             <Link
               to="/contact"
@@ -136,7 +122,6 @@ export function ReviewsPage() {
       </section>
 
       {/* Angular divider */}
-      <AngularDivider from="#F8FAFC" to="#ffffff" variant="double" />
 
       {/* CTA */}
       <section className="py-20 lg:py-24 bg-white">
@@ -144,14 +129,13 @@ export function ReviewsPage() {
           <div className="bg-secondary rounded-xl p-8 lg:p-10 border border-primary/10">
             <LeadCaptureForm
               title="Join Our Happy Clients"
-              subtitle="Ready to experience the Franco & Sons Construction LLC difference? Get your free estimate today."
+              subtitle="Ready to experience the Franco and Sons Construction LLC difference? Get your free estimate today."
             />
           </div>
         </div>
       </section>
 
       {/* Angular divider: to footer */}
-      <AngularDivider from="#ffffff" to={BRAND.colors.primary} variant="slant-left" />
     </div>
   );
 }

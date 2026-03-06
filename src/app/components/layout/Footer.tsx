@@ -3,7 +3,6 @@ import { Phone, MapPin, Clock, Facebook, Instagram } from "lucide-react";
 import { COMPANY, SERVICES, LOCATIONS } from "../../data/siteData";
 import { BRAND } from "../../data/brandConfig";
 import { DotGrid } from "../shared/BrandElements";
-import { AngularDivider } from "../shared/AngularDivider";
 import { Logo } from "../shared/Logo";
 import { CookieFooterRow } from "../shared/CookieConsent";
 import dinkoLogo from "@/assets/dinko-design-logo.png";
@@ -44,7 +43,6 @@ export function Footer() {
       </div>
 
       {/* Angular divider into footer links */}
-      <AngularDivider from={primary} to={footerBg} variant="roof-shallow" />
 
       {/* Footer content */}
       <div className="relative overflow-hidden" style={{ background: footerBg }}>

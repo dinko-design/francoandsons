@@ -19,10 +19,6 @@ import {
 } from "lucide-react";
 import { COMPANY, TESTIMONIALS, IMAGES } from "../data/siteData";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import {
-  AngularDivider,
-  BlueprintLines,
-} from "../components/shared/AngularDivider";
 import { SEOContentBlock } from "../components/shared/SEOContentBlock";
 import { PAGE_SEO_CONTENT } from "../data/seoData";
 import { BRAND } from "../data/brandConfig";
@@ -68,29 +64,11 @@ export function WhyUsPage() {
     <div>
       {/* Hero */}
       <section className="relative py-20 lg:py-28 pb-[100px] lg:pb-[120px] bg-accent overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="whyusgrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#whyusgrid)" />
-          </svg>
-          <div
-            className="absolute top-0 right-0 w-[500px] h-[500px] opacity-10"
-            style={{
-              background: `linear-gradient(225deg, ${BRAND.colors.accent} 0%, transparent 60%)`,
-              clipPath: "polygon(100% 0, 30% 0, 100% 70%)",
-            }}
-          />
-        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
-              Why Franco & Sons Construction LLC
+            <span className="text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600, color: BRAND.colors.accent }}>
+              Why Franco and Sons Construction LLC
             </span>
             <h1 className="text-[2rem] md:text-[2.75rem] text-white mt-2 mb-5" style={{ fontWeight: 700, lineHeight: 1.15 }}>
               Not All Contractors Are Created Equal.{" "}
@@ -122,7 +100,6 @@ export function WhyUsPage() {
       {/* THE 4 OPTIONS — Problem Setup */}
       {/* ═══════════════════════════════════════════ */}
       <section className="py-16 lg:py-20 bg-white relative overflow-hidden">
-        <BlueprintLines />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-[1.75rem] md:text-[2.25rem] mb-4" style={{ fontWeight: 700 }}>
@@ -221,7 +198,7 @@ export function WhyUsPage() {
               </ul>
             </div>
 
-            {/* Franco & Sons Construction LLC */}
+            {/* Franco and Sons Construction LLC */}
             <div className="bg-primary/5 rounded-xl border-2 border-primary p-6 relative">
               <div className="absolute -top-3 left-4 bg-primary text-white px-3 py-0.5 rounded-full text-[0.7rem]" style={{ fontWeight: 600 }}>
                 Best Choice
@@ -230,7 +207,7 @@ export function WhyUsPage() {
                 <Shield className="w-6 h-6" />
               </div>
               <h3 className="text-[1.05rem] mb-3" style={{ fontWeight: 700 }}>
-                Franco & Sons Construction LLC
+                Franco and Sons Construction LLC
               </h3>
               <ul className="space-y-2.5">
                 {[
@@ -252,7 +229,6 @@ export function WhyUsPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to="#F8FAFC" variant="slant-right" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* DETAILED COMPARISON TABLE */}
@@ -289,7 +265,7 @@ export function WhyUsPage() {
                     Random Contractor
                   </th>
                   <th className="text-center p-4 text-[0.85rem] bg-primary/5 border-l-2 border-primary/20" style={{ fontWeight: 700 }}>
-                    <span className="text-primary">Franco & Sons Construction LLC</span>
+                    <span className="text-primary">Franco and Sons Construction LLC</span>
                   </th>
                 </tr>
               </thead>
@@ -370,13 +346,11 @@ export function WhyUsPage() {
         </div>
       </section>
 
-      <AngularDivider from="#F8FAFC" to={BRAND.colors.primaryDark} variant="zigzag" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* RISK REDUCTION PILLARS */}
       {/* ═══════════════════════════════════════════ */}
       <section className="py-16 lg:py-20 bg-white relative overflow-hidden">
-        <BlueprintLines />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
@@ -451,7 +425,6 @@ export function WhyUsPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to="#EFF6FF" variant="slant-left" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* SOCIAL PROOF */}
@@ -502,7 +475,6 @@ export function WhyUsPage() {
         </div>
       </section>
 
-      <AngularDivider from="#EFF6FF" to={BRAND.colors.primaryDark} variant="arrow-down" />
 
       {/* SEO Content Block */}
       <section className="py-16 lg:py-20">
@@ -515,23 +487,11 @@ export function WhyUsPage() {
         </div>
       </section>
 
-      <AngularDivider from={BRAND.colors.primaryDark} to={BRAND.colors.primary} variant="slant-right" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* FINAL CTA */}
       {/* ═══════════════════════════════════════════ */}
       <section className="py-16 lg:py-20 bg-accent relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="whyusCtaGrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#whyusCtaGrid)" />
-          </svg>
-        </div>
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-[1.75rem] md:text-[2.25rem] text-white mb-4" style={{ fontWeight: 700 }}>
             Ready to Work with a Contractor You Can Trust?
@@ -561,7 +521,6 @@ export function WhyUsPage() {
         </div>
       </section>
 
-      <AngularDivider from={BRAND.colors.primaryDark} to={BRAND.colors.primary} variant="slant-right" />
     </div>
   );
 }

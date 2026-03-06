@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { PROCESS_STEPS, COMPANY } from "../data/siteData";
 import { LeadCaptureForm } from "../components/shared/LeadCaptureForm";
-import { AngularDivider, BlueprintLines, GeometricBackground } from "../components/shared/AngularDivider";
+import { GeometricBackground } from "../components/shared/AngularDivider";
 import { SEOContentBlock } from "../components/shared/SEOContentBlock";
 import { PAGE_SEO_CONTENT } from "../data/seoData";
 import { BRAND } from "../data/brandConfig";
@@ -12,27 +12,16 @@ export function ProcessPage() {
     <div>
       {/* Hero */}
       <section className="relative py-20 lg:py-28 pb-[110px] lg:pb-[130px] bg-accent overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="processgrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#processgrid)" />
-          </svg>
-        </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
+            <span className="text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600, color: BRAND.colors.accent }}>
               Our Process
             </span>
             <h1 className="text-[2rem] md:text-[2.75rem] text-white mt-2 mb-5" style={{ fontWeight: 700, lineHeight: 1.15 }}>
               From Estimate to Completion - Here's How We Work
             </h1>
             <p className="text-gray-300 text-[1.1rem] leading-relaxed">
-              We believe in transparency at every stage. Here's exactly what you can expect when you work with Franco & Sons Construction LLC, from your first call to the final walkthrough.
+              We believe in transparency at every stage. Here's exactly what you can expect when you work with Franco and Sons Construction LLC, from your first call to the final walkthrough.
             </p>
           </div>
         </div>
@@ -53,7 +42,6 @@ export function ProcessPage() {
 
       {/* Steps */}
       <section className="py-20 lg:py-24 relative overflow-hidden">
-        <BlueprintLines />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-12">
             {PROCESS_STEPS.map((step, index) => (
@@ -98,7 +86,6 @@ export function ProcessPage() {
       </section>
 
       {/* Angular divider */}
-      <AngularDivider from="#F8FAFC" to={BRAND.colors.accent} variant="sharp" />
 
       {/* What sets us apart */}
       <section className="py-16 bg-primary relative overflow-hidden">
@@ -112,7 +99,7 @@ export function ProcessPage() {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-[1.5rem] md:text-[2rem] text-white mb-4" style={{ fontWeight: 700 }}>
-            The Franco & Sons Construction LLC Difference
+            The Franco and Sons Construction LLC Difference
           </h2>
           <p className="text-white/70 text-[1rem] max-w-2xl mx-auto mb-10">
             Unlike big contractors, you'll always know who's working on your project and what's happening next.
@@ -133,7 +120,6 @@ export function ProcessPage() {
       </section>
 
       {/* Angular divider */}
-      <AngularDivider from={BRAND.colors.accent} to="#EFF6FF" variant="slant-left" />
 
       {/* SEO Content Block */}
       <section className="py-16 lg:py-20 bg-background">
@@ -147,7 +133,6 @@ export function ProcessPage() {
       </section>
 
       {/* Angular divider: to footer */}
-      <AngularDivider from="#EFF6FF" to={BRAND.colors.primary} variant="slant-right" />
     </div>
   );
 }

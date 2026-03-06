@@ -35,6 +35,9 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [locationsOpen, setLocationsOpen] = useState(false);
+  const [kitchensOpen, setKitchensOpen] = useState(false);
+  const [bathsOpen, setBathsOpen] = useState(false);
+  const [commercialOpen, setCommercialOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileLocationsOpen, setMobileLocationsOpen] = useState(false);
   const location = useLocation();
@@ -124,25 +127,58 @@ export function Header() {
             {/* Desktop primary nav */}
             <nav className="hidden lg:flex items-center gap-1">
               {[
-                { to: "/services/kitchen-remodeling", icon: <ChefHat className="w-4.5 h-4.5" style={{ color: accent }} />, label: "Kitchens", match: ["/services/kitchen-remodeling"] },
-                { to: "/services/bathroom-remodeling", icon: <Bath className="w-4.5 h-4.5" style={{ color: accent }} />, label: "Baths", match: ["/services/bathroom-remodeling", "/services/custom-showers", "/services/ada-accessible-remodeling"] },
-                { to: "/services/commercial-remodeling", icon: <Building2 className="w-4.5 h-4.5" style={{ color: accent }} />, label: "Commercial", match: ["/services/commercial-remodeling"] },
+                { slug: "kitchen-remodeling", icon: <ChefHat className="w-4.5 h-4.5" style={{ color: accent }} />, label: "Kitchens", open: kitchensOpen, setOpen: setKitchensOpen },
+                { slug: "bathroom-remodeling", icon: <Bath className="w-4.5 h-4.5" style={{ color: accent }} />, label: "Baths", open: bathsOpen, setOpen: setBathsOpen },
+                { slug: "commercial-remodeling", icon: <Building2 className="w-4.5 h-4.5" style={{ color: accent }} />, label: "Commercial", open: commercialOpen, setOpen: setCommercialOpen },
               ].map((item) => {
-                const active = item.match.includes(location.pathname);
+                const service = SERVICES.find((s) => s.slug === item.slug);
+                const subPages = service?.subPages || [];
+                const active = location.pathname.startsWith(`/services/${item.slug}`);
                 return (
-                  <Link
-                    key={item.to}
-                    to={item.to}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[0.9rem] transition-all ${
-                      active
-                        ? "bg-white/10"
-                        : "text-white/70 hover:bg-white/[0.06] hover:text-white"
-                    }`}
-                    style={{ fontWeight: 600, ...(active ? { color: accent } : {}) }}
+                  <div
+                    key={item.slug}
+                    className="relative"
+                    onMouseEnter={() => item.setOpen(true)}
+                    onMouseLeave={() => item.setOpen(false)}
                   >
-                    {item.icon}
-                    {item.label}
-                  </Link>
+                    <Link
+                      to={`/services/${item.slug}`}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[0.9rem] transition-all ${
+                        active
+                          ? "bg-white/10"
+                          : "text-white/70 hover:bg-white/[0.06] hover:text-white"
+                      }`}
+                      style={{ fontWeight: 600, ...(active ? { color: accent } : {}) }}
+                    >
+                      {item.icon}
+                      {item.label}
+                      {subPages.length > 0 && <ChevronDown className="w-3 h-3 opacity-50" />}
+                    </Link>
+                    {item.open && subPages.length > 0 && (
+                      <div className="absolute top-full left-0 w-72 border border-white/10 rounded-xl shadow-2xl shadow-black/40 py-2 z-50" style={{ background: primary }}>
+                        <Link
+                          to={`/services/${item.slug}`}
+                          className="flex items-center gap-3 px-4 py-2.5 text-[0.875rem] text-white/80 hover:bg-white/[0.06] hover:text-white transition-colors"
+                          style={{ fontWeight: 600 }}
+                          onClick={() => item.setOpen(false)}
+                        >
+                          {item.icon}
+                          All {item.label} Services
+                        </Link>
+                        <div className="border-t border-white/[0.06] my-1" />
+                        {subPages.map((sp) => (
+                          <Link
+                            key={sp.slug}
+                            to={`/services/${item.slug}/${sp.slug}`}
+                            className="block px-4 py-2.5 text-[0.875rem] text-white/60 hover:bg-white/[0.06] hover:text-white transition-colors"
+                            onClick={() => item.setOpen(false)}
+                          >
+                            {sp.title}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 );
               })}
 
@@ -192,6 +228,15 @@ export function Header() {
                         {service.title}
                       </Link>
                     ))}
+                    <div className="border-t border-white/[0.06] my-1" />
+                    <Link
+                      to="/services"
+                      className="flex items-center justify-center gap-2 px-4 py-2.5 text-[0.85rem] hover:bg-white/[0.06] transition-colors"
+                      style={{ color: accent, fontWeight: 600 }}
+                      onClick={() => setServicesOpen(false)}
+                    >
+                      View All Services <ChevronDown className="w-3.5 h-3.5 rotate-[-90deg]" />
+                    </Link>
                   </div>
                 )}
               </div>
@@ -263,20 +308,39 @@ export function Header() {
                   Main Services
                 </div>
                 {[
-                  { to: "/services/kitchen-remodeling", icon: <ChefHat className="w-5 h-5" style={{ color: accent }} />, label: "Kitchens" },
-                  { to: "/services/bathroom-remodeling", icon: <Bath className="w-5 h-5" style={{ color: accent }} />, label: "Baths" },
-                  { to: "/services/commercial-remodeling", icon: <Building2 className="w-5 h-5" style={{ color: accent }} />, label: "Commercial" },
-                ].map((item) => (
-                  <Link
-                    key={item.to}
-                    to={item.to}
-                    className="flex items-center gap-3 py-3 px-2 rounded-lg text-white/80 hover:bg-white/[0.04]"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {item.icon}
-                    <span className="text-[0.95rem]" style={{ fontWeight: 600 }}>{item.label}</span>
-                  </Link>
-                ))}
+                  { slug: "kitchen-remodeling", icon: <ChefHat className="w-5 h-5" style={{ color: accent }} />, label: "Kitchens" },
+                  { slug: "bathroom-remodeling", icon: <Bath className="w-5 h-5" style={{ color: accent }} />, label: "Baths" },
+                  { slug: "commercial-remodeling", icon: <Building2 className="w-5 h-5" style={{ color: accent }} />, label: "Commercial" },
+                ].map((item) => {
+                  const service = SERVICES.find((s) => s.slug === item.slug);
+                  const subPages = service?.subPages || [];
+                  return (
+                    <div key={item.slug}>
+                      <Link
+                        to={`/services/${item.slug}`}
+                        className="flex items-center gap-3 py-3 px-2 rounded-lg text-white/80 hover:bg-white/[0.04]"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {item.icon}
+                        <span className="text-[0.95rem]" style={{ fontWeight: 600 }}>{item.label}</span>
+                      </Link>
+                      {subPages.length > 0 && (
+                        <div className="pl-10 space-y-0.5 pb-1">
+                          {subPages.map((sp) => (
+                            <Link
+                              key={sp.slug}
+                              to={`/services/${item.slug}/${sp.slug}`}
+                              className="block py-1.5 text-[0.8rem] text-white/40 hover:text-white/70 transition-colors"
+                              onClick={() => setMobileOpen(false)}
+                            >
+                              {sp.title}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
 
               <div>
@@ -301,6 +365,14 @@ export function Header() {
                         {service.title}
                       </Link>
                     ))}
+                    <Link
+                      to="/services"
+                      className="flex items-center gap-2 py-2 text-[0.875rem]"
+                      style={{ color: accent, fontWeight: 600 }}
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      View All Services
+                    </Link>
                   </div>
                 )}
               </div>
@@ -374,6 +446,7 @@ function getServiceIcon(iconName: string, size = "w-4 h-4") {
     Zap: <Zap className={size} />,
     Paintbrush: <Paintbrush className={size} />,
     TreePine: <TreePine className={size} />,
+    Building2: <Building2 className={size} />,
   };
   return icons[iconName] || null;
 }

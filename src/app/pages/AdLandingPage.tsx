@@ -6,7 +6,6 @@ import { MultiStepForm } from "../components/shared/MultiStepForm";
 import { StackedPromos, GuaranteeStrip } from "../components/shared/PromotionBanner";
 import { VideoPlaceholder } from "../components/shared/VideoPlaceholder";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { AngularDivider, BlueprintLines } from "../components/shared/AngularDivider";
 import { BRAND } from "../data/brandConfig";
 
 export function AdLandingPage() {
@@ -60,21 +59,6 @@ export function AdLandingPage() {
       {/* HERO — Above the fold conversion   */}
       {/* ═══════════════════════════════════ */}
       <section className="relative min-h-[600px] lg:min-h-[auto] overflow-hidden bg-accent">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="adgrid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="60" y2="60" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
-                <line x1="60" y1="0" x2="0" y2="60" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#adgrid)" />
-          </svg>
-          <div
-            className="absolute top-0 right-0 w-[600px] h-[600px] opacity-10"
-            style={{ background: `linear-gradient(225deg, ${BRAND.colors.accent} 0%, transparent 60%)`, clipPath: "polygon(100% 0, 30% 0, 100% 70%)" }}
-          />
-        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
@@ -164,7 +148,6 @@ export function AdLandingPage() {
 
       {/* Social Proof */}
       <section className="py-16 bg-white relative overflow-hidden">
-        <BlueprintLines />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Testimonial */}
@@ -197,7 +180,6 @@ export function AdLandingPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to="#F8FAFC" variant="slant-right" />
 
       {/* Stacked Promotions */}
       <section className="py-16">
@@ -217,7 +199,6 @@ export function AdLandingPage() {
         </div>
       </section>
 
-      <AngularDivider from="#F8FAFC" to="#ffffff" variant="arrow-down" />
 
       {/* Guarantees */}
       <section className="py-16 bg-white">
@@ -234,7 +215,6 @@ export function AdLandingPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to={BRAND.colors.primaryDark} variant="sharp" />
 
       {/* Bottom CTA */}
       <section className="py-16 bg-accent relative overflow-hidden">
@@ -267,7 +247,6 @@ export function AdLandingPage() {
         </div>
       </section>
 
-      <AngularDivider from={BRAND.colors.primaryDark} to={BRAND.colors.primary} variant="slant-left" />
     </div>
   );
 }

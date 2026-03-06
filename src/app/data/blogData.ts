@@ -50,7 +50,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "**Mid-Range Remodel ($25,000–$45,000):** New custom or semi-custom cabinets, quartz or granite countertops, updated flooring, new lighting, and possibly reconfigured layout. This is our most popular tier — it transforms the look AND function of your kitchen.",
       "**Full Luxury Gut ($50,000–$80,000+):** Everything is new. Walls come down, layouts change, high-end materials throughout. Custom cabinetry, premium appliances, designer tile work. This is the 'dream kitchen' level.",
       "**What drives cost up:** Structural changes (removing walls), electrical panel upgrades, plumbing rerouting, premium materials like natural stone, and custom millwork. We always break these out clearly so you see exactly where every dollar goes.",
-      "**The Franco & Sons Construction LLC difference:** We don't give you a vague range and then hit you with change orders. Our estimates are detailed and written. If we discover something unexpected (like old plumbing behind a wall), we stop, show you, and discuss options before any additional work.",
+      "**The Franco and Sons Construction LLC difference:** We don't give you a vague range and then hit you with change orders. Our estimates are detailed and written. If we discover something unexpected (like old plumbing behind a wall), we stop, show you, and discuss options before any additional work.",
     ],
   },
   {
@@ -113,13 +113,13 @@ export const BLOG_POSTS: BlogPost[] = [
     featured: false,
     tags: ["ada", "accessible", "aging-in-place", "bathroom"],
     content: [
-      "An accessible bathroom doesn't have to look like a hospital room. Modern ADA-compliant design combines safety features with beautiful aesthetics. Here's how we approach it at Franco & Sons Construction LLC.",
+      "An accessible bathroom doesn't have to look like a hospital room. Modern ADA-compliant design combines safety features with beautiful aesthetics. Here's how we approach it at Franco and Sons Construction LLC.",
       "**Walk-in showers over bathtubs.** A low-threshold or zero-threshold walk-in shower is the single most impactful upgrade. It eliminates the #1 fall risk in the bathroom while looking sleek and modern.",
       "**Built-in bench seating.** A tiled bench inside the shower provides a safe seating option that looks intentional, not medical. We custom-build these to match your tile and design.",
       "**Grab bars that look like design elements.** Modern grab bars come in brushed nickel, matte black, and designer finishes. Strategically placed, they look like towel bars while providing critical support.",
       "**Slip-resistant tile.** Beautiful porcelain and natural stone tiles are available with slip-resistant ratings. You don't have to sacrifice style for safety.",
       "**Comfort-height everything.** Raised toilets, accessible vanity heights, lever handles on faucets — small changes that make a huge daily difference.",
-      "At Franco & Sons Construction LLC, we've completed dozens of ADA bathroom remodels across Placer County. Every one looks beautiful, functions safely, and supports independent living. Because everyone deserves to feel confident in their own home.",
+      "At Franco and Sons Construction LLC, we've completed dozens of ADA bathroom remodels across Placer County. Every one looks beautiful, functions safely, and supports independent living. Because everyone deserves to feel confident in their own home.",
     ],
   },
   {
@@ -159,7 +159,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Steven came to us with a common problem: a closed-off, dark kitchen in a 1990s Roseville home. The kitchen was functional but felt cramped, outdated, and disconnected from the rest of the house.",
       "**The challenge:** Outdated oak cabinets, tile countertops, a closed-off layout with a wall separating the kitchen from the living area, and a dropped ceiling that made everything feel smaller.",
       "**What we did:** Removed the wall between kitchen and living room (after proper structural engineering). Vaulted the ceiling by removing the soffit. Installed new custom shaker cabinets, quartz countertops, subway tile backsplash, and a kitchen island with bar seating.",
-      "**The result:** A bright, spacious, open-concept kitchen that's now the heart of the home. Steven's words: 'Franco & Sons Construction LLC completely transformed our cramped kitchen into a bright, spacious, and functional space we absolutely love.'",
+      "**The result:** A bright, spacious, open-concept kitchen that's now the heart of the home. Steven's words: 'Franco and Sons Construction LLC completely transformed our cramped kitchen into a bright, spacious, and functional space we absolutely love.'",
       "**Project details:** Timeline: 6 weeks. Budget: Mid-range. Location: Roseville, CA.",
       "This is what happens when a family-owned contractor treats your home like their own. Every cut, every seam, every detail — done right.",
     ],
@@ -203,7 +203,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "**Fire codes change everything.** Commercial fire codes dictate materials, layouts, egress routes, and sprinkler systems. Your contractor needs to know these cold before drawing a single line.",
       "**Timing matters more.** Every day your business is under construction is a day you're not generating revenue. The construction schedule needs to be tight, realistic, and executed flawlessly.",
       "**Permits take longer.** Commercial permits in Placer County involve more agencies, more inspections, and more paperwork. Start the permit process early.",
-      "Franco & Sons Construction LLC handles commercial build-outs, tenant improvements, and renovations throughout the Lincoln and Placer County area. We understand the unique demands of commercial construction and deliver on time, on budget, and up to code.",
+      "Franco and Sons Construction LLC handles commercial build-outs, tenant improvements, and renovations throughout the Lincoln and Placer County area. We understand the unique demands of commercial construction and deliver on time, on budget, and up to code.",
     ],
   },
 ];

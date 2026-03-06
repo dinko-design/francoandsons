@@ -3,7 +3,6 @@ import { ArrowLeft, ArrowRight, Clock, User, Tag, Share2 } from "lucide-react";
 import { BLOG_POSTS } from "../data/blogData";
 import { LEAD_MAGNETS } from "../data/promotionsData";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { AngularDivider } from "../components/shared/AngularDivider";
 import { LeadCaptureForm } from "../components/shared/LeadCaptureForm";
 import { VideoPlaceholder } from "../components/shared/VideoPlaceholder";
 import { BRAND } from "../data/brandConfig";
@@ -165,7 +164,6 @@ export function BlogPostPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to={BRAND.colors.primary} variant="slant-left" />
     </div>
   );
 }

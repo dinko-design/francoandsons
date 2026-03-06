@@ -41,7 +41,7 @@ export function DocumentHead({
       <meta property="og:description" content={description} />
       {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
       {ogImage && <meta property="og:image" content={ogImage} />}
-      <meta property="og:site_name" content="Franco & Sons Construction LLC" />
+      <meta property="og:site_name" content="Franco and Sons Construction LLC" />
       <meta property="og:locale" content="en_US" />
       {articlePublishedTime && (
         <meta property="article:published_time" content={articlePublishedTime} />

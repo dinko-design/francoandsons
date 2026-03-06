@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import { ArrowRight, CheckCircle, Star, Heart, Shield, Users, Target, Quote } from "lucide-react";
 import { COMPANY, IMAGES } from "../data/siteData";
 import { LeadCaptureForm } from "../components/shared/LeadCaptureForm";
-import { AngularDivider, BlueprintLines } from "../components/shared/AngularDivider";
 import { TrustBadges } from "../components/shared/TrustBadges";
 import { SEOContentBlock } from "../components/shared/SEOContentBlock";
 import { PAGE_SEO_CONTENT } from "../data/seoData";
@@ -13,32 +12,14 @@ export function AboutPage() {
     <div>
       {/* Hero */}
       <section className="relative py-20 lg:py-28 pb-[120px] lg:pb-[140px] bg-accent overflow-hidden">
-        {/* Angular geometric pattern */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="aboutgrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#aboutgrid)" />
-          </svg>
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] opacity-10"
-            style={{
-              background: `linear-gradient(225deg, ${BRAND.colors.accent} 0%, transparent 60%)`,
-              clipPath: "polygon(100% 0, 30% 0, 100% 70%)",
-            }}
-          />
-        </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
+            <span className="text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600, color: BRAND.colors.accent }}>
               About Us
             </span>
             <h1 className="text-[2rem] md:text-[2.75rem] text-white mt-2 mb-5" style={{ fontWeight: 700, lineHeight: 1.15 }}>
               Meet the Family Behind{" "}
-              <span style={{ color: BRAND.colors.accent }}>Franco & Sons Construction LLC</span>
+              <span style={{ color: BRAND.colors.accent }}>Franco and Sons Construction LLC</span>
             </h1>
             <p className="text-gray-300 text-[1.1rem] leading-relaxed">
               We're not a big corporation. We're a father-and-son team with over 30 years of construction experience, treating every home with respect and building relationships that last longer than our projects.
@@ -65,14 +46,13 @@ export function AboutPage() {
 
       {/* Our Story */}
       <section className="py-20 lg:py-24 relative overflow-hidden">
-        <BlueprintLines />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <div className="rounded-xl overflow-hidden shadow-xl relative">
                 <img
                   src={IMAGES.brandedTrucks}
-                  alt="Carlos and Cristian Franco standing with their branded Franco & Sons Construction LLC fleet"
+                  alt="Carlos and Cristian Franco standing with their branded Franco and Sons Construction LLC fleet"
                   className="w-full aspect-[4/3] object-cover"
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F8FAFC] via-[#F8FAFC]/50 to-transparent" />
@@ -100,10 +80,10 @@ export function AboutPage() {
               </h2>
               <div className="space-y-5 text-[0.95rem] text-muted-foreground leading-relaxed">
                 <p>
-                  Franco & Sons Construction LLC was built on a foundation of family, hard work, and over 30 years of construction experience. What started as Carlos Franco passing down his craft to his son Cristian has grown into a full-service remodeling company that families across Placer County trust with their homes.
+                  Franco and Sons Construction LLC was built on a foundation of family, hard work, and over 30 years of construction experience. What started as Carlos Franco passing down his craft to his son Cristian has grown into a full-service remodeling company that families across Placer County trust with their homes.
                 </p>
                 <p>
-                  Today, Franco & Sons Construction LLC specializes in kitchen remodeling, bathroom remodeling, ADA-accessible bathroom renovations, and home additions. Every project gets the personal touch that only a family business can provide — because Carlos and Cristian are on the job site, not just behind a desk.
+                  Today, Franco and Sons Construction LLC specializes in kitchen remodeling, bathroom remodeling, ADA-accessible bathroom renovations, and home additions. Every project gets the personal touch that only a family business can provide — because Carlos and Cristian are on the job site, not just behind a desk.
                 </p>
               </div>
             </div>
@@ -112,7 +92,6 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider */}
-      <AngularDivider from="#F8FAFC" to={BRAND.colors.primaryDark} variant="sharp" />
 
       {/* ═══════════════════════════════════════════════════════ */}
       {/* CARLOS — Full-width cinematic hero treatment           */}
@@ -150,7 +129,7 @@ export function AboutPage() {
           <div className="max-w-xl">
             {/* Accent bar */}
             <div className="w-16 h-1 bg-primary mb-6" />
-            <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
+            <span className="text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600, color: BRAND.colors.accent }}>
               Founder & Master Craftsman
             </span>
             <h2 className="text-[2rem] md:text-[2.75rem] text-white mt-2 mb-2" style={{ fontWeight: 700, lineHeight: 1.15 }}>
@@ -184,31 +163,11 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider from Carlos dark section */}
-      <AngularDivider from={BRAND.colors.primaryDark} to="#F8FAFC" variant="slant-left" />
 
       {/* ═══════════════════════════════════════════════════════ */}
       {/* CRISTIAN — Open, modern, blueprint-themed layout       */}
       {/* ═══════════════════════════════════════════════════════ */}
       <section className="py-20 lg:py-28 relative overflow-hidden">
-        {/* Blueprint grid background */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="cristian-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="40" y2="0" stroke={BRAND.colors.accent} strokeWidth="1" />
-                <line x1="0" y1="0" x2="0" y2="40" stroke={BRAND.colors.accent} strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#cristian-grid)" />
-          </svg>
-          {/* Subtle warm glow on the right where photo sits */}
-          <div
-            className="absolute top-1/2 -translate-y-1/2 right-0 w-[500px] h-[500px] opacity-[0.06]"
-            style={{
-              background: `radial-gradient(ellipse at center right, ${BRAND.colors.accent} 0%, transparent 70%)`,
-            }}
-          />
-        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -292,11 +251,9 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider */}
-      <AngularDivider from="#F8FAFC" to="#ffffff" variant="arrow-down" />
 
       {/* Client Consultation Photo + Values */}
       <section className="py-20 lg:py-24 bg-white relative overflow-hidden">
-        <BlueprintLines />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -359,7 +316,6 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider */}
-      <AngularDivider from="#ffffff" to={BRAND.colors.accent} variant="sharp" />
 
       {/* Stats */}
       <section className="py-16 bg-primary relative overflow-hidden">
@@ -389,14 +345,13 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider */}
-      <AngularDivider from={BRAND.colors.accent} to="#F8FAFC" variant="slant-left" />
 
       {/* Why Hire Us */}
       <section className="py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-[1.75rem] md:text-[2.25rem] mb-8 text-center" style={{ fontWeight: 700 }}>
-              Why Homeowners Choose Franco & Sons Construction LLC
+              Why Homeowners Choose Franco and Sons Construction LLC
             </h2>
             <div className="space-y-5">
               {[
@@ -418,7 +373,6 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider */}
-      <AngularDivider from="#F8FAFC" to="#EFF6FF" variant="double" />
 
       {/* SEO Content Block */}
       <section className="py-16 lg:py-20">
@@ -432,7 +386,6 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider: CTA to footer */}
-      <AngularDivider from="#EFF6FF" to={BRAND.colors.primary} variant="slant-left" />
 
       {/* CTA */}
       <section className="py-20 lg:py-24 bg-secondary">
@@ -447,7 +400,6 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider: CTA to footer */}
-      <AngularDivider from="#EFF6FF" to={BRAND.colors.primary} variant="slant-left" />
     </div>
   );
 }

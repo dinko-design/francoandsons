@@ -27,7 +27,6 @@ import { SERVICES, COMPANY, TESTIMONIALS, IMAGES } from "../data/siteData";
 import { PROMOTIONS, LEAD_MAGNETS } from "../data/promotionsData";
 import { MultiStepForm } from "../components/shared/MultiStepForm";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { AngularDivider, BlueprintLines } from "../components/shared/AngularDivider";
 import { GuaranteeStrip } from "../components/shared/PromotionBanner";
 import { VideoPlaceholder } from "../components/shared/VideoPlaceholder";
 import { TrustBadges, SecureFormNotice } from "../components/shared/TrustBadges";
@@ -108,7 +107,7 @@ export function ServicePage() {
               <div className="flex items-center gap-2 text-white/60 text-[0.8rem] mb-5">
                 <Link to="/" className="hover:text-white transition-colors">Home</Link>
                 <span>/</span>
-                <Link to="/#services" className="hover:text-white transition-colors">Services</Link>
+                <Link to="/services" className="hover:text-white transition-colors">Services</Link>
                 <span>/</span>
                 <span className="text-white">{service.title}</span>
               </div>
@@ -237,7 +236,6 @@ export function ServicePage() {
       {/* MAIN CONTENT AREA              */}
       {/* ═══════════════════════════════ */}
       <section className="py-20 lg:py-24 relative overflow-hidden">
-        <BlueprintLines />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Content — Left 2/3 */}
@@ -301,7 +299,7 @@ export function ServicePage() {
 
               {/* Benefits */}
               <h2 className="text-[1.5rem] md:text-[1.75rem] mb-6" style={{ fontWeight: 700 }}>
-                Why Choose Franco & Sons Construction LLC for {service.title}
+                Why Choose Franco and Sons Construction LLC for {service.title}
               </h2>
               <div className="bg-white rounded-xl border border-border p-6 lg:p-8 mb-12">
                 <div className="space-y-4">
@@ -339,7 +337,7 @@ export function ServicePage() {
                           Trusted by Lincoln Homeowners
                         </h3>
                         <p className="text-[0.875rem] text-muted-foreground leading-relaxed mb-3">
-                          Franco & Sons Construction LLC is a licensed, insured California general contractor with over {COMPANY.yearsExperience} years of experience.
+                          Franco and Sons Construction LLC is a licensed, insured California general contractor with over {COMPANY.yearsExperience} years of experience.
                           Your personal information is always secure with us — we never share or sell your data.
                           When you request an estimate, only Cristian sees your details and follows up personally.
                         </p>
@@ -489,8 +487,44 @@ export function ServicePage() {
         </div>
       </section>
 
-      {/* Angular divider */}
-      <AngularDivider from="#F8FAFC" to="#ffffff" variant="zigzag" />
+      {/* Sub-pages — topic cluster links */}
+      {service.subPages && service.subPages.length > 0 && (
+        <section className="py-16 lg:py-20 relative overflow-hidden" style={{ background: BRAND.colors.foreground }}>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <span className="text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600, color: BRAND.colors.accent }}>
+                {service.shortTitle} Services
+              </span>
+              <h2 className="text-[1.5rem] md:text-[2rem] text-white mt-2 mb-3" style={{ fontWeight: 700 }}>
+                Explore Our {service.shortTitle} Expertise
+              </h2>
+              <p className="text-white/50 text-[0.95rem]">
+                Dive deeper into our specialized {service.shortTitle.toLowerCase()} services.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {service.subPages.map((sp) => (
+                <Link
+                  key={sp.slug}
+                  to={`/services/${service.slug}/${sp.slug}`}
+                  className="group rounded-xl border border-white/10 p-5 hover:border-white/25 transition-all"
+                  style={{ background: BRAND.colors.primaryDark }}
+                >
+                  <h3 className="text-white text-[1rem] mb-2 group-hover:text-white/90" style={{ fontWeight: 600 }}>
+                    {sp.title}
+                  </h3>
+                  <p className="text-white/40 text-[0.85rem] leading-relaxed line-clamp-2 mb-3">
+                    {sp.heroDescription}
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 text-[0.8rem] group-hover:gap-2 transition-all" style={{ color: BRAND.colors.accent, fontWeight: 600 }}>
+                    Learn More <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Related Services */}
       <section className="py-16 bg-white">
@@ -530,7 +564,6 @@ export function ServicePage() {
       </section>
 
       {/* Bottom CTA with trust */}
-      <AngularDivider from="#ffffff" to={BRAND.colors.primaryDark} variant="sharp" />
       <section className="py-16 bg-accent relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute bottom-0 left-0 w-[400px] h-[300px] opacity-10" style={{ background: "radial-gradient(ellipse at bottom left, #D97B2B 0%, transparent 70%)" }} />
@@ -571,7 +604,6 @@ export function ServicePage() {
         </div>
       </section>
 
-      <AngularDivider from={BRAND.colors.primaryDark} to={BRAND.colors.primary} variant="slant-right" />
     </div>
   );
 }

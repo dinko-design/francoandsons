@@ -18,11 +18,7 @@ import {
 } from "lucide-react";
 import { COMPANY, TESTIMONIALS, IMAGES } from "../data/siteData";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import {
-  AngularDivider,
-  GeometricBackground,
-  BlueprintLines,
-} from "../components/shared/AngularDivider";
+import { GeometricBackground } from "../components/shared/AngularDivider";
 import { BRAND } from "../data/brandConfig";
 
 export function PackagesPage() {
@@ -30,28 +26,10 @@ export function PackagesPage() {
     <div>
       {/* Hero */}
       <section className="relative py-20 lg:py-28 pb-[100px] lg:pb-[120px] bg-accent overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="pkggrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#pkggrid)" />
-          </svg>
-          <div
-            className="absolute top-0 right-0 w-[400px] h-[400px] opacity-10"
-            style={{
-              background: `linear-gradient(225deg, ${BRAND.colors.accent} 0%, transparent 60%)`,
-              clipPath: "polygon(100% 0, 30% 0, 100% 70%)",
-            }}
-          />
-        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
+            <span className="text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600, color: BRAND.colors.accent }}>
               How We Work
             </span>
             <h1 className="text-[2rem] md:text-[2.75rem] text-white mt-2 mb-5" style={{ fontWeight: 700, lineHeight: 1.15 }}>
@@ -311,13 +289,11 @@ export function PackagesPage() {
         </section>
       </GeometricBackground>
 
-      <AngularDivider from="#F8FAFC" to="#ffffff" variant="sharp" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* WHAT'S INCLUDED IN EVERY PROJECT */}
       {/* ═══════════════════════════════════════════ */}
       <section className="py-16 lg:py-20 bg-white relative overflow-hidden">
-        <BlueprintLines />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
@@ -359,7 +335,6 @@ export function PackagesPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to="#EFF6FF" variant="slant-left" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* PRICING PHILOSOPHY */}
@@ -422,7 +397,6 @@ export function PackagesPage() {
         </div>
       </section>
 
-      <AngularDivider from="#EFF6FF" to="#ffffff" variant="zigzag" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* PROOF STRIP */}
@@ -476,23 +450,11 @@ export function PackagesPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to={BRAND.colors.primaryDark} variant="arrow-down" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* FINAL CTA */}
       {/* ═══════════════════════════════════════════ */}
       <section className="py-16 lg:py-20 bg-accent relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="pkgCtaGrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#pkgCtaGrid)" />
-          </svg>
-        </div>
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-[1.75rem] md:text-[2.25rem] text-white mb-4" style={{ fontWeight: 700 }}>
             Every Great Project Starts with a Free Conversation
@@ -530,7 +492,6 @@ export function PackagesPage() {
         </div>
       </section>
 
-      <AngularDivider from={BRAND.colors.primaryDark} to={BRAND.colors.primary} variant="slant-right" />
     </div>
   );
 }

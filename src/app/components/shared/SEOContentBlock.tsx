@@ -51,7 +51,7 @@ export function SEOContentBlock({
       : {};
 
   return (
-    <div className={wrapperClass} style={wrapperStyle}>
+    <div className={`rounded-xl p-6 lg:p-10 ${wrapperClass}`} style={{ background: BRAND.colors.foreground, ...wrapperStyle }}>
       {blockTitle && (
         <h2 className="text-[1.5rem] md:text-[1.75rem] mb-8 text-white" style={{ fontWeight: 700 }}>
           {blockTitle}
@@ -181,7 +181,7 @@ export function SEOContentBlock({
                   { text: "Our Process — How It Works", to: "/process" },
                   { text: "Read Client Reviews", to: "/reviews" },
                   { text: "View Our Portfolio", to: "/portfolio" },
-                  { text: "Why Choose Franco & Sons", to: "/why-us" },
+                  { text: "Why Choose Franco and Sons Construction LLC", to: "/why-us" },
                   { text: "About Our Family", to: "/about" },
                   { text: "FAQ — Common Questions", to: "/faq" },
                   { text: "Get Your Free Estimate", to: "/get-started" },

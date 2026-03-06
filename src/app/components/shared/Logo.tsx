@@ -20,8 +20,8 @@ function LogoMark({ variant, scale = 1 }: { variant: "dark" | "light"; scale?: n
   const accentDash = isDark ? `${accent}4D` : `${accent}59`;
   const dashed = BRAND.style.dashedBorders;
 
-  const w = Math.round(52 * scale);
-  const h = Math.round(50 * scale);
+  const w = Math.round(68 * scale);
+  const h = Math.round(65 * scale);
 
   return (
     <svg width={w} height={h} viewBox="0 0 260 245" fill="none">
@@ -71,7 +71,7 @@ export function Logo({ variant = "dark", linkTo = "/", size = "default" }: LogoP
       <LogoMark variant={variant} scale={scale} />
       <div className="hidden sm:flex flex-col leading-none">
         <span style={{ fontFamily: BRAND.fonts.display, fontSize: `${Math.round(22 * scale)}px`, fontWeight: 700, color: textColor, letterSpacing: "0.05em", lineHeight: 1 }}>
-          {COMPANY.name.split(" ")[0].toUpperCase()} <span style={{ color: accent }}>&</span> {COMPANY.name.includes("Sons") ? "SONS" : COMPANY.name.split(" ").slice(1).join(" ").toUpperCase()}
+          FRANCO <span style={{ color: accent }}>AND</span> SONS
         </span>
         <span style={{ fontFamily: BRAND.fonts.secondary, fontSize: `${Math.round(10 * scale)}px`, fontWeight: 600, color: subColor, letterSpacing: "0.2em", lineHeight: 1.4 }}>
           CONSTRUCTION LLC

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, CheckCircle, Lock } from "lucide-react";
+import { Send, CheckCircle, Lock, Loader2 } from "lucide-react";
 import { SERVICES } from "../../data/siteData";
 
 interface LeadCaptureFormProps {
@@ -18,6 +18,8 @@ export function LeadCaptureForm({
   variant = "light",
 }: LeadCaptureFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,9 +29,28 @@ export function LeadCaptureForm({
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/submit-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError("Something went wrong. Please call us directly.");
+      }
+    } catch {
+      setError("Something went wrong. Please call us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -128,13 +149,26 @@ export function LeadCaptureForm({
             className={`${inputClasses} resize-none`}
           />
         )}
+        {error && (
+          <p className="text-red-400 text-[0.85rem]">{error}</p>
+        )}
         <button
           type="submit"
-          className="w-full bg-primary text-primary-foreground px-6 py-3.5 rounded-lg text-[0.95rem] hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+          disabled={submitting}
+          className="w-full bg-primary text-primary-foreground px-6 py-3.5 rounded-lg text-[0.95rem] hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-60"
           style={{ fontWeight: 600 }}
         >
-          <Send className="w-4 h-4" />
-          Request Free Estimate
+          {submitting ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin" />
+              Submitting...
+            </>
+          ) : (
+            <>
+              <Send className="w-4 h-4" />
+              Request Free Estimate
+            </>
+          )}
         </button>
         <p className={`text-[0.75rem] text-center ${isDark ? "text-white/40" : "text-muted-foreground"}`}>
           No obligation. No spam. Just a fair estimate.

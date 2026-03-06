@@ -4,7 +4,6 @@ import { ArrowRight, CheckCircle, Download, FileText, Shield, Star, Phone } from
 import { LEAD_MAGNETS } from "../data/promotionsData";
 import { COMPANY } from "../data/siteData";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { AngularDivider } from "../components/shared/AngularDivider";
 import { BRAND } from "../data/brandConfig";
 import { GuaranteeStrip } from "../components/shared/PromotionBanner";
 
@@ -28,17 +27,6 @@ export function LeadMagnetPage() {
     <div>
       {/* Hero */}
       <section className="relative py-20 lg:py-28 pb-[120px] bg-accent overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="lmgrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#lmgrid)" />
-          </svg>
-        </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left: Copy */}
@@ -157,7 +145,7 @@ export function LeadMagnetPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-[1.5rem] mb-2" style={{ fontWeight: 700 }}>
-              Why Trust Franco & Sons Construction LLC?
+              Why Trust Franco and Sons Construction LLC?
             </h2>
             <p className="text-muted-foreground text-[0.95rem]">
               We wrote this guide because we believe informed homeowners make better decisions — and that's good for everyone.
@@ -167,7 +155,6 @@ export function LeadMagnetPage() {
         </div>
       </section>
 
-      <AngularDivider from="#F8FAFC" to={BRAND.colors.primary} variant="slant-left" />
     </div>
   );
 }

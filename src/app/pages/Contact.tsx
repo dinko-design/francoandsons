@@ -1,7 +1,6 @@
 import { Phone, MapPin, Clock } from "lucide-react";
 import { COMPANY } from "../data/siteData";
 import { LeadCaptureForm } from "../components/shared/LeadCaptureForm";
-import { AngularDivider, BlueprintLines } from "../components/shared/AngularDivider";
 import { BRAND } from "../data/brandConfig";
 
 export function ContactPage() {
@@ -9,20 +8,9 @@ export function ContactPage() {
     <div>
       {/* Hero */}
       <section className="relative py-20 lg:py-28 pb-[110px] lg:pb-[130px] bg-accent overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="contactgrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#contactgrid)" />
-          </svg>
-        </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
+            <span className="text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600, color: BRAND.colors.accent }}>
               Contact Us
             </span>
             <h1 className="text-[2rem] md:text-[2.75rem] text-white mt-2 mb-5" style={{ fontWeight: 700, lineHeight: 1.15 }}>
@@ -50,7 +38,6 @@ export function ContactPage() {
 
       {/* Contact section */}
       <section className="py-20 lg:py-24 relative overflow-hidden">
-        <BlueprintLines />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Form */}
@@ -137,7 +124,6 @@ export function ContactPage() {
       </section>
 
       {/* Angular divider */}
-      <AngularDivider from="#F8FAFC" to="#ffffff" variant="zigzag" />
 
       {/* Service areas */}
       <section className="py-16 bg-white">
@@ -154,7 +140,6 @@ export function ContactPage() {
       </section>
 
       {/* Angular divider: to footer */}
-      <AngularDivider from="#ffffff" to={BRAND.colors.primary} variant="slant-right" />
     </div>
   );
 }

@@ -3,7 +3,6 @@ import { Link } from "react-router";
 import { ArrowRight, Clock, User, Search, Tag, BookOpen } from "lucide-react";
 import { BLOG_POSTS, BLOG_CATEGORIES, type BlogCategory } from "../data/blogData";
 import { LEAD_MAGNETS } from "../data/promotionsData";
-import { AngularDivider, BlueprintLines } from "../components/shared/AngularDivider";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { BRAND } from "../data/brandConfig";
 
@@ -26,20 +25,9 @@ export function BlogPage() {
     <div>
       {/* Hero */}
       <section className="relative py-20 lg:py-28 pb-[120px] lg:pb-[140px] bg-accent overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="bloggrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#bloggrid)" />
-          </svg>
-        </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-primary text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
+            <span className="text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600, color: BRAND.colors.accent }}>
               Blog & Resources
             </span>
             <h1 className="text-[2rem] md:text-[2.75rem] text-white mt-2 mb-5" style={{ fontWeight: 700, lineHeight: 1.15 }}>
@@ -152,7 +140,6 @@ export function BlogPage() {
         </section>
       )}
 
-      <AngularDivider from="#F8FAFC" to="#ffffff" variant="slant-right" />
 
       {/* All Posts */}
       <section className="py-12 bg-white">
@@ -266,7 +253,6 @@ export function BlogPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to={BRAND.colors.primary} variant="slant-left" />
     </div>
   );
 }

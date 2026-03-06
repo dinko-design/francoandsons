@@ -29,6 +29,7 @@ const staticRoutes: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/why-us", changefreq: "monthly", priority: "0.8" },
   { loc: "/packages", changefreq: "monthly", priority: "0.8" },
   { loc: "/blog", changefreq: "weekly", priority: "0.8" },
+  { loc: "/services", changefreq: "weekly", priority: "0.9" },
 ];
 
 function urlEntry(loc: string, changefreq: string, priority: string): string {
@@ -42,6 +43,12 @@ staticRoutes.forEach((e) => urls.push(urlEntry(e.loc, e.changefreq, e.priority))
 SERVICES.forEach((s) => {
   const p = s.tier === "primary" ? "0.9" : "0.8";
   urls.push(urlEntry(`/services/${s.slug}`, "monthly", p));
+  // Sub-pages (topic cluster pages)
+  if (s.subPages) {
+    s.subPages.forEach((sp) => {
+      urls.push(urlEntry(`/services/${s.slug}/${sp.slug}`, "monthly", "0.7"));
+    });
+  }
 });
 
 LOCATIONS.forEach((loc) => {
