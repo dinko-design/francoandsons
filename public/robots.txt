@@ -2,7 +2,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.francoandsonsconstruction.com/sitemap.xml
+Sitemap: https://www.francoandsonsconstruction.net/sitemap.xml
 
 # LLM crawlers
 User-agent: GPTBot

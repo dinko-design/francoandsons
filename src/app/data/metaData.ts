@@ -5,7 +5,7 @@ import { LEAD_MAGNETS } from "./promotionsData";
 /** Base URL for canonical and OG (no trailing slash). Set in .env as VITE_SITE_URL for production. */
 export const SITE_URL =
   (typeof import.meta !== "undefined" && (import.meta as { env?: { VITE_SITE_URL?: string } }).env?.VITE_SITE_URL) ||
-  "https://www.francoandsonsconstruction.com";
+  "https://www.francoandsonsconstruction.net";
 
 export interface PageMeta {
   title: string;

@@ -62,10 +62,10 @@ This doc summarizes what’s implemented and what to do outside the site for str
   ```
   (Or `npm run generate:sitemap` if you use npm.) This reads from your app data and overwrites `public/sitemap.xml`.
 - Submit sitemap in **Google Search Console** (and Bing Webmaster Tools):  
-  `https://www.francoandsonsconstruction.com/sitemap.xml`
+  `https://www.francoandsonsconstruction.net/sitemap.xml`
 
 ### 5. Search Console & Analytics
-- **Google Search Console**: add property for `https://www.francoandsonsconstruction.com`, verify, submit sitemap, and fix any crawl/index issues.
+- **Google Search Console**: add property for `https://www.francoandsonsconstruction.net`, verify, submit sitemap, and fix any crawl/index issues.
 - **Google Analytics 4**: install and use for traffic and conversions; optional link to Search Console for query data.
 - **Bing Webmaster Tools**: add site and submit sitemap.
 
@@ -73,7 +73,7 @@ This doc summarizes what’s implemented and what to do outside the site for str
 - For better crawl efficiency, add `<lastmod>YYYY-MM-DD</lastmod>` to sitemap URLs when you change key pages (e.g. after a content update). You can do this by hand or with a small build script.
 
 ### 7. Site URL in production
-- Set **`VITE_SITE_URL`** in the production build to your live domain (e.g. `https://www.francoandsonsconstruction.com`) so canonicals, OG tags, and schema use the correct base URL.
+- Set **`VITE_SITE_URL`** in the production build to your live domain (e.g. `https://www.francoandsonsconstruction.net`) so canonicals, OG tags, and schema use the correct base URL.
 
 ---
 
