@@ -7,8 +7,8 @@ export default defineConfig({
   name: "francoandsons",
   title: "Franco and Sons Construction LLC",
 
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID || "7com7vhk",
-  dataset: process.env.SANITY_STUDIO_DATASET || "production",
+  projectId: "7com7vhk",
+  dataset: "production",
 
   plugins: [
     structureTool({
