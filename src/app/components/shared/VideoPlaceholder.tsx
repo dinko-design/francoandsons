@@ -1,4 +1,5 @@
 import { Play, Video } from "lucide-react";
+import { BRAND } from "../../data/brandConfig";
 
 interface VideoPlaceholderProps {
   title?: string;
@@ -21,9 +22,9 @@ export function VideoPlaceholder({
   return (
     <div
       className={`relative rounded-xl overflow-hidden group cursor-pointer ${
-        isOverlay ? "" : isDark ? "bg-[#0F172A]" : "bg-gray-100 border border-border"
+        isOverlay ? "" : isDark ? "" : "bg-gray-100 border border-border"
       }`}
-      style={{ aspectRatio }}
+      style={{ aspectRatio, ...(isDark && !isOverlay ? { backgroundColor: BRAND.colors.primaryDark } : {}) }}
     >
       {/* Thumbnail or gradient background */}
       {thumbnailSrc ? (
@@ -35,16 +36,17 @@ export function VideoPlaceholder({
         <div
           className={`absolute inset-0 ${
             isDark || isOverlay
-              ? "bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A]"
+              ? ""
               : "bg-gradient-to-br from-gray-100 via-gray-50 to-gray-100"
           }`}
+          style={isDark || isOverlay ? { background: `linear-gradient(to bottom right, ${BRAND.colors.primaryDark}, #1E293B, ${BRAND.colors.primaryDark})` } : undefined}
         >
           {/* Blueprint grid pattern */}
           <svg className="absolute inset-0 w-full h-full opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="video-grid" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="30" y2="0" stroke="#2563EB" strokeWidth="1" />
-                <line x1="0" y1="0" x2="0" y2="30" stroke="#2563EB" strokeWidth="1" />
+                <line x1="0" y1="0" x2="30" y2="0" stroke={BRAND.colors.accent} strokeWidth="1" />
+                <line x1="0" y1="0" x2="0" y2="30" stroke={BRAND.colors.accent} strokeWidth="1" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#video-grid)" />

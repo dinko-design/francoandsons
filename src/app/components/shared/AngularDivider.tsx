@@ -1,3 +1,5 @@
+import { BRAND } from "../../data/brandConfig";
+
 interface AngularDividerProps {
   from?: string;
   to?: string;
@@ -293,8 +295,8 @@ export function GeometricBackground({ children, className = "" }: { children: Re
           className="absolute top-0 left-0 w-full h-full opacity-[0.03]"
           style={{
             backgroundImage: `
-              linear-gradient(135deg, #2563EB 1px, transparent 1px),
-              linear-gradient(225deg, #2563EB 1px, transparent 1px)
+              linear-gradient(135deg, ${BRAND.colors.accent} 1px, transparent 1px),
+              linear-gradient(225deg, ${BRAND.colors.accent} 1px, transparent 1px)
             `,
             backgroundSize: "80px 80px",
           }}
@@ -303,13 +305,13 @@ export function GeometricBackground({ children, className = "" }: { children: Re
         <div
           className="absolute -top-20 -right-20 w-96 h-96 opacity-[0.04]"
           style={{
-            background: "linear-gradient(135deg, #2563EB 0%, transparent 50%)",
+            background: `linear-gradient(135deg, ${BRAND.colors.accent} 0%, transparent 50%)`,
           }}
         />
         <div
           className="absolute -bottom-20 -left-20 w-96 h-96 opacity-[0.04]"
           style={{
-            background: "linear-gradient(315deg, #2563EB 0%, transparent 50%)",
+            background: `linear-gradient(315deg, ${BRAND.colors.accent} 0%, transparent 50%)`,
           }}
         />
       </div>
@@ -324,8 +326,8 @@ export function BlueprintLines({ className = "" }: { className?: string }) {
       <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="blueprint" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-            <line x1="0" y1="0" x2="60" y2="60" stroke="#2563EB" strokeWidth="0.5" opacity="0.06" />
-            <line x1="60" y1="0" x2="0" y2="60" stroke="#2563EB" strokeWidth="0.5" opacity="0.06" />
+            <line x1="0" y1="0" x2="60" y2="60" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
+            <line x1="60" y1="0" x2="0" y2="60" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#blueprint)" />

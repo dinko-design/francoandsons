@@ -6,6 +6,7 @@ import { AngularDivider, BlueprintLines } from "../components/shared/AngularDivi
 import { TrustBadges } from "../components/shared/TrustBadges";
 import { SEOContentBlock } from "../components/shared/SEOContentBlock";
 import { PAGE_SEO_CONTENT } from "../data/seoData";
+import { BRAND } from "../data/brandConfig";
 
 export function AboutPage() {
   return (
@@ -17,15 +18,15 @@ export function AboutPage() {
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="aboutgrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
+                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
+                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#aboutgrid)" />
           </svg>
           <div className="absolute top-0 right-0 w-[500px] h-[500px] opacity-10"
             style={{
-              background: "linear-gradient(225deg, #2563EB 0%, transparent 60%)",
+              background: `linear-gradient(225deg, ${BRAND.colors.accent} 0%, transparent 60%)`,
               clipPath: "polygon(100% 0, 30% 0, 100% 70%)",
             }}
           />
@@ -37,7 +38,7 @@ export function AboutPage() {
             </span>
             <h1 className="text-[2rem] md:text-[2.75rem] text-white mt-2 mb-5" style={{ fontWeight: 700, lineHeight: 1.15 }}>
               Meet the Family Behind{" "}
-              <span className="text-[#60A5FA]">Franco & Sons Construction LLC</span>
+              <span style={{ color: BRAND.colors.accent }}>Franco & Sons Construction LLC</span>
             </h1>
             <p className="text-gray-300 text-[1.1rem] leading-relaxed">
               We're not a big corporation. We're a father-and-son team with over 30 years of construction experience, treating every home with respect and building relationships that last longer than our projects.
@@ -111,7 +112,7 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider */}
-      <AngularDivider from="#F8FAFC" to="#0F172A" variant="sharp" />
+      <AngularDivider from="#F8FAFC" to={BRAND.colors.primaryDark} variant="sharp" />
 
       {/* ═══════════════════════════════════════════════════════ */}
       {/* CARLOS — Full-width cinematic hero treatment           */}
@@ -125,21 +126,21 @@ export function AboutPage() {
             className="w-full h-full object-cover object-top"
           />
           {/* Cinematic dark-to-blue gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A]/95 via-[#0F172A]/75 to-[#0F172A]/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-transparent to-[#0F172A]/20" />
+          <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${BRAND.colors.primaryDark}f2, ${BRAND.colors.primaryDark}bf, ${BRAND.colors.primaryDark}4d)` }} />
+          <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${BRAND.colors.primaryDark}e6, transparent, ${BRAND.colors.primaryDark}33)` }} />
           {/* Blue accent glow */}
           <div
             className="absolute bottom-0 left-0 w-[600px] h-[400px] opacity-15"
             style={{
-              background: "radial-gradient(ellipse at bottom left, #2563EB 0%, transparent 70%)",
+              background: `radial-gradient(ellipse at bottom left, ${BRAND.colors.accent} 0%, transparent 70%)`,
             }}
           />
           {/* Angular accent lines */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <svg className="absolute bottom-0 left-0 w-full h-40 opacity-10" viewBox="0 0 1440 160" preserveAspectRatio="none">
-              <line x1="0" y1="160" x2="500" y2="0" stroke="#2563EB" strokeWidth="2" />
-              <line x1="200" y1="160" x2="700" y2="0" stroke="#2563EB" strokeWidth="1" />
-              <line x1="800" y1="160" x2="1440" y2="40" stroke="#2563EB" strokeWidth="2" />
+              <line x1="0" y1="160" x2="500" y2="0" stroke={BRAND.colors.accent} strokeWidth="2" />
+              <line x1="200" y1="160" x2="700" y2="0" stroke={BRAND.colors.accent} strokeWidth="1" />
+              <line x1="800" y1="160" x2="1440" y2="40" stroke={BRAND.colors.accent} strokeWidth="2" />
             </svg>
           </div>
         </div>
@@ -155,7 +156,7 @@ export function AboutPage() {
             <h2 className="text-[2rem] md:text-[2.75rem] text-white mt-2 mb-2" style={{ fontWeight: 700, lineHeight: 1.15 }}>
               Carlos Franco
             </h2>
-            <p className="text-[#60A5FA] text-[1.05rem] mb-6" style={{ fontWeight: 500 }}>
+            <p className="text-[1.05rem] mb-6" style={{ fontWeight: 500, color: BRAND.colors.accent }}>
               Owner — {COMPANY.yearsExperience}+ Years of Experience
             </p>
             <div className="space-y-4 text-white/85 text-[0.95rem] leading-relaxed mb-8">
@@ -183,7 +184,7 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider from Carlos dark section */}
-      <AngularDivider from="#0F172A" to="#F8FAFC" variant="slant-left" />
+      <AngularDivider from={BRAND.colors.primaryDark} to="#F8FAFC" variant="slant-left" />
 
       {/* ═══════════════════════════════════════════════════════ */}
       {/* CRISTIAN — Open, modern, blueprint-themed layout       */}
@@ -194,8 +195,8 @@ export function AboutPage() {
           <svg className="absolute inset-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="cristian-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="40" y2="0" stroke="#2563EB" strokeWidth="1" />
-                <line x1="0" y1="0" x2="0" y2="40" stroke="#2563EB" strokeWidth="1" />
+                <line x1="0" y1="0" x2="40" y2="0" stroke={BRAND.colors.accent} strokeWidth="1" />
+                <line x1="0" y1="0" x2="0" y2="40" stroke={BRAND.colors.accent} strokeWidth="1" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#cristian-grid)" />
@@ -204,7 +205,7 @@ export function AboutPage() {
           <div
             className="absolute top-1/2 -translate-y-1/2 right-0 w-[500px] h-[500px] opacity-[0.06]"
             style={{
-              background: "radial-gradient(ellipse at center right, #2563EB 0%, transparent 70%)",
+              background: `radial-gradient(ellipse at center right, ${BRAND.colors.accent} 0%, transparent 70%)`,
             }}
           />
         </div>
@@ -264,7 +265,7 @@ export function AboutPage() {
                     className="w-full aspect-[3/4] object-cover object-top"
                   />
                   {/* Subtle blue gradient at bottom */}
-                  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0F172A]/50 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 h-32" style={{ background: `linear-gradient(to top, ${BRAND.colors.primaryDark}80, transparent)` }} />
                   {/* Name badge overlaid */}
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="bg-white/95 backdrop-blur-sm rounded-lg px-5 py-3 shadow-lg border border-primary/10">
@@ -358,7 +359,7 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider */}
-      <AngularDivider from="#ffffff" to="#2563EB" variant="sharp" />
+      <AngularDivider from="#ffffff" to={BRAND.colors.accent} variant="sharp" />
 
       {/* Stats */}
       <section className="py-16 bg-primary relative overflow-hidden">
@@ -388,7 +389,7 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider */}
-      <AngularDivider from="#2563EB" to="#F8FAFC" variant="slant-left" />
+      <AngularDivider from={BRAND.colors.accent} to="#F8FAFC" variant="slant-left" />
 
       {/* Why Hire Us */}
       <section className="py-20 lg:py-24">
@@ -431,7 +432,7 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider: CTA to footer */}
-      <AngularDivider from="#EFF6FF" to="#1E3A5F" variant="slant-left" />
+      <AngularDivider from="#EFF6FF" to={BRAND.colors.primary} variant="slant-left" />
 
       {/* CTA */}
       <section className="py-20 lg:py-24 bg-secondary">
@@ -446,7 +447,7 @@ export function AboutPage() {
       </section>
 
       {/* Angular divider: CTA to footer */}
-      <AngularDivider from="#EFF6FF" to="#1E3A5F" variant="slant-left" />
+      <AngularDivider from="#EFF6FF" to={BRAND.colors.primary} variant="slant-left" />
     </div>
   );
 }

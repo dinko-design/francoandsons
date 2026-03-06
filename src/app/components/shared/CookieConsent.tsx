@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Cookie, X, ChevronDown, ChevronUp, Settings } from "lucide-react";
+import { BRAND } from "../../data/brandConfig";
 
 /* ─── Cookie category definitions ────────────────────────── */
 export interface CookieCategory {
@@ -199,7 +200,7 @@ function CookiePreferencesModal({
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 bg-[#F8FAFC]">
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center">
-                <Settings className="w-4.5 h-4.5 text-[#1E3A5F]" />
+                <Settings className="w-4.5 h-4.5" style={{ color: BRAND.colors.primary }} />
               </div>
               <div>
                 <h3 className="text-[0.95rem] font-bold text-gray-900">Cookie Preferences</h3>
@@ -220,12 +221,13 @@ function CookiePreferencesModal({
                     <button className="flex items-center gap-3 text-left flex-1 min-w-0 text-gray-900" onClick={() => setExpandedCategory(isExpanded ? null : cat.id)}>
                       {isExpanded ? <ChevronUp className="w-4 h-4 text-gray-600 shrink-0" /> : <ChevronDown className="w-4 h-4 text-gray-600 shrink-0" />}
                       <span className="text-[0.875rem] font-semibold text-gray-900">{cat.label}</span>
-                      {cat.required && <span className="text-[0.65rem] bg-[#1E3A5F]/10 text-[#1E3A5F] px-2 py-0.5 rounded-full shrink-0 font-semibold">Required</span>}
+                      {cat.required && <span className="text-[0.65rem] px-2 py-0.5 rounded-full shrink-0 font-semibold" style={{ backgroundColor: `${BRAND.colors.primary}1A`, color: BRAND.colors.primary }}>Required</span>}
                     </button>
                     <button
                       onClick={() => !cat.required && toggleCategory(cat.id)}
                       disabled={cat.required}
-                      className={`relative w-11 h-6 rounded-full transition-colors shrink-0 ml-3 ${cat.required ? "bg-[#1E3A5F] cursor-not-allowed opacity-70" : isEnabled ? "bg-[#1E3A5F] cursor-pointer" : "bg-gray-300 cursor-pointer hover:bg-gray-400"}`}
+                      className={`relative w-11 h-6 rounded-full transition-colors shrink-0 ml-3 ${cat.required ? "cursor-not-allowed opacity-70" : isEnabled ? "cursor-pointer" : "bg-gray-300 cursor-pointer hover:bg-gray-400"}`}
+                      style={(cat.required || isEnabled) ? { backgroundColor: BRAND.colors.primary } : undefined}
                       aria-label={`Toggle ${cat.label}`}
                     >
                       <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${isEnabled || cat.required ? "translate-x-5" : "translate-x-0"}`} />
@@ -248,7 +250,12 @@ function CookiePreferencesModal({
               <button onClick={onSavePreferences} className="px-5 py-2.5 border border-gray-300 bg-gray-100 text-gray-900 rounded-lg text-[0.8rem] hover:bg-gray-200 transition-colors font-semibold">
                 Save My Preferences
               </button>
-              <button onClick={onAcceptAll} className="px-5 py-2.5 bg-[#1E3A5F] text-white rounded-lg text-[0.8rem] hover:bg-[#1D4ED8] transition-colors font-semibold">
+              <button
+                onClick={onAcceptAll}
+                className="px-5 py-2.5 text-white rounded-lg text-[0.8rem] transition-colors font-semibold"
+                style={{ backgroundColor: BRAND.colors.primary }}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = BRAND.colors.accentDark)}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = BRAND.colors.primary)}>
                 Accept All
               </button>
             </div>
@@ -350,7 +357,11 @@ export function CookieFooterRow() {
                 </button>
               </>
             ) : (
-              <button onClick={() => setShowModal(true)} className="text-gray-500 hover:text-[#60A5FA] text-[0.75rem] underline underline-offset-2 transition-colors">
+              <button
+                onClick={() => setShowModal(true)}
+                className="text-gray-500 text-[0.75rem] underline underline-offset-2 transition-colors"
+                onMouseEnter={(e) => (e.currentTarget.style.color = BRAND.colors.accent)}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '')}>
                 Cookie preferences
               </button>
             )}

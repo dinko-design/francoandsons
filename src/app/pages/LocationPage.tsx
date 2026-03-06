@@ -8,6 +8,7 @@ import { PromoBar, GuaranteeStrip } from "../components/shared/PromotionBanner";
 import { LEAD_MAGNETS } from "../data/promotionsData";
 import { SEOContentBlock } from "../components/shared/SEOContentBlock";
 import { LOCATION_SEO_CONTENT } from "../data/seoData";
+import { BRAND } from "../data/brandConfig";
 
 export function LocationPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -29,12 +30,12 @@ export function LocationPage() {
             alt={`${location.city}, ${location.state}`}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A]/85 via-[#0F172A]/65 to-[#0F172A]/35" />
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0F172A]/80 to-transparent" />
+          <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${BRAND.colors.primaryDark}d9, ${BRAND.colors.primaryDark}a6, ${BRAND.colors.primaryDark}59)` }} />
+          <div className="absolute bottom-0 left-0 right-0 h-48" style={{ background: `linear-gradient(to top, ${BRAND.colors.primaryDark}cc, transparent)` }} />
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <svg className="absolute bottom-0 left-0 w-full h-32 opacity-10" viewBox="0 0 1440 130" preserveAspectRatio="none">
-              <line x1="0" y1="130" x2="500" y2="0" stroke="#2563EB" strokeWidth="2" />
-              <line x1="800" y1="130" x2="1440" y2="20" stroke="#2563EB" strokeWidth="1.5" />
+              <line x1="0" y1="130" x2="500" y2="0" stroke={BRAND.colors.accent} strokeWidth="2" />
+              <line x1="800" y1="130" x2="1440" y2="20" stroke={BRAND.colors.accent} strokeWidth="1.5" />
             </svg>
           </div>
         </div>
@@ -47,7 +48,7 @@ export function LocationPage() {
               <span>/</span>
               <span className="text-white">{location.city}</span>
             </div>
-            <div className="flex items-center gap-2 text-[#60A5FA] mb-4">
+            <div className="flex items-center gap-2 mb-4" style={{ color: BRAND.colors.accent }}>
               <MapPin className="w-5 h-5" />
               <span className="text-[0.9rem]" style={{ fontWeight: 600 }}>
                 {location.isPrimary ? "Primary Service Area" : "Service Area"}
@@ -55,7 +56,7 @@ export function LocationPage() {
             </div>
             <h1 className="text-[2rem] md:text-[2.75rem] text-white mb-5" style={{ fontWeight: 700, lineHeight: 1.15 }}>
               Contractor Services in{" "}
-              <span className="text-[#60A5FA]">{location.city}, {location.state}</span>
+              <span style={{ color: BRAND.colors.accent }}>{location.city}, {location.state}</span>
             </h1>
             <p className="text-white/80 text-[1.05rem] leading-relaxed">
               {location.description}
@@ -205,7 +206,7 @@ export function LocationPage() {
               <div className="space-y-4 mb-8">
                 <a
                   href={`tel:${COMPANY.phone}`}
-                  className="flex items-center gap-3 bg-primary text-white px-6 py-4 rounded-lg hover:bg-[#1D4ED8] transition-colors"
+                  className="flex items-center gap-3 bg-primary text-white px-6 py-4 rounded-lg hover:bg-gold-dark transition-colors"
                 >
                   <Phone className="w-5 h-5" />
                   <div>
@@ -223,7 +224,7 @@ export function LocationPage() {
                     <Link
                       key={lm.id}
                       to={`/free/${lm.slug}`}
-                      className="flex items-center gap-3 text-[0.875rem] text-primary hover:text-[#1D4ED8] transition-colors"
+                      className="flex items-center gap-3 text-[0.875rem] text-primary hover:text-gold-dark transition-colors"
                       style={{ fontWeight: 600 }}
                     >
                       <Download className="w-4 h-4" />
@@ -259,7 +260,7 @@ export function LocationPage() {
       </section>
 
       {/* Angular divider: to footer */}
-      <AngularDivider from="#F8FAFC" to="#1E3A5F" variant="slant-left" />
+      <AngularDivider from="#F8FAFC" to={BRAND.colors.primary} variant="slant-left" />
     </div>
   );
 }

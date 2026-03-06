@@ -3,6 +3,7 @@ import { Star, ArrowRight, Quote } from "lucide-react";
 import { TESTIMONIALS, COMPANY } from "../data/siteData";
 import { LeadCaptureForm } from "../components/shared/LeadCaptureForm";
 import { AngularDivider, BlueprintLines } from "../components/shared/AngularDivider";
+import { BRAND } from "../data/brandConfig";
 
 export function ReviewsPage() {
   return (
@@ -13,8 +14,8 @@ export function ReviewsPage() {
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="reviewgrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
+                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
+                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#reviewgrid)" />
@@ -125,7 +126,7 @@ export function ReviewsPage() {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 bg-primary text-white px-8 py-3.5 rounded-lg text-[0.95rem] hover:bg-[#1D4ED8] transition-colors"
+              className="inline-flex items-center gap-2 bg-primary text-white px-8 py-3.5 rounded-lg text-[0.95rem] hover:bg-gold-dark transition-colors"
               style={{ fontWeight: 600 }}
             >
               Share Your Experience <ArrowRight className="w-4 h-4" />
@@ -150,7 +151,7 @@ export function ReviewsPage() {
       </section>
 
       {/* Angular divider: to footer */}
-      <AngularDivider from="#ffffff" to="#1E3A5F" variant="slant-left" />
+      <AngularDivider from="#ffffff" to={BRAND.colors.primary} variant="slant-left" />
     </div>
   );
 }

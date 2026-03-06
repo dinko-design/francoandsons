@@ -7,6 +7,7 @@ import { AngularDivider, BlueprintLines, GeometricBackground } from "../componen
 import { SEOContentBlock } from "../components/shared/SEOContentBlock";
 import { PAGE_SEO_CONTENT } from "../data/seoData";
 import { BeforeAfterShowcase } from "../components/shared/BeforeAfterShowcase";
+import { BRAND } from "../data/brandConfig";
 
 const categories = ["All", "Kitchen", "Bathroom", "ADA Bathroom", "Addition", "Interior", "Flooring"];
 
@@ -52,8 +53,8 @@ export function PortfolioPage() {
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="portfoliogrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
+                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
+                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#portfoliogrid)" />
@@ -235,7 +236,7 @@ export function PortfolioPage() {
         <section className="py-20 lg:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="text-[#D4A853] text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600 }}>
+              <span className="text-[0.85rem] tracking-wider uppercase" style={{ fontWeight: 600, color: BRAND.colors.accent }}>
                 Real Results
               </span>
               <h2 className="text-[1.75rem] md:text-[2.25rem] mt-2 mb-4" style={{ fontWeight: 700 }}>
@@ -338,7 +339,7 @@ export function PortfolioPage() {
       </section>
 
       {/* Angular divider: to footer */}
-      <AngularDivider from="#EFF6FF" to="#1E3A5F" variant="slant-right" />
+      <AngularDivider from="#EFF6FF" to={BRAND.colors.primary} variant="slant-right" />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { BLOG_POSTS, BLOG_CATEGORIES, type BlogCategory } from "../data/blogData
 import { LEAD_MAGNETS } from "../data/promotionsData";
 import { AngularDivider, BlueprintLines } from "../components/shared/AngularDivider";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { BRAND } from "../data/brandConfig";
 
 export function BlogPage() {
   const [activeCategory, setActiveCategory] = useState<BlogCategory | "All">("All");
@@ -29,8 +30,8 @@ export function BlogPage() {
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="bloggrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
+                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
+                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#bloggrid)" />
@@ -43,7 +44,7 @@ export function BlogPage() {
             </span>
             <h1 className="text-[2rem] md:text-[2.75rem] text-white mt-2 mb-5" style={{ fontWeight: 700, lineHeight: 1.15 }}>
               Remodeling Tips, Guides &{" "}
-              <span className="text-[#60A5FA]">Real Project Stories</span>
+              <span style={{ color: BRAND.colors.accent }}>Real Project Stories</span>
             </h1>
             <p className="text-gray-300 text-[1.1rem] leading-relaxed">
               Honest advice from a father-and-son team with 30+ years of experience. No fluff, no sales pitches — just useful information to help you make smart remodeling decisions.
@@ -265,7 +266,7 @@ export function BlogPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to="#1E3A5F" variant="slant-left" />
+      <AngularDivider from="#ffffff" to={BRAND.colors.primary} variant="slant-left" />
     </div>
   );
 }

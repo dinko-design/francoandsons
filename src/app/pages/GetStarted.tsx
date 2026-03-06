@@ -34,6 +34,7 @@ import { MultiStepForm } from "../components/shared/MultiStepForm";
 import { StackedPromos, GuaranteeStrip } from "../components/shared/PromotionBanner";
 import { VideoPlaceholder } from "../components/shared/VideoPlaceholder";
 import { TrustBadges } from "../components/shared/TrustBadges";
+import { BRAND } from "../data/brandConfig";
 
 const conversionFaqs = [
   {
@@ -85,17 +86,17 @@ export function GetStartedPage() {
             alt="Kitchen remodel by Franco & Sons Construction LLC"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A]/95 via-[#0F172A]/80 to-[#0F172A]/50" />
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0F172A]/80 to-transparent" />
+          <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${BRAND.colors.primaryDark}f2, ${BRAND.colors.primaryDark}cc, ${BRAND.colors.primaryDark}80)` }} />
+          <div className="absolute bottom-0 left-0 right-0 h-48" style={{ background: `linear-gradient(to top, ${BRAND.colors.primaryDark}cc, transparent)` }} />
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <svg
               className="absolute bottom-0 left-0 w-full h-40 opacity-10"
               viewBox="0 0 1440 160"
               preserveAspectRatio="none"
             >
-              <line x1="0" y1="160" x2="500" y2="0" stroke="#2563EB" strokeWidth="2" />
-              <line x1="200" y1="160" x2="700" y2="0" stroke="#2563EB" strokeWidth="1" />
-              <line x1="800" y1="160" x2="1440" y2="40" stroke="#2563EB" strokeWidth="2" />
+              <line x1="0" y1="160" x2="500" y2="0" stroke={BRAND.colors.accent} strokeWidth="2" />
+              <line x1="200" y1="160" x2="700" y2="0" stroke={BRAND.colors.accent} strokeWidth="1" />
+              <line x1="800" y1="160" x2="1440" y2="40" stroke={BRAND.colors.accent} strokeWidth="2" />
             </svg>
           </div>
         </div>
@@ -103,8 +104,8 @@ export function GetStartedPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/30 rounded-full px-4 py-1.5 mb-6">
-              <Shield className="w-4 h-4 text-[#60A5FA]" />
-              <span className="text-[#60A5FA] text-[0.8rem]" style={{ fontWeight: 600 }}>
+              <Shield className="w-4 h-4" style={{ color: BRAND.colors.accent }} />
+              <span className="text-[0.8rem]" style={{ fontWeight: 600, color: BRAND.colors.accent }}>
                 Licensed & Insured — {COMPANY.yearsExperience}+ Years of Experience
               </span>
             </div>
@@ -113,7 +114,7 @@ export function GetStartedPage() {
               style={{ fontWeight: 700, lineHeight: 1.1 }}
             >
               Stop Dreading Your Remodel.{" "}
-              <span className="text-[#60A5FA]">Start Enjoying It.</span>
+              <span style={{ color: BRAND.colors.accent }}>Start Enjoying It.</span>
             </h1>
             <p className="text-white/80 text-[1.1rem] md:text-[1.2rem] mb-4 leading-relaxed max-w-xl">
               Get a transparent, detailed estimate from a father-son team that
@@ -126,7 +127,7 @@ export function GetStartedPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="#free-estimate"
-                className="bg-primary text-white px-8 py-4 rounded-lg text-[1rem] hover:bg-[#1D4ED8] transition-colors inline-flex items-center justify-center gap-2"
+                className="bg-primary text-white px-8 py-4 rounded-lg text-[1rem] hover:bg-gold-dark transition-colors inline-flex items-center justify-center gap-2"
                 style={{ fontWeight: 600 }}
               >
                 Get Your Free Estimate
@@ -401,7 +402,7 @@ export function GetStartedPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to="#0F172A" variant="slant-left" />
+      <AngularDivider from="#ffffff" to={BRAND.colors.primaryDark} variant="slant-left" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* WHAT MAKES US DIFFERENT */}
@@ -411,8 +412,8 @@ export function GetStartedPage() {
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="offergrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
+                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
+                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#offergrid)" />
@@ -479,7 +480,7 @@ export function GetStartedPage() {
                   alt="Carlos Franco on the job site"
                   className="w-full aspect-[4/5] object-cover"
                 />
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0F172A]/80 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 h-32" style={{ background: `linear-gradient(to top, ${BRAND.colors.primaryDark}cc, transparent)` }} />
               </div>
               <div className="absolute -bottom-5 -left-5 bg-primary text-white p-5 rounded-xl shadow-lg hidden md:block">
                 <div className="text-[2rem]" style={{ fontWeight: 700 }}>
@@ -493,7 +494,7 @@ export function GetStartedPage() {
         </div>
       </section>
 
-      <AngularDivider from="#0F172A" to="#F8FAFC" variant="slant-right" />
+      <AngularDivider from={BRAND.colors.primaryDark} to="#F8FAFC" variant="slant-right" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* DELIVERABLES — What You Get */}
@@ -715,7 +716,7 @@ export function GetStartedPage() {
               </ul>
               <a
                 href="#free-estimate"
-                className="block bg-primary text-white px-6 py-3 rounded-lg text-[0.9rem] hover:bg-[#1D4ED8] transition-colors"
+                className="block bg-primary text-white px-6 py-3 rounded-lg text-[0.9rem] hover:bg-gold-dark transition-colors"
                 style={{ fontWeight: 600 }}
               >
                 Request Free Consultation
@@ -763,7 +764,7 @@ export function GetStartedPage() {
               </ul>
               <a
                 href="#free-estimate"
-                className="block bg-primary text-white px-6 py-3 rounded-lg text-[0.9rem] hover:bg-[#1D4ED8] transition-colors"
+                className="block bg-primary text-white px-6 py-3 rounded-lg text-[0.9rem] hover:bg-gold-dark transition-colors"
                 style={{ fontWeight: 600 }}
               >
                 Get Your Custom Quote
@@ -932,7 +933,7 @@ export function GetStartedPage() {
         </section>
       </GeometricBackground>
 
-      <AngularDivider from="#F8FAFC" to="#0F172A" variant="arrow-down" />
+      <AngularDivider from="#F8FAFC" to={BRAND.colors.primaryDark} variant="arrow-down" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* FINAL CTA — Form */}
@@ -942,8 +943,8 @@ export function GetStartedPage() {
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="ctaOffergrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.06" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.06" />
+                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
+                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#ctaOffergrid)" />
@@ -985,7 +986,7 @@ export function GetStartedPage() {
                 </div>
                 <a
                   href={`tel:${COMPANY.phone}`}
-                  className="text-[1.5rem] text-primary hover:text-[#60A5FA] transition-colors"
+                  className="text-[1.5rem] text-primary hover:text-gold transition-colors"
                   style={{ fontWeight: 700 }}
                 >
                   {COMPANY.phone}
@@ -1017,7 +1018,7 @@ export function GetStartedPage() {
       </section>
 
       {/* Angular divider: to footer */}
-      <AngularDivider from="#0F172A" to="#1E3A5F" variant="slant-right" />
+      <AngularDivider from={BRAND.colors.primaryDark} to={BRAND.colors.primary} variant="slant-right" />
     </div>
   );
 }

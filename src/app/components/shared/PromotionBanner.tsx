@@ -12,6 +12,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { GUARANTEES, PROMOTIONS, type Promotion, type Guarantee } from "../../data/promotionsData";
+import { BRAND } from "../../data/brandConfig";
 
 const guaranteeIcons: Record<string, React.ReactNode> = {
   Lock: <Lock className="w-5 h-5" />,
@@ -40,11 +41,11 @@ export function StackedPromos({ serviceSlug, locationSlug, maxPromos = 3 }: Stac
   const totalSavings = applicable.length > 1;
 
   return (
-    <div className="bg-gradient-to-r from-[#0F172A] to-[#1E293B] rounded-xl overflow-hidden border border-white/10">
+    <div className="rounded-xl overflow-hidden border border-white/10" style={{ background: `linear-gradient(to right, ${BRAND.colors.primaryDark}, #1E293B)` }}>
       {/* Header bar */}
       <div className="bg-primary/10 border-b border-primary/20 px-6 py-3 flex items-center gap-2">
-        <Gift className="w-4 h-4 text-[#60A5FA]" />
-        <span className="text-[#60A5FA] text-[0.8rem] tracking-wider uppercase" style={{ fontWeight: 700 }}>
+        <Gift className="w-4 h-4" style={{ color: BRAND.colors.accent }} />
+        <span className="text-[0.8rem] tracking-wider uppercase" style={{ fontWeight: 700, color: BRAND.colors.accent }}>
           {totalSavings ? "Stack & Save — Combine These Offers" : "Current Offer"}
         </span>
       </div>
@@ -56,7 +57,7 @@ export function StackedPromos({ serviceSlug, locationSlug, maxPromos = 3 }: Stac
 
         {totalSavings && (
           <div className="bg-primary/10 rounded-lg p-4 border border-primary/20 flex items-center gap-3">
-            <Star className="w-5 h-5 text-[#60A5FA] shrink-0" />
+            <Star className="w-5 h-5 shrink-0" style={{ color: BRAND.colors.accent }} />
             <div>
               <div className="text-white text-[0.9rem]" style={{ fontWeight: 600 }}>
                 These offers are stackable!
@@ -70,7 +71,10 @@ export function StackedPromos({ serviceSlug, locationSlug, maxPromos = 3 }: Stac
 
         <Link
           to="/get-started"
-          className="block w-full bg-primary hover:bg-[#1D4ED8] text-white text-center px-6 py-3.5 rounded-lg text-[0.95rem] transition-colors"
+          className="block w-full text-white text-center px-6 py-3.5 rounded-lg text-[0.95rem] transition-colors"
+          style={{ backgroundColor: BRAND.colors.accent }}
+          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = BRAND.colors.accentDark)}
+          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = BRAND.colors.accent)}
           style={{ fontWeight: 700 }}
         >
           Claim These Offers — Get Free Estimate
@@ -119,10 +123,10 @@ export function GuaranteeStrip({ variant = "full", maxItems }: GuaranteeStripPro
       <div className="flex flex-wrap items-center justify-center gap-6">
         {items.map((g) => (
           <div key={g.id} className="flex items-center gap-2 text-[0.85rem]">
-            <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+            <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: `${BRAND.colors.accent}15`, color: BRAND.colors.accent }}>
               {guaranteeIcons[g.icon]}
             </div>
-            <span style={{ fontWeight: 600 }}>{g.title}</span>
+            <span className="text-white/70" style={{ fontWeight: 600 }}>{g.title}</span>
           </div>
         ))}
       </div>

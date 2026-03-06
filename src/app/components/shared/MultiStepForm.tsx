@@ -14,6 +14,7 @@ import {
   Accessibility,
 } from "lucide-react";
 import { COMPANY } from "../../data/siteData";
+import { BRAND } from "../../data/brandConfig";
 import { SecureFormNotice } from "./TrustBadges";
 
 interface MultiStepFormProps {
@@ -278,7 +279,10 @@ export function MultiStepForm({
           ))}
           <button
             type="submit"
-            className="w-full bg-primary hover:bg-[#1D4ED8] text-white px-6 py-4 rounded-xl text-[1rem] transition-colors flex items-center justify-center gap-2"
+            className="w-full text-white px-6 py-4 rounded-xl text-[1rem] transition-colors flex items-center justify-center gap-2"
+            style={{ backgroundColor: BRAND.colors.accent }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = BRAND.colors.accentDark)}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = BRAND.colors.accent)}
             style={{ fontWeight: 700 }}
           >
             Get My Free Estimate

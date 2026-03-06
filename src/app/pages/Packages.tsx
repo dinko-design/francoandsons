@@ -23,6 +23,7 @@ import {
   GeometricBackground,
   BlueprintLines,
 } from "../components/shared/AngularDivider";
+import { BRAND } from "../data/brandConfig";
 
 export function PackagesPage() {
   return (
@@ -33,8 +34,8 @@ export function PackagesPage() {
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="pkggrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
+                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
+                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#pkggrid)" />
@@ -42,7 +43,7 @@ export function PackagesPage() {
           <div
             className="absolute top-0 right-0 w-[400px] h-[400px] opacity-10"
             style={{
-              background: "linear-gradient(225deg, #2563EB 0%, transparent 60%)",
+              background: `linear-gradient(225deg, ${BRAND.colors.accent} 0%, transparent 60%)`,
               clipPath: "polygon(100% 0, 30% 0, 100% 70%)",
             }}
           />
@@ -55,7 +56,7 @@ export function PackagesPage() {
             </span>
             <h1 className="text-[2rem] md:text-[2.75rem] text-white mt-2 mb-5" style={{ fontWeight: 700, lineHeight: 1.15 }}>
               Choose the Right Service Level{" "}
-              <span className="text-[#60A5FA]">for Your Project</span>
+              <span style={{ color: BRAND.colors.accent }}>for Your Project</span>
             </h1>
             <p className="text-gray-300 text-[1.1rem] leading-relaxed">
               Whether you need a single room refreshed or your entire home transformed,
@@ -196,7 +197,7 @@ export function PackagesPage() {
                   </div>
                   <Link
                     to="/get-started#free-estimate"
-                    className="block text-center bg-primary text-white px-6 py-3 rounded-lg text-[0.9rem] hover:bg-[#1D4ED8] transition-colors"
+                    className="block text-center bg-primary text-white px-6 py-3 rounded-lg text-[0.9rem] hover:bg-gold-dark transition-colors"
                     style={{ fontWeight: 600 }}
                   >
                     Get Your Custom Quote
@@ -475,7 +476,7 @@ export function PackagesPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to="#0F172A" variant="arrow-down" />
+      <AngularDivider from="#ffffff" to={BRAND.colors.primaryDark} variant="arrow-down" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* FINAL CTA */}
@@ -485,8 +486,8 @@ export function PackagesPage() {
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="pkgCtaGrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.06" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.06" />
+                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
+                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#pkgCtaGrid)" />
@@ -503,7 +504,7 @@ export function PackagesPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/get-started#free-estimate"
-              className="bg-primary text-white px-8 py-4 rounded-lg text-[1rem] hover:bg-[#1D4ED8] transition-colors inline-flex items-center justify-center gap-2"
+              className="bg-primary text-white px-8 py-4 rounded-lg text-[1rem] hover:bg-gold-dark transition-colors inline-flex items-center justify-center gap-2"
               style={{ fontWeight: 600 }}
             >
               Schedule Free Consultation
@@ -529,7 +530,7 @@ export function PackagesPage() {
         </div>
       </section>
 
-      <AngularDivider from="#0F172A" to="#1E3A5F" variant="slant-right" />
+      <AngularDivider from={BRAND.colors.primaryDark} to={BRAND.colors.primary} variant="slant-right" />
     </div>
   );
 }

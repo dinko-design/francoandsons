@@ -1,19 +1,25 @@
 import { Link } from "react-router";
 import { Phone, MapPin, Clock, Facebook, Instagram } from "lucide-react";
 import { COMPANY, SERVICES, LOCATIONS } from "../../data/siteData";
+import { BRAND } from "../../data/brandConfig";
+import { DotGrid } from "../shared/BrandElements";
 import { AngularDivider } from "../shared/AngularDivider";
 import { Logo } from "../shared/Logo";
 import { CookieFooterRow } from "../shared/CookieConsent";
 import dinkoLogo from "@/assets/dinko-design-logo.png";
 
 export function Footer() {
+  const { accent, accentMuted, primary, primaryDark } = BRAND.colors;
+  const darkBg = BRAND.colors.darkBgDeepest;
+  const footerBg = "#0A1628";
+
   return (
     <footer className="text-white">
-      {/* CTA Banner - solid navy, no pattern; overlaps divider above so the angle continues */}
-      <div className="bg-[#1E3A5F] relative -mt-12 pt-20 pb-16">
+      {/* CTA Banner */}
+      <div style={{ background: primary }} className="relative pt-16 pb-16">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-[1.75rem] md:text-[2.25rem] text-white mb-4 font-bold">
-            Ready to Start Your Project?
+          <h2 className="text-[2rem] md:text-[2.75rem] text-white mb-4" style={{ fontFamily: BRAND.fonts.display, fontWeight: 700, letterSpacing: "0.02em" }}>
+            READY TO START YOUR PROJECT?
           </h2>
           <p className="text-white/85 text-[1.05rem] mb-7 max-w-2xl mx-auto leading-relaxed">
             Get a free, no-obligation estimate. We'll discuss your project and provide a detailed quote within 48 hours.
@@ -21,7 +27,8 @@ export function Footer() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/get-started"
-              className="bg-white text-[#1E3A5F] px-8 py-3.5 rounded-md text-[1rem] font-semibold hover:bg-gray-50 transition-colors inline-flex items-center justify-center gap-2 shadow-lg"
+              className="px-8 py-3.5 rounded-md text-[1rem] transition-colors inline-flex items-center justify-center gap-2 shadow-lg"
+              style={{ fontFamily: BRAND.fonts.secondary, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase" as const, background: accent, color: primary }}
             >
               Get Free Estimate
             </Link>
@@ -37,22 +44,12 @@ export function Footer() {
       </div>
 
       {/* Angular divider into footer links */}
-      <AngularDivider from="#1E3A5F" to="#0A1628" variant="roof-shallow" />
+      <AngularDivider from={primary} to={footerBg} variant="roof-shallow" />
 
       {/* Footer content */}
-      <div className="relative overflow-hidden bg-[#0A1628]">
-        {/* Subtle angular lines */}
-        <div className="absolute inset-0 pointer-events-none">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="footergrid" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="100" y2="100" stroke="#2563EB" strokeWidth="0.3" opacity="0.06" />
-                <line x1="100" y1="0" x2="0" y2="100" stroke="#2563EB" strokeWidth="0.3" opacity="0.06" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#footergrid)" />
-          </svg>
-        </div>
+      <div className="relative overflow-hidden" style={{ background: footerBg }}>
+        {/* Blueprint dot+grid pattern */}
+        <DotGrid opacity={0.1} spacing={28} dotSize={0.8} lineOpacity={0.04} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -65,7 +62,7 @@ export function Footer() {
                 Family-owned construction and remodeling company proudly serving Lincoln, California and surrounding communities with over {COMPANY.yearsExperience} years of experience.
               </p>
               <div className="space-y-3">
-                <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-3 text-gray-400 hover:text-[#60A5FA] transition-colors text-[0.9rem]">
+                <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-3 text-gray-400 transition-colors text-[0.9rem]" style={{ ["--hover" as string]: accent }} onMouseEnter={(e) => (e.currentTarget.style.color = accent)} onMouseLeave={(e) => (e.currentTarget.style.color = "")}>
                   <Phone className="w-4 h-4 shrink-0" />
                   {COMPANY.phone}
                 </a>
@@ -88,7 +85,9 @@ export function Footer() {
                   <li key={service.slug}>
                     <Link
                       to={`/services/${service.slug}`}
-                      className="text-gray-400 hover:text-[#60A5FA] transition-colors text-[0.875rem]"
+                      className="text-gray-400 transition-colors text-[0.875rem]"
+                      onMouseEnter={(e) => (e.currentTarget.style.color = accent)}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "")}
                     >
                       {service.title}
                     </Link>
@@ -105,7 +104,9 @@ export function Footer() {
                   <li key={loc.slug}>
                     <Link
                       to={`/locations/${loc.slug}`}
-                      className="text-gray-400 hover:text-[#60A5FA] transition-colors text-[0.875rem]"
+                      className="text-gray-400 transition-colors text-[0.875rem]"
+                      onMouseEnter={(e) => (e.currentTarget.style.color = accent)}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "")}
                     >
                       {loc.city}, {loc.state}
                     </Link>
@@ -133,7 +134,9 @@ export function Footer() {
                   <li key={item.to}>
                     <Link
                       to={item.to}
-                      className="text-gray-400 hover:text-[#60A5FA] transition-colors text-[0.875rem]"
+                      className="text-gray-400 transition-colors text-[0.875rem]"
+                      onMouseEnter={(e) => (e.currentTarget.style.color = accent)}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "")}
                     >
                       {item.label}
                     </Link>
@@ -145,17 +148,17 @@ export function Footer() {
                 <h3 className="text-[1rem] mb-4 text-white" style={{ fontWeight: 600 }}>Free Resources</h3>
                 <ul className="space-y-2.5">
                   <li>
-                    <Link to="/free/kitchen-remodel-cost-guide" className="text-[#D4A853] hover:text-[#F5E6C8] transition-colors text-[0.875rem]">
+                    <Link to="/free/kitchen-remodel-cost-guide" className="transition-colors text-[0.875rem]" style={{ color: accent }} onMouseEnter={(e) => (e.currentTarget.style.color = accentMuted)} onMouseLeave={(e) => (e.currentTarget.style.color = accent)}>
                       Kitchen Cost Guide
                     </Link>
                   </li>
                   <li>
-                    <Link to="/free/bathroom-remodel-checklist" className="text-[#D4A853] hover:text-[#F5E6C8] transition-colors text-[0.875rem]">
+                    <Link to="/free/bathroom-remodel-checklist" className="transition-colors text-[0.875rem]" style={{ color: accent }} onMouseEnter={(e) => (e.currentTarget.style.color = accentMuted)} onMouseLeave={(e) => (e.currentTarget.style.color = accent)}>
                       Bathroom Checklist
                     </Link>
                   </li>
                   <li>
-                    <Link to="/free/contractor-hiring-guide" className="text-[#D4A853] hover:text-[#F5E6C8] transition-colors text-[0.875rem]">
+                    <Link to="/free/contractor-hiring-guide" className="transition-colors text-[0.875rem]" style={{ color: accent }} onMouseEnter={(e) => (e.currentTarget.style.color = accentMuted)} onMouseLeave={(e) => (e.currentTarget.style.color = accent)}>
                       Contractor Hiring Guide
                     </Link>
                   </li>
@@ -179,7 +182,7 @@ export function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/10 bg-[#0A1628]">
+      <div className="border-t border-white/10" style={{ background: footerBg }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-[0.8rem]">
             &copy; {new Date().getFullYear()} {COMPANY.fullName}. All rights reserved. {COMPANY.license}
@@ -194,13 +197,13 @@ export function Footer() {
 
       {/* Dinko Design credit */}
       <div className="bg-[#0A1120] border-t border-white/[0.04]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-center gap-2.5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex items-center justify-center gap-3">
           <img
             src={dinkoLogo}
             alt="Dinko Design"
-            className="w-4 h-4 rounded-[3px] opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+            className="w-5 h-5 rounded-[3px] opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
           />
-          <p className="text-gray-600 text-[0.7rem] tracking-wide">
+          <p className="text-gray-500 text-[0.8rem] tracking-wide">
             <span className="text-gray-500" style={{ fontWeight: 500 }}>
               Contractor Marketing Trust System&#8482;
             </span>

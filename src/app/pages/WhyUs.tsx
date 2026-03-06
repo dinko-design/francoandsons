@@ -25,6 +25,7 @@ import {
 } from "../components/shared/AngularDivider";
 import { SEOContentBlock } from "../components/shared/SEOContentBlock";
 import { PAGE_SEO_CONTENT } from "../data/seoData";
+import { BRAND } from "../data/brandConfig";
 
 type ComparisonStatus = "yes" | "no" | "maybe" | "highlight";
 
@@ -71,8 +72,8 @@ export function WhyUsPage() {
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="whyusgrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
+                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
+                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#whyusgrid)" />
@@ -80,7 +81,7 @@ export function WhyUsPage() {
           <div
             className="absolute top-0 right-0 w-[500px] h-[500px] opacity-10"
             style={{
-              background: "linear-gradient(225deg, #2563EB 0%, transparent 60%)",
+              background: `linear-gradient(225deg, ${BRAND.colors.accent} 0%, transparent 60%)`,
               clipPath: "polygon(100% 0, 30% 0, 100% 70%)",
             }}
           />
@@ -93,7 +94,7 @@ export function WhyUsPage() {
             </span>
             <h1 className="text-[2rem] md:text-[2.75rem] text-white mt-2 mb-5" style={{ fontWeight: 700, lineHeight: 1.15 }}>
               Not All Contractors Are Created Equal.{" "}
-              <span className="text-[#60A5FA]">Here's the Proof.</span>
+              <span style={{ color: BRAND.colors.accent }}>Here's the Proof.</span>
             </h1>
             <p className="text-gray-300 text-[1.1rem] leading-relaxed max-w-2xl">
               You have options. DIY, big-box store contractors, random guys from the
@@ -369,7 +370,7 @@ export function WhyUsPage() {
         </div>
       </section>
 
-      <AngularDivider from="#F8FAFC" to="#0F172A" variant="zigzag" />
+      <AngularDivider from="#F8FAFC" to={BRAND.colors.primaryDark} variant="zigzag" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* RISK REDUCTION PILLARS */}
@@ -501,7 +502,7 @@ export function WhyUsPage() {
         </div>
       </section>
 
-      <AngularDivider from="#EFF6FF" to="#0F172A" variant="arrow-down" />
+      <AngularDivider from="#EFF6FF" to={BRAND.colors.primaryDark} variant="arrow-down" />
 
       {/* SEO Content Block */}
       <section className="py-16 lg:py-20">
@@ -514,7 +515,7 @@ export function WhyUsPage() {
         </div>
       </section>
 
-      <AngularDivider from="#0F172A" to="#1E3A5F" variant="slant-right" />
+      <AngularDivider from={BRAND.colors.primaryDark} to={BRAND.colors.primary} variant="slant-right" />
 
       {/* ═══════════════════════════════════════════ */}
       {/* FINAL CTA */}
@@ -524,8 +525,8 @@ export function WhyUsPage() {
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="whyusCtaGrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.06" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.06" />
+                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
+                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#whyusCtaGrid)" />
@@ -542,7 +543,7 @@ export function WhyUsPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/get-started"
-              className="bg-primary text-white px-8 py-4 rounded-lg text-[1rem] hover:bg-[#1D4ED8] transition-colors inline-flex items-center justify-center gap-2"
+              className="bg-primary text-white px-8 py-4 rounded-lg text-[1rem] hover:bg-gold-dark transition-colors inline-flex items-center justify-center gap-2"
               style={{ fontWeight: 600 }}
             >
               Get Your Free Estimate
@@ -560,7 +561,7 @@ export function WhyUsPage() {
         </div>
       </section>
 
-      <AngularDivider from="#0F172A" to="#1E3A5F" variant="slant-right" />
+      <AngularDivider from={BRAND.colors.primaryDark} to={BRAND.colors.primary} variant="slant-right" />
     </div>
   );
 }

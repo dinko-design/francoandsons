@@ -1,4 +1,5 @@
 import React from 'react';
+import { BRAND } from "../../data/brandConfig";
 
 /**
  * PlaceholderImage Component
@@ -38,15 +39,15 @@ export const PlaceholderImage: React.FC<PlaceholderImageProps> = ({
         shapes: 'kitchen-shapes'
       },
       bathroom: {
-        bg: '#1E3A5F',
+        bg: BRAND.colors.primary,
         accent1: '#5BA3D0',
         accent2: '#B8D4E8',
         shapes: 'bathroom-shapes'
       },
       team: {
-        bg: '#0F172A',
-        accent1: '#2563EB',
-        accent2: '#60A5FA',
+        bg: BRAND.colors.primaryDark,
+        accent1: BRAND.colors.accent,
+        accent2: BRAND.colors.accent,
         shapes: 'person-shapes'
       },
       construction: {

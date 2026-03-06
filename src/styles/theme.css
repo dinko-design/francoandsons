@@ -3,7 +3,7 @@
 :root {
   --font-size: 16px;
 
-  /* Updated sophisticated color palette for construction/architectural theme */
+  /* Concept D — Slate Blue + Lime (modern, technical, blueprint-inspired) */
   --background: #FAFBFC;
   --foreground: #0A1628;
   --card: #ffffff;
@@ -11,21 +11,21 @@
   --popover: #ffffff;
   --popover-foreground: #0A1628;
 
-  /* Primary - Deep Navy Blue (professional, trustworthy) */
-  --primary: #1E3A5F;
+  /* Primary - Slate Blue (modern, architectural) */
+  --primary: #1E2D4A;
   --primary-foreground: #ffffff;
-  --primary-light: #2B5278;
-  --primary-dark: #152942;
+  --primary-light: #2E4473;
+  --primary-dark: #111c2e;
 
-  /* Secondary - Warm Slate (neutral, modern) */
-  --secondary: #F1F4F7;
+  /* Secondary - Light Slate */
+  --secondary: #F0F2F5;
   --secondary-foreground: #0A1628;
 
   /* Muted tones */
   --muted: #E8EBF0;
   --muted-foreground: #5A6B7D;
 
-  /* Accent - Deep Charcoal (bold headings, emphasis) */
+  /* Accent - Deep Slate (bold headings, emphasis) */
   --accent: #0A1628;
   --accent-foreground: #ffffff;
 
@@ -46,13 +46,13 @@
   --font-weight-bold: 700;
 
   /* Ring/focus states */
-  --ring: #1E3A5F;
+  --ring: #1E2D4A;
 
-  /* Gold/Copper accent (warmth, craftsmanship, premium) */
-  --gold: #C77D3A;
-  --gold-light: #F4E6D7;
-  --gold-dark: #A25E2A;
-  --gold-muted: #E8C9A8;
+  /* Construction Lime accent (bold, modern, high-visibility) */
+  --gold: #8BC34A;
+  --gold-light: #E8F5C8;
+  --gold-dark: #6A9E2A;
+  --gold-muted: #C5E1A5;
 
   /* Additional construction-themed colors */
   --steel: #798895;
@@ -184,7 +184,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
   }
 
   /**
@@ -197,27 +197,34 @@
   }
 
   h1 {
+    font-family: 'Teko', sans-serif;
     font-size: var(--text-2xl);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
   }
 
   h2 {
+    font-family: 'Teko', sans-serif;
     font-size: var(--text-xl);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
   }
 
   h3 {
+    font-family: 'Teko', sans-serif;
     font-size: var(--text-lg);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
   }
 
   h4 {
+    font-family: 'Teko', sans-serif;
     font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
+    font-weight: 600;
+    line-height: 1.2;
   }
 
   label {

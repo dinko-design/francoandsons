@@ -5,6 +5,7 @@ import { LEAD_MAGNETS } from "../data/promotionsData";
 import { COMPANY } from "../data/siteData";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { AngularDivider } from "../components/shared/AngularDivider";
+import { BRAND } from "../data/brandConfig";
 import { GuaranteeStrip } from "../components/shared/PromotionBanner";
 
 export function LeadMagnetPage() {
@@ -31,8 +32,8 @@ export function LeadMagnetPage() {
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="lmgrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke="#D4A853" strokeWidth="0.5" opacity="0.06" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke="#D4A853" strokeWidth="0.5" opacity="0.06" />
+                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
+                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#lmgrid)" />
@@ -43,15 +44,15 @@ export function LeadMagnetPage() {
             {/* Left: Copy */}
             <div>
               <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/30 rounded-full px-4 py-1.5 mb-5">
-                <Download className="w-4 h-4 text-[#60A5FA]" />
-                <span className="text-[#60A5FA] text-[0.8rem]" style={{ fontWeight: 700 }}>
+                <Download className="w-4 h-4" style={{ color: BRAND.colors.accent }} />
+                <span className="text-[0.8rem]" style={{ fontWeight: 700, color: BRAND.colors.accent }}>
                   Free {magnet.format.split("—")[0].trim()} — No Obligation
                 </span>
               </div>
               <h1 className="text-[2rem] md:text-[2.5rem] text-white mb-2" style={{ fontWeight: 700, lineHeight: 1.15 }}>
                 {magnet.title}
               </h1>
-              <p className="text-[#60A5FA] text-[1.1rem] mb-5" style={{ fontWeight: 500 }}>
+              <p className="text-[1.1rem] mb-5" style={{ fontWeight: 500, color: BRAND.colors.accent }}>
                 {magnet.subtitle}
               </p>
               <p className="text-gray-300 text-[1rem] leading-relaxed mb-8">
@@ -65,7 +66,7 @@ export function LeadMagnetPage() {
                 </div>
                 {magnet.benefits.map((benefit) => (
                   <div key={benefit} className="flex items-start gap-3">
-                    <CheckCircle className="w-4 h-4 text-[#60A5FA] mt-0.5 shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-gold mt-0.5 shrink-0" />
                     <span className="text-white/80 text-[0.9rem]">{benefit}</span>
                   </div>
                 ))}
@@ -129,7 +130,7 @@ export function LeadMagnetPage() {
                     ))}
                     <button
                       type="submit"
-                      className="w-full bg-primary hover:bg-[#1D4ED8] text-white px-6 py-4 rounded-xl text-[1rem] transition-colors flex items-center justify-center gap-2"
+                      className="w-full bg-primary hover:bg-gold-dark text-white px-6 py-4 rounded-xl text-[1rem] transition-colors flex items-center justify-center gap-2"
                       style={{ fontWeight: 700 }}
                     >
                       <Download className="w-5 h-5" />
@@ -166,7 +167,7 @@ export function LeadMagnetPage() {
         </div>
       </section>
 
-      <AngularDivider from="#F8FAFC" to="#1E3A5F" variant="slant-left" />
+      <AngularDivider from="#F8FAFC" to={BRAND.colors.primary} variant="slant-left" />
     </div>
   );
 }

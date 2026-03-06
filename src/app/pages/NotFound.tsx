@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { ArrowLeft, Home } from "lucide-react";
+import { BRAND } from "../data/brandConfig";
 
 export function NotFoundPage() {
   return (
@@ -9,8 +10,8 @@ export function NotFoundPage() {
         <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="notfoundgrid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-              <line x1="0" y1="0" x2="60" y2="60" stroke="#2563EB" strokeWidth="0.5" opacity="0.06" />
-              <line x1="60" y1="0" x2="0" y2="60" stroke="#2563EB" strokeWidth="0.5" opacity="0.06" />
+              <line x1="0" y1="0" x2="60" y2="60" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
+              <line x1="60" y1="0" x2="0" y2="60" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#notfoundgrid)" />

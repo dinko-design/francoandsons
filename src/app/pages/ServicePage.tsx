@@ -33,6 +33,7 @@ import { VideoPlaceholder } from "../components/shared/VideoPlaceholder";
 import { TrustBadges, SecureFormNotice } from "../components/shared/TrustBadges";
 import { SEOContentBlock } from "../components/shared/SEOContentBlock";
 import { SERVICE_SEO_CONTENT } from "../data/seoData";
+import { BRAND } from "../data/brandConfig";
 
 const iconMap: Record<string, React.ReactNode> = {
   ChefHat: <ChefHat className="w-7 h-7" />,
@@ -87,14 +88,14 @@ export function ServicePage() {
             alt={service.title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A]/90 via-[#0F172A]/75 to-[#0F172A]/50" />
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0F172A]/80 to-transparent" />
+          <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${BRAND.colors.primaryDark}e6, ${BRAND.colors.primaryDark}bf, ${BRAND.colors.primaryDark}80)` }} />
+          <div className="absolute bottom-0 left-0 right-0 h-48" style={{ background: `linear-gradient(to top, ${BRAND.colors.primaryDark}cc, transparent)` }} />
           {/* Geometric lines */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <svg className="absolute bottom-0 left-0 w-full h-32 opacity-10" viewBox="0 0 1440 130" preserveAspectRatio="none">
-              <line x1="0" y1="130" x2="400" y2="0" stroke="#2563EB" strokeWidth="2" />
-              <line x1="200" y1="130" x2="600" y2="0" stroke="#2563EB" strokeWidth="1" />
-              <line x1="800" y1="130" x2="1440" y2="30" stroke="#2563EB" strokeWidth="2" />
+              <line x1="0" y1="130" x2="400" y2="0" stroke={BRAND.colors.accent} strokeWidth="2" />
+              <line x1="200" y1="130" x2="600" y2="0" stroke={BRAND.colors.accent} strokeWidth="1" />
+              <line x1="800" y1="130" x2="1440" y2="30" stroke={BRAND.colors.accent} strokeWidth="2" />
             </svg>
           </div>
         </div>
@@ -138,7 +139,7 @@ export function ServicePage() {
                   "Licensed, insured & code-compliant",
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-2.5">
-                    <CheckCircle className="w-4 h-4 text-[#60A5FA] shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-gold shrink-0" />
                     <span className="text-white/75 text-[0.875rem]">{item}</span>
                   </div>
                 ))}
@@ -149,7 +150,7 @@ export function ServicePage() {
                 href={`tel:${COMPANY.phone}`}
                 className="mt-8 inline-flex items-center gap-3 bg-white/10 border border-white/20 rounded-xl px-5 py-3 text-white hover:bg-white/20 transition-colors"
               >
-                <Phone className="w-5 h-5 text-[#60A5FA]" />
+                <Phone className="w-5 h-5 text-gold" />
                 <div>
                   <div className="text-[0.75rem] text-white/60">Call Cristian directly</div>
                   <div className="text-[1rem]" style={{ fontWeight: 700 }}>{COMPANY.phone}</div>
@@ -161,7 +162,7 @@ export function ServicePage() {
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-primary/10">
               {/* Offer callout header */}
               {topPromo ? (
-                <div className="bg-gradient-to-r from-[#0F172A] to-[#1E293B] p-5 border-b border-white/10">
+                <div className="p-5 border-b border-white/10" style={{ background: `linear-gradient(to right, ${BRAND.colors.primaryDark}, #1E293B)` }}>
                   <div className="flex items-center gap-2 mb-2">
                     <Gift className="w-4 h-4 text-gold" />
                     <span className="text-gold text-[0.7rem] tracking-wider uppercase" style={{ fontWeight: 700 }}>
@@ -188,7 +189,7 @@ export function ServicePage() {
                   </div>
                   {applicablePromos.length > 1 && (
                     <div className="mt-3 flex items-center gap-2 bg-white/5 rounded-lg px-3 py-2 border border-white/10">
-                      <Star className="w-3.5 h-3.5 text-[#60A5FA] shrink-0" />
+                      <Star className="w-3.5 h-3.5 text-gold shrink-0" />
                       <span className="text-white/70 text-[0.75rem]">
                         {applicablePromos.length} stackable offers available for this service
                       </span>
@@ -267,7 +268,7 @@ export function ServicePage() {
                   <div className="mt-4 text-center">
                     <a
                       href="#get-estimate"
-                      className="inline-flex items-center gap-2 bg-primary hover:bg-[#1D4ED8] text-white px-6 py-3 rounded-lg text-[0.9rem] transition-colors"
+                      className="inline-flex items-center gap-2 bg-primary hover:bg-gold-dark text-white px-6 py-3 rounded-lg text-[0.9rem] transition-colors"
                       style={{ fontWeight: 700 }}
                     >
                       Claim These Offers — Get Free Estimate <ArrowRight className="w-4 h-4" />
@@ -529,7 +530,7 @@ export function ServicePage() {
       </section>
 
       {/* Bottom CTA with trust */}
-      <AngularDivider from="#ffffff" to="#0F172A" variant="sharp" />
+      <AngularDivider from="#ffffff" to={BRAND.colors.primaryDark} variant="sharp" />
       <section className="py-16 bg-accent relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute bottom-0 left-0 w-[400px] h-[300px] opacity-10" style={{ background: "radial-gradient(ellipse at bottom left, #D97B2B 0%, transparent 70%)" }} />
@@ -570,7 +571,7 @@ export function ServicePage() {
         </div>
       </section>
 
-      <AngularDivider from="#0F172A" to="#1E3A5F" variant="slant-right" />
+      <AngularDivider from={BRAND.colors.primaryDark} to={BRAND.colors.primary} variant="slant-right" />
     </div>
   );
 }
@@ -612,7 +613,7 @@ function SidebarQuickForm({ serviceSlug }: { serviceSlug: string }) {
       <input type="text" name="city" placeholder="City / Zip Code" value={formData.city} onChange={handleChange} className={inputClasses} />
       <button
         type="submit"
-        className="w-full bg-primary hover:bg-[#1D4ED8] text-white px-5 py-3 rounded-lg text-[0.9rem] transition-colors flex items-center justify-center gap-2"
+        className="w-full bg-primary hover:bg-gold-dark text-white px-5 py-3 rounded-lg text-[0.9rem] transition-colors flex items-center justify-center gap-2"
         style={{ fontWeight: 700 }}
       >
         Get My Free Estimate <ArrowRight className="w-4 h-4" />

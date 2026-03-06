@@ -1,5 +1,6 @@
 import { Shield, Lock, Star, Award, CheckCircle, ShieldCheck, Users } from "lucide-react";
 import { COMPANY } from "../../data/siteData";
+import { BRAND } from "../../data/brandConfig";
 
 interface TrustBadgesProps {
   variant?: "inline" | "strip" | "compact" | "hero";
@@ -19,11 +20,11 @@ export function TrustBadges({ variant = "inline", showSecureNotice = false }: Tr
           <span className="text-white text-[0.7rem]" style={{ fontWeight: 600 }}>5.0 Rating</span>
         </div>
         <div className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5">
-          <Shield className="w-3 h-3 text-[#60A5FA]" />
+          <Shield className="w-3 h-3" style={{ color: BRAND.colors.accent }} />
           <span className="text-white text-[0.7rem]" style={{ fontWeight: 600 }}>Licensed & Insured</span>
         </div>
         <div className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5">
-          <Award className="w-3 h-3 text-[#60A5FA]" />
+          <Award className="w-3 h-3" style={{ color: BRAND.colors.accent }} />
           <span className="text-white text-[0.7rem]" style={{ fontWeight: 600 }}>{COMPANY.yearsExperience}+ Years</span>
         </div>
       </div>
@@ -32,7 +33,7 @@ export function TrustBadges({ variant = "inline", showSecureNotice = false }: Tr
 
   if (variant === "strip") {
     return (
-      <div className="bg-[#FAFBFC]">
+      <div style={{ backgroundColor: BRAND.colors.background }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
             {[
@@ -43,8 +44,8 @@ export function TrustBadges({ variant = "inline", showSecureNotice = false }: Tr
               { icon: <Users className="w-4 h-4" />, label: "Family-Owned & Operated" },
             ].map((badge) => (
               <div key={badge.label} className="flex items-center gap-2.5">
-                <span className="text-[#C77D3A]">{badge.icon}</span>
-                <span className="text-[0.875rem] text-[#1E3A5F] font-semibold">{badge.label}</span>
+                <span style={{ color: BRAND.colors.accent }}>{badge.icon}</span>
+                <span className="text-[0.875rem] font-semibold" style={{ color: BRAND.colors.primary }}>{badge.label}</span>
               </div>
             ))}
           </div>

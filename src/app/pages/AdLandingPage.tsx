@@ -7,6 +7,7 @@ import { StackedPromos, GuaranteeStrip } from "../components/shared/PromotionBan
 import { VideoPlaceholder } from "../components/shared/VideoPlaceholder";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { AngularDivider, BlueprintLines } from "../components/shared/AngularDivider";
+import { BRAND } from "../data/brandConfig";
 
 export function AdLandingPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -63,15 +64,15 @@ export function AdLandingPage() {
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="adgrid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="60" y2="60" stroke="#2563EB" strokeWidth="0.5" opacity="0.06" />
-                <line x1="60" y1="0" x2="0" y2="60" stroke="#2563EB" strokeWidth="0.5" opacity="0.06" />
+                <line x1="0" y1="0" x2="60" y2="60" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
+                <line x1="60" y1="0" x2="0" y2="60" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.06" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#adgrid)" />
           </svg>
           <div
             className="absolute top-0 right-0 w-[600px] h-[600px] opacity-10"
-            style={{ background: "linear-gradient(225deg, #D4A853 0%, transparent 60%)", clipPath: "polygon(100% 0, 30% 0, 100% 70%)" }}
+            style={{ background: `linear-gradient(225deg, ${BRAND.colors.accent} 0%, transparent 60%)`, clipPath: "polygon(100% 0, 30% 0, 100% 70%)" }}
           />
         </div>
 
@@ -90,14 +91,14 @@ export function AdLandingPage() {
                   <span className="text-white text-[0.75rem]" style={{ fontWeight: 600 }}>5.0 Rating</span>
                 </div>
                 <div className="flex items-center gap-1.5 bg-white/10 rounded-full px-3 py-1.5">
-                  <Shield className="w-3.5 h-3.5 text-[#60A5FA]" />
+                  <Shield className="w-3.5 h-3.5" style={{ color: BRAND.colors.accent }} />
                   <span className="text-white text-[0.75rem]" style={{ fontWeight: 600 }}>Licensed & Insured</span>
                 </div>
               </div>
 
               <h1 className="text-[1.75rem] md:text-[2.25rem] lg:text-[2.75rem] text-white mb-4" style={{ fontWeight: 700, lineHeight: 1.1 }}>
                 {serviceName} in{" "}
-                <span className="text-[#60A5FA]">{locationName}</span>
+                <span style={{ color: BRAND.colors.accent }}>{locationName}</span>
               </h1>
               <p className="text-white/80 text-[1.05rem] leading-relaxed mb-6 max-w-lg">
                 {service?.heroDescription?.slice(0, 200) ||
@@ -113,7 +114,7 @@ export function AdLandingPage() {
                   "Licensed, insured & fully code-compliant",
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-3">
-                    <CheckCircle className="w-4 h-4 text-[#60A5FA] shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-gold shrink-0" />
                     <span className="text-white/80 text-[0.9rem]">{item}</span>
                   </div>
                 ))}
@@ -124,7 +125,7 @@ export function AdLandingPage() {
                 href={`tel:${COMPANY.phone}`}
                 className="inline-flex items-center gap-3 bg-white/10 border border-white/20 rounded-xl px-5 py-3 text-white hover:bg-white/20 transition-colors"
               >
-                <Phone className="w-5 h-5 text-[#60A5FA]" />
+                <Phone className="w-5 h-5 text-gold" />
                 <div>
                   <div className="text-[0.8rem] text-white/60">Call Cristian directly</div>
                   <div className="text-[1rem]" style={{ fontWeight: 700 }}>{COMPANY.phone}</div>
@@ -233,12 +234,12 @@ export function AdLandingPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to="#0F172A" variant="sharp" />
+      <AngularDivider from="#ffffff" to={BRAND.colors.primaryDark} variant="sharp" />
 
       {/* Bottom CTA */}
       <section className="py-16 bg-accent relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute bottom-0 left-0 w-[400px] h-[300px] opacity-10" style={{ background: "radial-gradient(ellipse at bottom left, #D4A853 0%, transparent 70%)" }} />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[300px] opacity-10" style={{ background: `radial-gradient(ellipse at bottom left, ${BRAND.colors.accent} 0%, transparent 70%)` }} />
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-[1.75rem] md:text-[2.25rem] text-white mb-4" style={{ fontWeight: 700 }}>
@@ -250,7 +251,7 @@ export function AdLandingPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/get-started"
-              className="bg-primary hover:bg-[#1D4ED8] text-white px-8 py-4 rounded-lg text-[1rem] transition-colors inline-flex items-center justify-center gap-2"
+              className="bg-primary hover:bg-gold-dark text-white px-8 py-4 rounded-lg text-[1rem] transition-colors inline-flex items-center justify-center gap-2"
               style={{ fontWeight: 700 }}
             >
               Get My Free Estimate <ArrowRight className="w-5 h-5" />
@@ -266,7 +267,7 @@ export function AdLandingPage() {
         </div>
       </section>
 
-      <AngularDivider from="#0F172A" to="#1E3A5F" variant="slant-left" />
+      <AngularDivider from={BRAND.colors.primaryDark} to={BRAND.colors.primary} variant="slant-left" />
     </div>
   );
 }

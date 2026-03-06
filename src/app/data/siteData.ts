@@ -23,6 +23,20 @@ import newcastleKitchenHero from '@/assets/gallery/kitchen/newcastle/newcastle-k
 import joanneAdaHero from '@/assets/gallery/bathroom/joanne-ada/joanne-ada-bathroom-02.jpg';
 import rosevilleBathHero from '@/assets/gallery/bathroom/roseville/roseville-bathroom-01.jpg';
 
+// Additional kitchen gallery imports
+import jamesKitchen01 from '@/assets/gallery/kitchen/318-james-drive/318-james-kitchen-01.jpg';
+import jamesKitchen02 from '@/assets/gallery/kitchen/318-james-drive/318-james-kitchen-02.jpg';
+import crazyWoodKitchen01 from '@/assets/gallery/kitchen/crazy-wood/crazy-wood-kitchen-01.jpg';
+import crazyWoodKitchen02 from '@/assets/gallery/kitchen/crazy-wood/crazy-wood-kitchen-02.jpg';
+
+// Additional bathroom gallery imports
+import bathMisc01 from '@/assets/gallery/bathroom/bathroom-misc-01.jpg';
+import bathMisc02 from '@/assets/gallery/bathroom/bathroom-misc-02.jpg';
+import bathMisc03 from '@/assets/gallery/bathroom/bathroom-misc-03.jpg';
+import roseville2Bath01 from '@/assets/gallery/bathroom/roseville-2/roseville-bathroom-2-01.jpg';
+import roseville2Bath02 from '@/assets/gallery/bathroom/roseville-2/roseville-bathroom-2-02.jpg';
+import bathRemodel3_01 from '@/assets/gallery/bathroom/bathroom-remodel-3/bathroom-remodel-3-01.jpg';
+
 // Real project photos (from local assets + organized gallery)
 const realKitchenIsland = kitchenImage1;
 const realKitchenCabinets = kitchenImage2;
@@ -63,12 +77,35 @@ export const COMPANY = {
 };
 
 export const IMAGES = {
+  // ── Kitchen images ──
   kitchen: realKitchenIsland,
   kitchenCabinets: realKitchenCabinets,
   kitchenCooktop: realKitchenCooktop,
   kitchenOpenConcept: realKitchenOpenConcept,
-  kitchenIslandClose: realKitchenIslandClose,
-  // Team photos
+  kitchenIslandClose: jamesKitchen01,
+  kitchenJames: jamesKitchen02,
+  kitchenCrazyWood: crazyWoodKitchen01,
+  kitchenCrazyWood2: crazyWoodKitchen02,
+  // ── Bathroom images ──
+  bathroom: rosevilleBathHero,
+  bathroomVanity: roseville2Bath01,
+  bathroomShower: roseville2Bath02,
+  bathroomMisc1: bathMisc01,
+  bathroomMisc2: bathMisc02,
+  bathroomMisc3: bathMisc03,
+  bathroomRemodel3: bathRemodel3_01,
+  // ── Service-specific images ──
+  homeAddition: constructionImage,
+  tile: tileImage,
+  ada: joanneAdaHero,
+  customShower: bathMisc01,
+  interiorRemodel: houseImage1,
+  electricalPlumbing: houseImage3,
+  painting: houseImage2,
+  exteriorImprovements: houseImage1,
+  contractor: teamImage,
+  homeExterior: houseImage1,
+  // ── Team photos ──
   carlosOnSite: teamCarlosOnSite,
   carlosCristianKitchen: teamCarlosCristianKitchen,
   cristianMeasuring: teamCristianMeasuring,
@@ -76,30 +113,13 @@ export const IMAGES = {
   carlosInKitchen: teamCarlosInKitchen,
   cristianBlueprints: teamCristianBlueprints,
   brandedTrucks: teamBrandedTrucks,
-  // Real bathroom project photos
-  bathroom: realBathroomShower,
-  bathroomVanity: realBathroomVanity,
-  // Service images (using local assets)
-  homeAddition: constructionImage,
-  tile: tileImage,
-  ada: adaImage,
-  customShower: realBathroomShower,
-  interiorRemodel: houseImage1,
-  electricalPlumbing: constructionImage,
-  painting: houseImage2,
-  exteriorImprovements: houseImage3,
-  contractor: teamImage,
-  homeExterior: houseImage1,
-  // Location images (using house images)
+  // ── Location images ──
   lincoln: houseImage1,
   folsom: houseImage2,
   elDoradoHills: houseImage3,
   newcastle: newcastleKitchenHero,
-  // Additional images (organized gallery)
+  // ── Before & After ──
   kitchenBeforeAfter: beforeAfterKitchen1Img,
-  happyHomeowner: teamImage,
-  livingRoom: houseImage1,
-  // Before & After composite photos
   beforeAfterBath1: baBeforeAfterBath1,
   beforeAfterBath2: baBeforeAfterBath2,
   beforeAfterBath3: baBeforeAfterBath3,
@@ -107,6 +127,9 @@ export const IMAGES = {
   galleryRosevilleBath: rosevilleBathHero,
   galleryJoanneAda: joanneAdaHero,
   galleryNewcastleKitchen: newcastleKitchenHero,
+  // ── Misc ──
+  happyHomeowner: teamImage,
+  livingRoom: houseImage1,
 };
 
 export interface ServiceData {
@@ -137,13 +160,15 @@ export const SERVICES: ServiceData[] = [
       "Transform your kitchen into the heart of your home with custom cabinetry, modern countertops, and thoughtful layouts designed for how your family lives.",
     heroDescription:
       "From cramped to captivating. We specialize in complete kitchen transformations — removing walls, opening layouts, and creating bright, spacious kitchens our clients love. Whether you're dreaming of more space, a modern design, or a complete home makeover, Franco & Sons Construction LLC will bring your vision to life.",
-    image: IMAGES.kitchen,
+    image: IMAGES.kitchenOpenConcept,
     galleryImages: [
+      IMAGES.kitchenOpenConcept,
       IMAGES.kitchen,
       IMAGES.kitchenCabinets,
       IMAGES.kitchenCooktop,
-      IMAGES.kitchenOpenConcept,
       IMAGES.kitchenIslandClose,
+      IMAGES.kitchenJames,
+      IMAGES.kitchenCrazyWood,
     ],
     features: [
       "Custom cabinet design & installation",
@@ -179,7 +204,14 @@ export const SERVICES: ServiceData[] = [
     heroDescription:
       "Your bathroom should be a sanctuary. We create beautiful, functional bathrooms with expert tile work, custom showers, soaking tubs, and premium fixtures. From powder rooms to master baths, every detail matters.",
     image: IMAGES.bathroom,
-    galleryImages: [IMAGES.bathroom, IMAGES.bathroomVanity],
+    galleryImages: [
+      IMAGES.bathroom,
+      IMAGES.bathroomVanity,
+      IMAGES.bathroomShower,
+      IMAGES.bathroomMisc1,
+      IMAGES.bathroomMisc2,
+      IMAGES.bathroomRemodel3,
+    ],
     features: [
       "Custom tile showers & surrounds",
       "Walk-in shower conversions",
@@ -352,7 +384,7 @@ export const SERVICES: ServiceData[] = [
     heroDescription:
       "A custom shower is the centerpiece of any great bathroom. Franco & Sons Construction LLC designs and installs stunning walk-in showers, frameless glass enclosures, and multi-head shower systems with expert tile work and waterproofing that stands the test of time.",
     image: IMAGES.customShower,
-    galleryImages: [IMAGES.customShower, IMAGES.bathroomVanity],
+    galleryImages: [IMAGES.customShower, IMAGES.bathroomShower, IMAGES.bathroomMisc2, IMAGES.bathroomMisc3],
     features: [
       "Frameless glass shower enclosures",
       "Custom tile design & installation",

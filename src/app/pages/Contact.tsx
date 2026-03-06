@@ -2,6 +2,7 @@ import { Phone, MapPin, Clock } from "lucide-react";
 import { COMPANY } from "../data/siteData";
 import { LeadCaptureForm } from "../components/shared/LeadCaptureForm";
 import { AngularDivider, BlueprintLines } from "../components/shared/AngularDivider";
+import { BRAND } from "../data/brandConfig";
 
 export function ContactPage() {
   return (
@@ -12,8 +13,8 @@ export function ContactPage() {
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="contactgrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="80" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
-                <line x1="80" y1="0" x2="0" y2="80" stroke="#2563EB" strokeWidth="0.5" opacity="0.08" />
+                <line x1="0" y1="0" x2="80" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
+                <line x1="80" y1="0" x2="0" y2="80" stroke={BRAND.colors.accent} strokeWidth="0.5" opacity="0.08" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#contactgrid)" />
@@ -153,7 +154,7 @@ export function ContactPage() {
       </section>
 
       {/* Angular divider: to footer */}
-      <AngularDivider from="#ffffff" to="#1E3A5F" variant="slant-right" />
+      <AngularDivider from="#ffffff" to={BRAND.colors.primary} variant="slant-right" />
     </div>
   );
 }

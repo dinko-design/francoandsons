@@ -6,6 +6,7 @@ import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { AngularDivider } from "../components/shared/AngularDivider";
 import { LeadCaptureForm } from "../components/shared/LeadCaptureForm";
 import { VideoPlaceholder } from "../components/shared/VideoPlaceholder";
+import { BRAND } from "../data/brandConfig";
 
 export function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -26,7 +27,7 @@ export function BlogPostPage() {
       <section className="relative min-h-[350px] flex items-end pb-[80px]">
         <div className="absolute inset-0">
           <ImageWithFallback src={post.image} alt={post.title} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/95 via-[#0F172A]/60 to-[#0F172A]/30" />
+          <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${BRAND.colors.primaryDark}f2, ${BRAND.colors.primaryDark}99, ${BRAND.colors.primaryDark}4d)` }} />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <Link
@@ -164,7 +165,7 @@ export function BlogPostPage() {
         </div>
       </section>
 
-      <AngularDivider from="#ffffff" to="#1E3A5F" variant="slant-left" />
+      <AngularDivider from="#ffffff" to={BRAND.colors.primary} variant="slant-left" />
     </div>
   );
 }

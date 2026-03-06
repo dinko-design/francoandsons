@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { MapPin, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { BEFORE_AFTER_PROJECTS } from "../../data/siteData";
+import { BRAND } from "../../data/brandConfig";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 
 interface BeforeAfterShowcaseProps {
@@ -44,14 +45,14 @@ export function BeforeAfterShowcase({ variant = "full", limit }: BeforeAfterShow
                     className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-colors"
                     aria-label="Previous project"
                   >
-                    <ChevronLeft className="w-5 h-5 text-[#0F172A]" />
+                    <ChevronLeft className="w-5 h-5" style={{ color: BRAND.colors.primaryDark }} />
                   </button>
                   <button
                     onClick={next}
                     className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-colors"
                     aria-label="Next project"
                   >
-                    <ChevronRight className="w-5 h-5 text-[#0F172A]" />
+                    <ChevronRight className="w-5 h-5" style={{ color: BRAND.colors.primaryDark }} />
                   </button>
                 </>
               )}
@@ -125,7 +126,10 @@ export function BeforeAfterShowcase({ variant = "full", limit }: BeforeAfterShow
 
           <Link
             to="/get-started"
-            className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg text-[0.9rem] hover:bg-[#1D4ED8] transition-colors"
+            className="inline-flex items-center gap-2 text-white px-6 py-3 rounded-lg text-[0.9rem] transition-colors"
+            style={{ backgroundColor: BRAND.colors.accent }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = BRAND.colors.accentDark)}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = BRAND.colors.accent)}
             style={{ fontWeight: 600 }}
           >
             Start Your Transformation <ArrowRight className="w-4 h-4" />
