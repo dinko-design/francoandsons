@@ -5,10 +5,9 @@ import { schemaTypes } from "./schemas";
 
 export default defineConfig({
   name: "francoandsons",
-  title: "Franco & Sons Construction",
+  title: "Franco and Sons Construction LLC",
 
-  // Replace with your Sanity project ID and dataset
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID || "YOUR_PROJECT_ID",
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID || "7com7vhk",
   dataset: process.env.SANITY_STUDIO_DATASET || "production",
 
   plugins: [
