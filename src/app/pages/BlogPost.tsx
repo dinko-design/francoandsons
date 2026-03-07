@@ -1,21 +1,56 @@
+import { useState, useEffect, useMemo } from "react";
 import { useParams, Link, Navigate } from "react-router";
 import { ArrowLeft, ArrowRight, Clock, User, Tag, Share2 } from "lucide-react";
-import { BLOG_POSTS } from "../data/blogData";
+import { BLOG_POSTS, type BlogPost, type BlogCategory } from "../data/blogData";
 import { LEAD_MAGNETS } from "../data/promotionsData";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { LeadCaptureForm } from "../components/shared/LeadCaptureForm";
 import { VideoPlaceholder } from "../components/shared/VideoPlaceholder";
 import { BRAND } from "../data/brandConfig";
+import { fetchBlogPostBySlug, fetchBlogPosts, portableTextToStrings, isSanityConfigured, type SanityBlogPost } from "../lib/sanity";
+import { IMAGES } from "../data/siteData";
+
+function sanityToLocal(p: SanityBlogPost): BlogPost {
+  return {
+    slug: p.slug.current,
+    title: p.title,
+    excerpt: p.excerpt || "",
+    category: (p.category || "Remodeling Tips") as BlogCategory,
+    image: IMAGES.kitchen,
+    author: p.author || "Cristian Franco",
+    date: p.date || "",
+    readTime: p.readTime || "5 min",
+    featured: p.featured || false,
+    tags: p.tags || [],
+    content: portableTextToStrings(p.content),
+  };
+}
 
 export function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const [sanityPost, setSanityPost] = useState<BlogPost | null>(null);
+  const [allPosts, setAllPosts] = useState<BlogPost[]>(BLOG_POSTS);
+
+  useEffect(() => {
+    if (!isSanityConfigured || !slug) return;
+    let cancelled = false;
+    fetchBlogPostBySlug(slug).then((result) => {
+      if (!cancelled && result) setSanityPost(sanityToLocal(result));
+    }).catch(() => {});
+    fetchBlogPosts().then((result) => {
+      if (!cancelled && result.length > 0) setAllPosts(result.map(sanityToLocal));
+    }).catch(() => {});
+    return () => { cancelled = true; };
+  }, [slug]);
+
+  const staticPost = BLOG_POSTS.find((p) => p.slug === slug);
+  const post = sanityPost || staticPost;
 
   if (!post) {
     return <Navigate to="/blog" replace />;
   }
 
-  const relatedPosts = BLOG_POSTS.filter((p) => p.slug !== slug && p.category === post.category).slice(0, 2);
+  const relatedPosts = allPosts.filter((p) => p.slug !== slug && p.category === post.category).slice(0, 2);
   const relevantMagnet = LEAD_MAGNETS.find((lm) =>
     lm.applicableServices.includes("all") || post.tags.some((t) => lm.slug.includes(t))
   );

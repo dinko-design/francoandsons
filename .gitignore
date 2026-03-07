@@ -35,3 +35,4 @@ node_modules
 
 # Staging folder for image import (organized copies in before-after/ and gallery/)
 src/assets/imported-root
+.env*.local

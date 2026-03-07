@@ -1,16 +1,41 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router";
 import { ArrowRight, Clock, User, Search, Tag, BookOpen } from "lucide-react";
-import { BLOG_POSTS, BLOG_CATEGORIES, type BlogCategory } from "../data/blogData";
+import { BLOG_POSTS, BLOG_CATEGORIES, type BlogPost, type BlogCategory } from "../data/blogData";
 import { LEAD_MAGNETS } from "../data/promotionsData";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { BRAND } from "../data/brandConfig";
+import { fetchBlogPosts, portableTextToStrings, type SanityBlogPost } from "../lib/sanity";
+import { useSanityData } from "../lib/useSanityData";
+import { IMAGES } from "../data/siteData";
+
+function sanityToLocal(post: SanityBlogPost): BlogPost {
+  return {
+    slug: post.slug.current,
+    title: post.title,
+    excerpt: post.excerpt || "",
+    category: (post.category || "Remodeling Tips") as BlogCategory,
+    image: IMAGES.kitchen, // fallback — Sanity images not yet set up
+    author: post.author || "Cristian Franco",
+    date: post.date || "",
+    readTime: post.readTime || "5 min",
+    featured: post.featured || false,
+    tags: post.tags || [],
+    content: portableTextToStrings(post.content),
+  };
+}
 
 export function BlogPage() {
   const [activeCategory, setActiveCategory] = useState<BlogCategory | "All">("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredPosts = BLOG_POSTS.filter((post) => {
+  const { data: sanityPosts } = useSanityData(fetchBlogPosts, []);
+  const posts = useMemo(() => {
+    if (sanityPosts.length > 0) return sanityPosts.map(sanityToLocal);
+    return BLOG_POSTS;
+  }, [sanityPosts]);
+
+  const filteredPosts = posts.filter((post) => {
     const matchCategory = activeCategory === "All" || post.category === activeCategory;
     const matchSearch =
       !searchQuery ||
@@ -19,7 +44,7 @@ export function BlogPage() {
     return matchCategory && matchSearch;
   });
 
-  const featuredPosts = BLOG_POSTS.filter((p) => p.featured);
+  const featuredPosts = posts.filter((p) => p.featured);
 
   return (
     <div>
@@ -229,7 +254,7 @@ export function BlogPage() {
                 <h3 className="text-[1rem] mb-4" style={{ fontWeight: 700 }}>Categories</h3>
                 <div className="space-y-1">
                   {BLOG_CATEGORIES.map((cat) => {
-                    const count = BLOG_POSTS.filter((p) => p.category === cat).length;
+                    const count = posts.filter((p) => p.category === cat).length;
                     return (
                       <button
                         key={cat}

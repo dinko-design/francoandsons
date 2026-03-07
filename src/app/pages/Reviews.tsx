@@ -1,10 +1,39 @@
+import { useMemo } from "react";
 import { Link } from "react-router";
 import { Star, ArrowRight, Quote } from "lucide-react";
 import { TESTIMONIALS, COMPANY } from "../data/siteData";
 import { LeadCaptureForm } from "../components/shared/LeadCaptureForm";
 import { BRAND } from "../data/brandConfig";
+import { fetchTestimonials, type SanityTestimonial } from "../lib/sanity";
+import { useSanityData } from "../lib/useSanityData";
+import { IMAGES } from "../data/siteData";
+
+interface LocalTestimonial {
+  name: string;
+  location: string;
+  service: string;
+  quote: string;
+  rating: number;
+  image: string;
+}
+
+function sanityToLocal(t: SanityTestimonial): LocalTestimonial {
+  return {
+    name: t.name,
+    location: t.location || "",
+    service: t.service || "",
+    quote: t.quote,
+    rating: t.rating || 5,
+    image: IMAGES.kitchen, // fallback — Sanity images not yet set up
+  };
+}
 
 export function ReviewsPage() {
+  const { data: sanityTestimonials } = useSanityData(fetchTestimonials, []);
+  const testimonials = useMemo(() => {
+    if (sanityTestimonials.length > 0) return sanityTestimonials.map(sanityToLocal);
+    return TESTIMONIALS;
+  }, [sanityTestimonials]);
   return (
     <div>
       {/* Hero */}
@@ -75,7 +104,7 @@ export function ReviewsPage() {
       <section className="py-20 lg:py-24 relative overflow-hidden">
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-8">
-            {TESTIMONIALS.map((t, index) => (
+            {testimonials.map((t, index) => (
               <div key={t.name} className="bg-white rounded-xl border border-border p-6 lg:p-8 hover:border-primary/20 hover:shadow-md hover:shadow-primary/5 transition-all">
                 <div className="flex items-start gap-4 mb-4">
                   <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">

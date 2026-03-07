@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npm run generate:sitemap && vite build",
     "dev": "vite",
-    "generate:sitemap": "vite-node scripts/generate-sitemap.ts"
+    "generate:sitemap": "vite-node scripts/generate-sitemap.ts",
+    "seed:sanity": "vite-node scripts/seed-sanity.ts"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
