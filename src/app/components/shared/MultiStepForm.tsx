@@ -122,6 +122,8 @@ export function MultiStepForm({
     campaignId: campaignId || "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const isDark = variant === "dark";
   const step = STEPS[currentStep];
@@ -140,11 +142,48 @@ export function MultiStepForm({
     setAnswers({ ...answers, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In production, this would send to CRM/email service
-    console.log("Lead captured:", answers);
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+
+    const serviceLabel = STEPS[0].options?.find((o) => o.value === answers["project-type"])?.label || answers["project-type"];
+    const scopeLabel = STEPS[1].options?.find((o) => o.value === answers.scope)?.label || answers.scope;
+    const timelineLabel = STEPS[2].options?.find((o) => o.value === answers.timeline)?.label || answers.timeline;
+    const budgetLabel = STEPS[3].options?.find((o) => o.value === answers.budget)?.label || answers.budget;
+
+    const messageParts = [
+      scopeLabel && `Scope: ${scopeLabel}`,
+      timelineLabel && `Timeline: ${timelineLabel}`,
+      budgetLabel && `Budget: ${budgetLabel}`,
+      answers.source && `Source: ${answers.source}`,
+      answers.campaignId && `Campaign: ${answers.campaignId}`,
+    ].filter(Boolean);
+
+    try {
+      const res = await fetch("/api/submit-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: answers.name,
+          phone: answers.phone,
+          email: answers.email,
+          service: serviceLabel,
+          city: answers.city,
+          message: messageParts.join(" | "),
+        }),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError("Something went wrong. Please call us directly.");
+      }
+    } catch {
+      setError("Something went wrong. Please call us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const canGoBack = currentStep > (defaultService ? 1 : 0);
@@ -277,16 +316,19 @@ export function MultiStepForm({
               }`}
             />
           ))}
+          {error && (
+            <p className="text-red-500 text-[0.85rem] text-center">{error}</p>
+          )}
           <button
             type="submit"
-            className="w-full text-white px-6 py-4 rounded-xl text-[1rem] transition-colors flex items-center justify-center gap-2"
-            style={{ backgroundColor: BRAND.colors.accent }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = BRAND.colors.accentDark)}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = BRAND.colors.accent)}
-            style={{ fontWeight: 700 }}
+            disabled={submitting}
+            className="w-full text-white px-6 py-4 rounded-xl text-[1rem] transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
+            style={{ backgroundColor: BRAND.colors.accent, fontWeight: 700 }}
+            onMouseEnter={(e) => { if (!submitting) e.currentTarget.style.backgroundColor = BRAND.colors.accentDark; }}
+            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = BRAND.colors.accent; }}
           >
-            Get My Free Estimate
-            <ArrowRight className="w-5 h-5" />
+            {submitting ? "Submitting…" : "Get My Free Estimate"}
+            {!submitting && <ArrowRight className="w-5 h-5" />}
           </button>
           <p className={`text-[0.75rem] text-center ${isDark ? "text-white/40" : "text-muted-foreground"}`}>
             No obligation. No spam. Cristian follows up personally.

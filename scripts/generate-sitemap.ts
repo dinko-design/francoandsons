@@ -32,43 +32,78 @@ const staticRoutes: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/services", changefreq: "weekly", priority: "0.9" },
 ];
 
-function urlEntry(loc: string, changefreq: string, priority: string): string {
-  return `  <url><loc>${baseUrl}${loc}</loc><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
+interface UrlEntry {
+  loc: string;
+  changefreq: string;
+  priority: string;
+  images?: { loc: string; title?: string }[];
 }
 
-const urls: string[] = [];
+function urlEntryXml(entry: UrlEntry): string {
+  const imageXml = (entry.images || [])
+    .map((img) => {
+      const titleTag = img.title ? `<image:title>${escapeXml(img.title)}</image:title>` : "";
+      return `    <image:image><image:loc>${escapeXml(img.loc)}</image:loc>${titleTag}</image:image>`;
+    })
+    .join("\n");
 
-staticRoutes.forEach((e) => urls.push(urlEntry(e.loc, e.changefreq, e.priority)));
+  return [
+    `  <url>`,
+    `    <loc>${baseUrl}${entry.loc}</loc>`,
+    `    <changefreq>${entry.changefreq}</changefreq>`,
+    `    <priority>${entry.priority}</priority>`,
+    imageXml,
+    `  </url>`,
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+function escapeXml(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+const urls: UrlEntry[] = [];
+
+staticRoutes.forEach((e) => urls.push({ ...e, loc: e.loc }));
 
 SERVICES.forEach((s) => {
   const p = s.tier === "primary" ? "0.9" : "0.8";
-  urls.push(urlEntry(`/services/${s.slug}`, "monthly", p));
-  // Sub-pages (topic cluster pages)
+  const images: UrlEntry["images"] = [];
+  if (s.image && typeof s.image === "string") {
+    images.push({ loc: `${baseUrl}${s.image}`, title: `${s.title} — Franco and Sons Construction LLC` });
+  }
+  urls.push({ loc: `/services/${s.slug}`, changefreq: "monthly", priority: p, images });
   if (s.subPages) {
     s.subPages.forEach((sp) => {
-      urls.push(urlEntry(`/services/${s.slug}/${sp.slug}`, "monthly", "0.7"));
+      urls.push({ loc: `/services/${s.slug}/${sp.slug}`, changefreq: "monthly", priority: "0.7" });
     });
   }
 });
 
 LOCATIONS.forEach((loc) => {
   const priority = loc.isPrimary ? "0.9" : "0.8";
-  urls.push(urlEntry(`/locations/${loc.slug}`, "monthly", priority));
+  urls.push({ loc: `/locations/${loc.slug}`, changefreq: "monthly", priority });
 });
 
 BLOG_POSTS.forEach((post) => {
-  urls.push(urlEntry(`/blog/${post.slug}`, "monthly", "0.7"));
+  const images: UrlEntry["images"] = [];
+  if (post.image && typeof post.image === "string") {
+    images.push({ loc: `${baseUrl}${post.image}`, title: post.title });
+  }
+  urls.push({ loc: `/blog/${post.slug}`, changefreq: "monthly", priority: "0.7", images });
 });
 
 LEAD_MAGNETS.forEach((lm) => {
-  urls.push(urlEntry(`/free/${lm.slug}`, "monthly", "0.6"));
+  urls.push({ loc: `/free/${lm.slug}`, changefreq: "monthly", priority: "0.6" });
 });
 
-urls.push(urlEntry("/offers/commercial-remodeling", "monthly", "0.8"));
+urls.push({ loc: "/offers/commercial-remodeling", changefreq: "monthly", priority: "0.8" });
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.join("\n")}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${urls.map(urlEntryXml).join("\n")}
 </urlset>
 `;
 

@@ -4,7 +4,7 @@ import { Star, ArrowRight, Quote } from "lucide-react";
 import { TESTIMONIALS, COMPANY } from "../data/siteData";
 import { LeadCaptureForm } from "../components/shared/LeadCaptureForm";
 import { BRAND } from "../data/brandConfig";
-import { fetchTestimonials, type SanityTestimonial } from "../lib/sanity";
+import { fetchTestimonials, sanityImageUrl, type SanityTestimonial } from "../lib/sanity";
 import { useSanityData } from "../lib/useSanityData";
 import { IMAGES } from "../data/siteData";
 
@@ -18,13 +18,17 @@ interface LocalTestimonial {
 }
 
 function sanityToLocal(t: SanityTestimonial): LocalTestimonial {
+  const image = t.image?.asset
+    ? sanityImageUrl(t.image).width(400).auto("format").quality(80).url()
+    : IMAGES.kitchen;
+
   return {
     name: t.name,
     location: t.location || "",
     service: t.service || "",
     quote: t.quote,
     rating: t.rating || 5,
-    image: IMAGES.kitchen, // fallback — Sanity images not yet set up
+    image,
   };
 }
 

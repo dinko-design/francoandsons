@@ -27,7 +27,7 @@ export function LocationPage() {
         <div className="absolute inset-0">
           <ImageWithFallback
             src={IMAGES.lincoln}
-            alt={`${location.city}, ${location.state}`}
+            alt={`Home remodeling and construction services in ${location.city}, ${location.state} by Franco and Sons Construction LLC`}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${BRAND.colors.primaryDark}d9, ${BRAND.colors.primaryDark}a6, ${BRAND.colors.primaryDark}59)` }} />

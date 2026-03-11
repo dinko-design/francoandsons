@@ -7,16 +7,20 @@ import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { LeadCaptureForm } from "../components/shared/LeadCaptureForm";
 import { VideoPlaceholder } from "../components/shared/VideoPlaceholder";
 import { BRAND } from "../data/brandConfig";
-import { fetchBlogPostBySlug, fetchBlogPosts, portableTextToStrings, isSanityConfigured, type SanityBlogPost } from "../lib/sanity";
+import { fetchBlogPostBySlug, fetchBlogPosts, portableTextToStrings, sanityImageUrl, isSanityConfigured, type SanityBlogPost } from "../lib/sanity";
 import { IMAGES } from "../data/siteData";
 
 function sanityToLocal(p: SanityBlogPost): BlogPost {
+  const image = p.image?.asset
+    ? sanityImageUrl(p.image).width(1200).auto("format").quality(80).url()
+    : IMAGES.kitchen;
+
   return {
     slug: p.slug.current,
     title: p.title,
     excerpt: p.excerpt || "",
     category: (p.category || "Remodeling Tips") as BlogCategory,
-    image: IMAGES.kitchen,
+    image,
     author: p.author || "Cristian Franco",
     date: p.date || "",
     readTime: p.readTime || "5 min",

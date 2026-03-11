@@ -1,138 +1,150 @@
-# Franco & Sons Construction — Image Catalog
+# Franco and Sons Construction LLC — Image Catalog
 
-Inventory and structure for the **Images - Resized** folder (Dropbox) and how it maps to the website.
+## Image Management
 
----
+Images are managed through **two systems** that work together:
 
-## 1. Dropbox folder location
-
-```
-/Users/dinkoibukic/Library/CloudStorage/Dropbox-DinkoDesign/Dinko Design Team Folder/
-  Franco and Sons Construction/
-    Images - Resized/
-```
+1. **Sanity CMS** (primary) — Project images, gallery images, blog post images, and testimonial photos are uploaded to Sanity's CDN and managed via Sanity Studio at `https://francoandsons.sanity.studio`
+2. **Static assets** (fallback) — `src/assets/` contains the original image files. These serve as fallbacks when Sanity images aren't available.
 
 ---
 
-## 2. Project subfolders (by project)
+## Sanity CMS Image Workflow
 
-| Folder | Image count | Sample files |
-|--------|-------------|--------------|
-| **318 James drive kitchen- house remodel** | 7 | IMG_3111, IMG_3112, IMG_3114, IMG_3117, IMG_3533, IMG_3534, IMG_3535 |
-| **Bathroom Remodel 3** | 7 | IMG_6467, IMG_6469, IMG_6472, IMG_6475, IMG_6711, IMG_6716, IMG_6720 |
-| **Crazy wood Kitchen Transformation** | 10 | IMG_6718–6723, IMG_7536, IMG_7539, IMG_7540, IMG_7542, IMG_7544 |
-| **Joanne ADA bathroom** | 5 | IMG_4453, IMG_4457, IMG_4616, IMG_4617, IMG_4620 |
-| **Newcastle Kitchen Remodel** | 13 | IMG_2090, IMG_2091, IMG_2092, IMG_2350, IMG_2952, IMG_2954, IMG_2955, IMG_3017, IMG_3019, IMG_3050, IMG_3052, IMG_3057, IMG_3067 |
-| **Roseville Bathroom** | 5 | IMG_7638, IMG_7640, IMG_7905, IMG_7909, IMG_7917 |
-| **Roseville Bathroom 2** | 7 | IMG_8087, IMG_8092, IMG_8093, IMG_8570, IMG_8572, IMG_8714, IMG_8717 |
-| **Roseville Kitchen Remodel** | 5 | IMG_3781, IMG_3783, IMG_3789, IMG_3790, IMG_3791 |
+### Adding new images
 
-**Total in subfolders:** 59 images across 8 projects.
+1. Open Sanity Studio → select the document type (Project, Blog Post, etc.)
+2. Drag and drop images into the image field
+3. Set hotspot/crop if needed
+4. Fill in the `alt` text field for SEO
+5. Publish the document
+
+### Image document types in Sanity
+
+| Document Type | Image Fields | Usage |
+|--------------|-------------|-------|
+| **project** | `images[]`, `beforeImage`, `afterImage` | Portfolio, before/after showcase |
+| **blogPost** | `image` (featured) | Blog cards, blog post hero |
+| **testimonial** | `image` | Review cards |
+| **service** | `image`, `galleryImages[]` | Service page hero and gallery |
+| **serviceArea** | `image` | Location page hero |
+| **galleryImage** | `image` | Standalone gallery items with category, caption, alt |
+
+### Sanity CDN features
+
+Sanity serves images via a global CDN with on-the-fly transformations:
+- **Auto-format**: Serves WebP/AVIF based on browser support
+- **Responsive sizing**: Request any width (e.g. `?w=800`)
+- **Hotspot/crop**: Set focal points in Studio, preserved at any size
+- **Quality control**: Configurable quality parameter
 
 ---
 
-## 3. Root-level images (Images - Resized)
+## Static Image Fallback
 
-- **UUID-named JPGs:** 12 files (e.g. `2AA01379-88EB-4715-9A85-364359C1CD53.jpg`, …).
-- **IMG_*.jpg:** ~110+ files (e.g. IMG_0034, IMG_0040, …, IMG_9971).  
-  Some of these may overlap with files inside project folders (same filenames in different contexts).
-
-**Recommendation:** Treat root as a mixed pool. When adding to the site, prefer images from the project subfolders for portfolio/B&A so each project stays identifiable.
-
----
-
-## 4. Suggested folder structure (optional, in repo or Dropbox)
-
-**Implemented in repo** — organized root-level images are now in:
+### Directory structure
 
 ```
 src/assets/
   before-after/
-    kitchen/     # 3 composites: kitchen-before-after-*.jpg
-    bathroom/    # 8 composites: bathroom-before-after-*.jpg
+    kitchen/     — 3 composite before/after images
+    bathroom/    — 8 composite before/after images
   gallery/
     kitchen/
-      318-james-drive/   # 25 images (318-james-kitchen-01..25)
-      newcastle/         # 13 images (newcastle-kitchen-01..13)
-      roseville/         # 5 images (roseville-kitchen-01..05)
-      crazy-wood/        # 15 images (crazy-wood-kitchen-01..15)
+      318-james-drive/   — 25 images
+      newcastle/         — 13 images
+      roseville/         — 5 images
+      crazy-wood/        — 15 images
     bathroom/
-      joanne-ada/        # 5 images (joanne-ada-bathroom-01..05)
-      bathroom-remodel-3/# 6 images (bathroom-remodel-3-01..06)
-      roseville/         # 8 images (roseville-bathroom-01..08)
-      roseville-2/       # 32 images (roseville-bathroom-2-01..32)
-      bathroom-misc-*.jpg, bathroom-tub-shower-window.jpg
-  projects/              # 59 images from project subfolders (unchanged)
-    318-james-drive-kitchen/, bathroom-remodel-3/, crazy-wood-kitchen/, ...
-  imported-root/         # staging (can be removed after verification)
+      joanne-ada/        — 5 images
+      bathroom-remodel-3/ — 6 images
+      roseville/         — 8 images
+      roseville-2/       — 32 images
+      bathroom-misc-*.jpg — 21 misc images
+  projects/              — 59 images from original project folders
 ```
 
-Use **kebab-case** folder names in the repo to avoid spaces and special characters.
+### How static images are used
+
+All static images are imported in `src/app/data/siteData.ts` and exposed via the `IMAGES` object. Components reference `IMAGES.kitchen`, `IMAGES.bathroom`, etc.
+
+When Sanity is configured (`VITE_SANITY_PROJECT_ID` is set) and has images, the frontend prefers Sanity CDN URLs. When Sanity images aren't available, components fall back to static `IMAGES.*` values.
 
 ---
 
-## 5. Mapping Dropbox projects → website
+## SanityImage Component
 
-### Portfolio (`src/app/pages/Portfolio.tsx` + `siteData.ts`)
+For pages that display Sanity images, use the `SanityImage` component:
 
-Portfolio entries use `IMAGES.*` and optional `galleryImages`. You can add or replace with images from Dropbox:
+```tsx
+import { SanityImage } from "../components/shared/SanityImage";
 
-| Site project / concept | Dropbox source | Suggested files |
-|------------------------|----------------|-----------------|
-| Kitchen (e.g. Steven's Kitchen, Open-Concept) | Roseville Kitchen Remodel, Newcastle Kitchen Remodel, 318 James drive kitchen, Crazy wood Kitchen | Pick 1–2 hero images per project; use rest in gallery |
-| Bathroom (Custom Walk-In Shower, Double Vanity) | Roseville Bathroom, Roseville Bathroom 2, Bathroom Remodel 3 | Same: hero + gallery |
-| Joanne's ADA Bathroom | Joanne ADA bathroom | All 5 as gallery |
+<SanityImage
+  image={post.image}       // Sanity image ref (from GROQ query)
+  staticSrc={IMAGES.kitchen} // Fallback if Sanity image missing
+  alt="Kitchen remodel in Roseville, CA"
+  width={800}
+  height={600}
+  sizes="(max-width: 768px) 100vw, 50vw"
+  priority                  // Set for LCP/above-fold images
+/>
+```
 
-### Before & After (`BeforeAfterShowcase`, `BEFORE_AFTER_PROJECTS`)
-
-Currently uses composite/placeholder images. To use real B&A:
-
-1. Build before/after composites (side-by-side or slider) from Dropbox project folders, or  
-2. Use single “after” shots and point `beforeAfterBath1/2/3`, `beforeAfterKitchen1` in `siteData.ts` to new imports.
-
-Suggested mapping:
-
-- **beforeAfterBath1/2/3** ← Roseville Bathroom, Roseville Bathroom 2, Bathroom Remodel 3 (pick best “after” or composite per project).
-- **beforeAfterKitchen1** ← 318 James drive kitchen, Newcastle Kitchen Remodel, or Crazy wood Kitchen (pick one project’s best after).
-
-### Home page hero & featured projects
-
-- **Hero:** `IMAGES.kitchenOpenConcept` — consider replacing with a strong shot from Newcastle Kitchen Remodel or Roseville Kitchen Remodel.
-- **Featured project grid:** The six items (e.g. Kitchen Remodel - Roseville, Open-Concept Kitchen, Custom Walk-In Shower, …) can pull from the same project folders as above; pick the single best image per project for the grid.
-
-### Services & team
-
-- **Services** use `siteData` `IMAGES.*` (e.g. `ada`, `bathroom`, `kitchen`). You can replace those with chosen shots from **Joanne ADA bathroom**, **Roseville Bathroom**, and kitchen folders.
-- **Team / branded trucks:** When you have final team and fleet photos, add them to `src/assets` (e.g. `team/`, `hero/`) and wire `IMAGES.brandedTrucks`, `IMAGES.carlosCristianKitchen`, etc. in `siteData.ts`.
+This auto-generates responsive `srcSet` at 400/800/1200/1600px widths using Sanity CDN.
 
 ---
 
-## 6. How to add a new image to the site
+## Image Audit & Orientation Fix
 
-1. **Copy** the file from Dropbox into `src/assets` (e.g. `src/assets/projects/roseville-kitchen/IMG_3781.jpg`).
-2. **Import** in `src/app/data/siteData.ts`:
-   ```ts
-   import rosevilleKitchenHero from '@/assets/projects/roseville-kitchen/IMG_3781.jpg';
-   ```
-3. **Use** in `IMAGES` or in a specific service/portfolio/B&A entry:
-   ```ts
-   kitchenOpenConcept: rosevilleKitchenHero,
-   ```
-4. **Optimize:** Keep using resized assets (your “Images - Resized” folder). For very large files, consider converting to WebP or further resizing for hero/cards to keep bundle size down.
+### Scripts
+
+- `scripts/audit-images.ts` — Scans all images, flags EXIF orientation issues, generates `audit/index.html` contact sheet
+- `scripts/fix-orientation.ts` — Fixes flagged images by baking EXIF rotation into pixels
+- `scripts/upload-images-to-sanity.ts` — Uploads project/gallery images to Sanity CDN
+
+### Running the audit
+
+```bash
+npx vite-node scripts/audit-images.ts
+open audit/index.html  # Visual review of all 368 thumbnails
+```
+
+### Fixing sideways images
+
+```bash
+# Fix all flagged images from the audit
+npx vite-node scripts/fix-orientation.ts
+
+# Fix a specific image with manual rotation
+npx vite-node scripts/fix-orientation.ts -- --file=gallery/kitchen/photo.jpg --rotate=90
+```
 
 ---
 
-## 7. Quick reference — site image keys
+## SEO Optimization
 
-| Key | Used for |
+### Alt text
+
+All images should have descriptive alt text that includes:
+- What the image shows
+- Location when relevant
+- Service context
+
+For Sanity-managed images, set the `alt` field in Studio. The `SanityImage` component uses `image.alt` when present, falling back to the `alt` prop.
+
+### Image sitemap
+
+The build script (`scripts/generate-sitemap.ts`) includes `<image:image>` tags for service and blog post images, helping search engines discover and index images.
+
+---
+
+## Quick Reference — IMAGES Keys
+
+| Key | Used For |
 |-----|----------|
 | `kitchen`, `kitchenOpenConcept`, `kitchenCabinets`, `kitchenCooktop`, `kitchenIslandClose` | Home hero, services, portfolio, featured grid |
 | `bathroom`, `bathroomVanity`, `ada`, `customShower` | Bathroom/ADA services, portfolio |
-| `brandedTrucks`, `carlosCristianKitchen`, `carlosInKitchen`, `cristianBlueprints`, etc. | About, team, fleet |
+| `brandedTrucks`, `carlosCristianKitchen`, `carlosInKitchen`, `cristianBlueprints` | About, team, fleet |
 | `beforeAfterBath1/2/3`, `beforeAfterKitchen1` | Before & After showcase |
 | `lincoln`, `folsom`, `elDoradoHills`, `newcastle` | Location pages |
 | `homeAddition`, `tile`, `interiorRemodel`, `electricalPlumbing`, `painting`, `exteriorImprovements` | Service cards and pages |
-
----
-
-*Last updated from inventory of **Images - Resized** (Dropbox) and `src/app/data/siteData.ts`.*

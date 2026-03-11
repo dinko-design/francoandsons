@@ -84,7 +84,7 @@ export function ServicePage() {
         <div className="absolute inset-0">
           <ImageWithFallback
             src={service.image}
-            alt={service.title}
+            alt={`${service.title} service by Franco and Sons Construction LLC in Placer County, CA`}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${BRAND.colors.primaryDark}e6, ${BRAND.colors.primaryDark}bf, ${BRAND.colors.primaryDark}80)` }} />
@@ -363,7 +363,7 @@ export function ServicePage() {
                     <div key={i} className={`rounded-lg overflow-hidden relative group ${isSpanning ? "col-span-2" : ""}`}>
                       <ImageWithFallback
                         src={img}
-                        alt={`${service.title} project ${i + 1}`}
+                        alt={`${service.title} project photo ${i + 1} — Franco and Sons Construction LLC`}
                         className={`w-full object-cover group-hover:scale-105 transition-transform duration-500 ${
                           isSpanning ? "aspect-[16/9]" : "aspect-[4/3]"
                         }`}
@@ -611,16 +611,39 @@ export function ServicePage() {
 /** Compact sidebar form (not multi-step, just quick contact) */
 function SidebarQuickForm({ serviceSlug }: { serviceSlug: string }) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({ name: "", phone: "", email: "", city: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Sidebar lead:", { ...formData, service: serviceSlug });
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/submit-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          service: serviceSlug,
+        }),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError("Something went wrong. Please call us directly.");
+      }
+    } catch {
+      setError("Something went wrong. Please call us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -643,12 +666,16 @@ function SidebarQuickForm({ serviceSlug }: { serviceSlug: string }) {
       <input type="tel" name="phone" placeholder="Phone Number *" required value={formData.phone} onChange={handleChange} className={inputClasses} />
       <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} className={inputClasses} />
       <input type="text" name="city" placeholder="City / Zip Code" value={formData.city} onChange={handleChange} className={inputClasses} />
+      {error && (
+        <p className="text-red-500 text-[0.8rem] text-center">{error}</p>
+      )}
       <button
         type="submit"
-        className="w-full bg-primary hover:bg-gold-dark text-white px-5 py-3 rounded-lg text-[0.9rem] transition-colors flex items-center justify-center gap-2"
+        disabled={submitting}
+        className="w-full bg-primary hover:bg-gold-dark text-white px-5 py-3 rounded-lg text-[0.9rem] transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
         style={{ fontWeight: 700 }}
       >
-        Get My Free Estimate <ArrowRight className="w-4 h-4" />
+        {submitting ? "Submitting…" : (<>Get My Free Estimate <ArrowRight className="w-4 h-4" /></>)}
       </button>
       <p className="text-[0.7rem] text-muted-foreground text-center">
         No obligation. No spam. Cristian follows up personally.

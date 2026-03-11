@@ -20,6 +20,12 @@ export const galleryImage = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "alt",
+      title: "Alt Text",
+      type: "string",
+      description: "Descriptive text for screen readers and SEO (e.g. 'modern white kitchen with quartz countertops in Roseville, CA')",
+    }),
+    defineField({
       name: "caption",
       title: "Caption",
       type: "string",

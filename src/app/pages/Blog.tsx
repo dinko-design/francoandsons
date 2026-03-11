@@ -5,17 +5,21 @@ import { BLOG_POSTS, BLOG_CATEGORIES, type BlogPost, type BlogCategory } from ".
 import { LEAD_MAGNETS } from "../data/promotionsData";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { BRAND } from "../data/brandConfig";
-import { fetchBlogPosts, portableTextToStrings, type SanityBlogPost } from "../lib/sanity";
+import { fetchBlogPosts, portableTextToStrings, sanityImageUrl, type SanityBlogPost } from "../lib/sanity";
 import { useSanityData } from "../lib/useSanityData";
 import { IMAGES } from "../data/siteData";
 
 function sanityToLocal(post: SanityBlogPost): BlogPost {
+  const image = post.image?.asset
+    ? sanityImageUrl(post.image).width(800).auto("format").quality(80).url()
+    : IMAGES.kitchen;
+
   return {
     slug: post.slug.current,
     title: post.title,
     excerpt: post.excerpt || "",
     category: (post.category || "Remodeling Tips") as BlogCategory,
-    image: IMAGES.kitchen, // fallback — Sanity images not yet set up
+    image,
     author: post.author || "Cristian Franco",
     date: post.date || "",
     readTime: post.readTime || "5 min",

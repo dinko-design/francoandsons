@@ -11,16 +11,43 @@ export function LeadMagnetPage() {
   const { slug } = useParams<{ slug: string }>();
   const magnet = LEAD_MAGNETS.find((lm) => lm.slug === slug);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState<Record<string, string>>({});
 
   if (!magnet) {
     return <Navigate to="/blog" replace />;
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Lead magnet download:", { magnet: magnet.id, ...formData });
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/submit-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name || "",
+          phone: formData.phone || "",
+          email: formData.email || "",
+          city: formData.city || "",
+          service: "Lead Magnet Download",
+          message: `Downloaded: ${magnet.title} (${magnet.id})`,
+        }),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -116,13 +143,16 @@ export function LeadMagnetPage() {
                         className="w-full px-4 py-3.5 rounded-xl bg-input-background border-2 border-border text-[0.95rem] focus:border-primary focus:outline-none transition-colors"
                       />
                     ))}
+                    {error && (
+                      <p className="text-red-500 text-[0.85rem] text-center">{error}</p>
+                    )}
                     <button
                       type="submit"
-                      className="w-full bg-primary hover:bg-gold-dark text-white px-6 py-4 rounded-xl text-[1rem] transition-colors flex items-center justify-center gap-2"
+                      disabled={submitting}
+                      className="w-full bg-primary hover:bg-gold-dark text-white px-6 py-4 rounded-xl text-[1rem] transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
                       style={{ fontWeight: 700 }}
                     >
-                      <Download className="w-5 h-5" />
-                      Download Free Guide
+                      {submitting ? "Submitting…" : (<><Download className="w-5 h-5" /> Download Free Guide</>)}
                     </button>
                     <p className="text-[0.75rem] text-center text-muted-foreground">
                       No spam, ever. We'll send your guide and that's it — unless you want to talk about your project.

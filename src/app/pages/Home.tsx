@@ -62,7 +62,7 @@ export function HomePage() {
         <DotGrid opacity={0.2} spacing={28} dotSize={0.8} lineOpacity={0.06} />
         {/* Photo overlay */}
         <div className="absolute inset-0">
-          <img src={IMAGES.kitchenOpenConcept} alt="Beautiful kitchen remodel by Franco and Sons Construction LLC" className="w-full h-full object-cover object-center opacity-15" />
+          <ImageWithFallback src={IMAGES.kitchenOpenConcept} alt="Beautiful kitchen remodel by Franco and Sons Construction LLC in Lincoln, California" className="w-full h-full object-cover object-center opacity-15" priority />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${heroBg}f5, ${primary}99, ${heroBg}80)` }} />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${heroBg}, transparent, ${heroBg}66)` }} />
         </div>
@@ -148,7 +148,7 @@ export function HomePage() {
       <section className="relative min-h-[550px] lg:min-h-[600px] overflow-hidden" style={{ background: BRAND.colors.foreground }}>
         <DotGrid opacity={0.15} spacing={28} dotSize={0.8} lineOpacity={0.05} />
         <div className="absolute inset-0">
-          <ImageWithFallback src={IMAGES.brandedTrucks} alt="Franco and Sons Construction LLC branded fleet" className="w-full h-full object-cover opacity-25" />
+          <ImageWithFallback src={IMAGES.brandedTrucks} alt="Franco and Sons Construction LLC branded work trucks serving Lincoln and Placer County, California" className="w-full h-full object-cover opacity-25" />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${BRAND.colors.foreground}f5, ${primary}cc, ${BRAND.colors.foreground}80)` }} />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${BRAND.colors.foreground}f2, transparent, ${BRAND.colors.foreground}80)` }} />
         </div>
@@ -194,7 +194,7 @@ export function HomePage() {
               <Link key={service.slug} to={`/services/${service.slug}`} className="group relative rounded-lg overflow-hidden hover:-translate-y-1 transition-all duration-300" style={{ background: `${primary}80`, border: `1px solid ${accent}15` }}>
                 <CornerBrackets size={14} strokeWidth={1.5} color={`${accent}30`} />
                 <div className="aspect-[16/10] overflow-hidden relative">
-                  <ImageWithFallback src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <ImageWithFallback src={service.image} alt={`${service.title} by Franco and Sons Construction LLC in Lincoln, CA`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${primary}, transparent)` }} />
                 </div>
                 <div className="p-6">
@@ -247,7 +247,7 @@ export function HomePage() {
             <div className="relative">
               <div className="rounded-lg overflow-hidden shadow-2xl relative" style={{ border: `1.5px solid ${accent}20` }}>
                 <CornerBrackets size={20} strokeWidth={2} color={accent} />
-                <ImageWithFallback src={IMAGES.carlosCristianKitchen} alt="Carlos and Cristian Franco" className="w-full aspect-[4/5] object-cover" />
+                <ImageWithFallback src={IMAGES.carlosCristianKitchen} alt="Carlos and Cristian Franco, father-son owners of Franco and Sons Construction LLC" className="w-full aspect-[4/5] object-cover" />
                 <div className="absolute bottom-0 left-0 right-0 h-32" style={{ background: `linear-gradient(to top, ${BRAND.colors.foreground}, transparent)` }} />
               </div>
               <div className="absolute -bottom-6 -left-6 text-white p-7 rounded-lg shadow-2xl hidden md:block" style={{ background: primary, border: `1px solid ${accent}20` }}>
@@ -380,7 +380,7 @@ export function HomePage() {
             <div className="relative">
               <div className="relative rounded-lg overflow-hidden" style={{ border: `1.5px solid ${accent}20` }}>
                 <CornerBrackets size={18} strokeWidth={2} color={accent} />
-                <ImageWithFallback src={IMAGES.lincoln} alt="Lincoln, California neighborhood" className="w-full aspect-[4/3] object-cover" />
+                <ImageWithFallback src={IMAGES.lincoln} alt="Residential neighborhood in Lincoln, California — primary service area for Franco and Sons Construction LLC" className="w-full aspect-[4/3] object-cover" />
                 <div className="absolute bottom-0 left-0 right-0 h-24" style={{ background: `linear-gradient(to top, ${primaryDark}, transparent)` }} />
               </div>
             </div>

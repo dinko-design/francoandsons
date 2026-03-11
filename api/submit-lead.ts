@@ -25,8 +25,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const { name, email, phone, service, city, message } = req.body;
 
-  if (!name || !phone) {
-    return res.status(400).json({ error: "Name and phone are required" });
+  if (!name || (!phone && !email)) {
+    return res.status(400).json({ error: "Name and at least a phone or email are required" });
   }
 
   try {
@@ -68,12 +68,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                 <td style="padding: 10px 0; color: #6b7280; width: 120px; vertical-align: top;">Name</td>
                 <td style="padding: 10px 0; font-weight: 600;">${name}</td>
               </tr>
-              <tr>
+              ${phone ? `<tr>
                 <td style="padding: 10px 0; color: #6b7280; vertical-align: top;">Phone</td>
                 <td style="padding: 10px 0; font-weight: 600;">
                   <a href="tel:${phone}" style="color: #1E2D4A; text-decoration: none;">${phone}</a>
                 </td>
-              </tr>
+              </tr>` : ""}
               ${email ? `<tr>
                 <td style="padding: 10px 0; color: #6b7280; vertical-align: top;">Email</td>
                 <td style="padding: 10px 0;">
@@ -94,9 +94,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               </tr>` : ""}
             </table>
             <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
-              <a href="tel:${phone}" style="display: inline-block; background: #8BC34A; color: #1E2D4A; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 14px;">
-                Call ${name} Now
-              </a>
+              ${phone
+                ? `<a href="tel:${phone}" style="display: inline-block; background: #8BC34A; color: #1E2D4A; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 14px;">
+                    Call ${name} Now
+                  </a>`
+                : `<a href="mailto:${email}" style="display: inline-block; background: #8BC34A; color: #1E2D4A; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 14px;">
+                    Email ${name} Now
+                  </a>`
+              }
             </div>
             <p style="color: #9ca3af; font-size: 12px; margin-top: 20px;">
               This lead was submitted on francoandsonsconstruction.net and saved to Sanity CMS.
