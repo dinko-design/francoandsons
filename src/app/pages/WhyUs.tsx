@@ -414,7 +414,7 @@ export function WhyUsPage() {
               <div className="rounded-xl overflow-hidden shadow-xl">
                 <ImageWithFallback
                   src={IMAGES.carlosCristianKitchen}
-                  alt="Carlos and Cristian Franco — quality craftsmanship"
+                  alt="Carlos and Cristian Franco measuring and reviewing plans during a kitchen remodel"
                   className="w-full aspect-[4/5] object-cover"
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/80 to-transparent" />

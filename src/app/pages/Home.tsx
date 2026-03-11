@@ -247,7 +247,7 @@ export function HomePage() {
             <div className="relative">
               <div className="rounded-lg overflow-hidden shadow-2xl relative" style={{ border: `1.5px solid ${accent}20` }}>
                 <CornerBrackets size={20} strokeWidth={2} color={accent} />
-                <ImageWithFallback src={IMAGES.carlosCristianKitchen} alt="Carlos and Cristian Franco, father-son owners of Franco and Sons Construction LLC" className="w-full aspect-[4/5] object-cover" />
+                <ImageWithFallback src={IMAGES.carlosCristianKitchen} alt="Carlos and Cristian Franco working together on a kitchen remodel in Lincoln, California" className="w-full aspect-[4/5] object-cover" />
                 <div className="absolute bottom-0 left-0 right-0 h-32" style={{ background: `linear-gradient(to top, ${BRAND.colors.foreground}, transparent)` }} />
               </div>
               <div className="absolute -bottom-6 -left-6 text-white p-7 rounded-lg shadow-2xl hidden md:block" style={{ background: primary, border: `1px solid ${accent}20` }}>

@@ -12,6 +12,22 @@ import adaImage from '@/assets/ad669742901e0553b2a16ee7ddc9e010151c7f18.png';
 import tileImage from '@/assets/64c12f3def3ced43d7309e1c235a6c907d89d362.png';
 import constructionImage from '@/assets/849dc29ab6df9f85a755c25a1dcb88d34b0022f8.png';
 import teamImage from '@/assets/9d281622c5c22a85b9e85ebec579088d9eacbcf5.png';
+import carlosSoloOnSite from '@/assets/c015347415eb580840383f7274bf0874867ede33.png';
+import carlosCristianTogether from '@/assets/0f7ea8b740690c293a814bc3d4610c27fab78281.png';
+
+// Team portraits and branded photos
+import carlosInKitchenImg from '@/assets/team/carlos-in-kitchen.png';
+import carlosInBathroomImg from '@/assets/team/carlos-in-bathroom.png';
+import carlosWithClientImg from '@/assets/team/carlos-with-client.png';
+import carlosCristianWorkingImg from '@/assets/team/carlos-cristian-working.png';
+import cristianTilingImg from '@/assets/team/cristian-tiling.png';
+import cristianOnSiteImg from '@/assets/team/cristian-on-site.png';
+import ipadPlansImg from '@/assets/team/ipad-plans.png';
+import miterSawImg from '@/assets/team/miter-saw.png';
+import logoStitchImg from '@/assets/team/logo-stitch.png';
+import carlosCristianBlueprintsImg from '@/assets/team/carlos-cristian-blueprints.png';
+import brandedTruckImg from '@/assets/team/branded-truck.png';
+import speedSquareImg from '@/assets/team/speed-square.png';
 
 // Organized imported images (analyzed, renamed: before-after/ and gallery/)
 import beforeAfterKitchen1Img from '@/assets/before-after/kitchen/kitchen-before-after-dark-cabinets.jpg';
@@ -46,14 +62,14 @@ const realKitchenIslandClose = kitchenImage2;
 const realBathroomShower = bathroomImage1;
 const realBathroomVanity = bathroomImage2;
 
-// Real team photos (use team image for now, replace with actual team photos)
-const teamCarlosOnSite = teamImage;
-const teamCarlosCristianKitchen = teamImage;
+// Real team photos (every slot is a unique photo)
+const teamCarlosOnSite = carlosSoloOnSite;
+const teamCarlosCristianKitchen = carlosCristianWorkingImg;
 const teamCristianMeasuring = teamImage;
-const teamCarlosWithClient = teamImage;
-const teamCarlosInKitchen = teamImage;
-const teamCristianBlueprints = teamImage;
-const teamBrandedTrucks = teamImage;
+const teamCarlosWithClient = carlosWithClientImg;
+const teamCarlosInKitchen = carlosInKitchenImg;
+const teamCristianBlueprints = cristianOnSiteImg;
+const teamBrandedTrucks = brandedTruckImg;
 
 // Before & After project photos (real composites from imported images)
 const baBeforeAfterBath1 = beforeAfterBath1Img;
@@ -103,7 +119,7 @@ export const IMAGES = {
   electricalPlumbing: houseImage3,
   painting: houseImage2,
   exteriorImprovements: houseImage1,
-  contractor: teamImage,
+  contractor: miterSawImg,
   homeExterior: houseImage1,
   // ── Team photos ──
   carlosOnSite: teamCarlosOnSite,
@@ -113,6 +129,14 @@ export const IMAGES = {
   carlosInKitchen: teamCarlosInKitchen,
   cristianBlueprints: teamCristianBlueprints,
   brandedTrucks: teamBrandedTrucks,
+  carlosInBathroom: carlosInBathroomImg,
+  cristianTiling: cristianTilingImg,
+  cristianOnSite: cristianOnSiteImg,
+  carlosCristianBlueprints: carlosCristianBlueprintsImg,
+  logoStitch: logoStitchImg,
+  miterSaw: miterSawImg,
+  speedSquare: speedSquareImg,
+  ipadPlans: ipadPlansImg,
   // ── Location images ──
   lincoln: houseImage1,
   folsom: houseImage2,
@@ -128,7 +152,7 @@ export const IMAGES = {
   galleryJoanneAda: joanneAdaHero,
   galleryNewcastleKitchen: newcastleKitchenHero,
   // ── Misc ──
-  happyHomeowner: teamImage,
+  happyHomeowner: carlosWithClientImg,
   livingRoom: houseImage1,
 };
 

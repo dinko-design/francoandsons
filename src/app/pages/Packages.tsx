@@ -441,7 +441,7 @@ export function PackagesPage() {
                 />
                 <ImageWithFallback
                   src={IMAGES.carlosCristianKitchen}
-                  alt="Carlos and Cristian Franco on-site"
+                  alt="Carlos and Cristian Franco working together on a kitchen remodel"
                   className="w-full aspect-square object-cover"
                 />
               </div>

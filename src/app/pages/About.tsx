@@ -52,7 +52,7 @@ export function AboutPage() {
               <div className="rounded-xl overflow-hidden shadow-xl relative">
                 <img
                   src={IMAGES.brandedTrucks}
-                  alt="Carlos and Cristian Franco standing with their branded Franco and Sons Construction LLC fleet"
+                  alt="Franco and Sons Construction LLC branded work truck in Lincoln, California"
                   className="w-full aspect-[4/3] object-cover"
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F8FAFC] via-[#F8FAFC]/50 to-transparent" />
@@ -101,7 +101,7 @@ export function AboutPage() {
         <div className="absolute inset-0">
           <img
             src={IMAGES.carlosInKitchen}
-            alt="Carlos Franco, owner — standing in a completed luxury kitchen"
+            alt="Carlos Franco, founder of Franco and Sons Construction LLC, standing in a completed luxury kitchen remodel"
             className="w-full h-full object-cover object-top"
           />
           {/* Cinematic dark-to-blue gradient overlay */}
@@ -220,7 +220,7 @@ export function AboutPage() {
                 <div className="rounded-xl overflow-hidden shadow-2xl relative">
                   <img
                     src={IMAGES.cristianBlueprints}
-                    alt="Cristian Franco reviewing blueprints on-site"
+                    alt="Cristian Franco holding blueprints on a construction site in Lincoln, California"
                     className="w-full aspect-[3/4] object-cover object-top"
                   />
                   {/* Subtle blue gradient at bottom */}
@@ -304,7 +304,7 @@ export function AboutPage() {
               <div className="relative rounded-xl overflow-hidden shadow-xl">
                 <img
                   src={IMAGES.carlosWithClient}
-                  alt="Carlos Franco reviewing plans with a homeowner"
+                  alt="Carlos Franco reviewing remodeling plans with a homeowner in Lincoln, California"
                   className="w-full aspect-[4/5] object-cover"
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-white via-white/50 to-transparent" />
